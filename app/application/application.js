@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import _ from 'lodash';
 import Radio from 'backbone.radio';
 import {Application} from 'backbone.marionette';
 import LayoutView from './layout-view';
@@ -7,8 +6,16 @@ import LayoutView from './layout-view';
 let routerChannel = Radio.channel('router');
 
 export default Application.extend({
-  initialize() {
-  	console.log('Application ','tst');
-	}
+	initialize() {
+		$('body').append('<div id="app-main"></div>');
+		this.layout = new LayoutView();
+		this.layout.render();
+		this.listenTo(routerChannel, {
+			'before:enter:route': this.onBeforeEnterRoute,
+			'enter:route': this.onEnterRoute
+    });
+	},
+	onBeforeEnterRoute() {},
+	onAfter() {}
 });
 

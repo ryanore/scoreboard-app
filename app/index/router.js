@@ -1,16 +1,17 @@
 import Router from '../base/router';
-
+import IndexRoute from './route';
 export default Router.extend({
+	initialize(options = {}) {
+		this.container = options.container;
+	},
+
 	routes: {
 		'': 'index'
 	},
-	beforeRoute() {
 
-	},
-	afterRoute() {
-
-	},
-	index() {
-
-	}
+  index() {
+    return new IndexRoute({
+      container: this.container
+     });
+  }
 });

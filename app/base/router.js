@@ -11,7 +11,6 @@ let DopeRouter = Router.extend({
 	afterRoute: nop,
 
 	route(route, name, callback) {
-		console.log('Route ');
 		let cb = callback || this[name];
 		let afterCallback;
 		let beforeCallback;
@@ -19,7 +18,6 @@ let DopeRouter = Router.extend({
 		let wrappedCallback = _.bind(function() {
 			let callbackArgs = [route, _.toArray(arguments)];
 
-			//  if
 			if (_.isFunction(this.beforeRoute)) {
 				beforeCallback = this.beforeRoute;
 			} else if (typeof this.beforeRoute[route] !== 'undefined') {

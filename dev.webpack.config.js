@@ -40,13 +40,13 @@ module.exports = {
   externals: {},
 
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader'
-      }
-    ],
+    // preLoaders: [
+    //   {
+    //     test: /\.js$/,
+    //     exclude: /node_modules/,
+    //     loader: 'eslint-loader'
+    //   }
+    // ],
     loaders: [
       {
         test: /\.js$/,
@@ -92,6 +92,9 @@ module.exports = {
       {
         test: /\.(md|markdown)$/,
         loaders: ['html-loader', 'markdown-loader']
+      },
+      { 
+          test: /\.hbs$/, loader: "handlebars-loader" 
       }
     ]
   },
