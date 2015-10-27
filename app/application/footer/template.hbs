@@ -1,3 +1,5 @@
-  <a href="#" class="btn btn-default" role="button">Left</a>
-  <a href="#" class="btn btn-default" role="button">Middle</a>
-  <a href="#" class="btn btn-default" role="button">Right</a>
+{{#each items}}
+ <div class="btn-group" role="group">
+   <button type="button" class="btn btn-default {{classname}} {{#if active}}active{{/if}}">{{label}}</button>
+ </div>
+{{/each}}

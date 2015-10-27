@@ -1,3 +1,4 @@
+import Radio from 'backbone.radio';
 import Router from '../base/router';
 import IndexRoute from './index/route';
 import CreateRoute from './create/route';
@@ -8,6 +9,7 @@ import {history} from 'backbone';
 export default Router.extend({
 	initialize(options = {}) {
 		this.container = options.container;
+		this.updateNav();
 	},
 
 	routes: {
@@ -17,6 +19,14 @@ export default Router.extend({
 		'users/edit': 'notFound',
 		'users/edit/:id': 'edit',
 		'users/new': 'create'
+	},
+
+	updateNav() {
+		Radio.trigger('NavChannel','header:item:add', {
+			label: 'Users',
+			level: 1,
+			path: 'users'
+		});
 	},
 
 	index() {

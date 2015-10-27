@@ -7,19 +7,13 @@
       <span class="icon-bar"></span>
     </button>
 
-    <a class="navbar-brand" href="#">Marionette <span>Wires</span></a>
+    <a class="navbar-brand" href="#">ScoreBoard</a>
   </div>
 
   <div class="collapse navbar-collapse" id="navbar-collapse">
     <ul class="nav navbar-nav">
-      {{#each primaryItems}}
-        <li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{name}}</a></li>
-      {{/each}}
-    </ul>
-
-    <ul class="nav navbar-nav navbar-right">
-      {{#each secondaryItems}}
-        <li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{name}}</a></li>
+      {{#each items}}
+        <li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{label}}</a></li>
       {{/each}}
     </ul>
   </div>

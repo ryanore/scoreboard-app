@@ -1,0 +1,22 @@
+$header-height-mobile: 40px;
+$footer-height-mobile: 40px;
+$navbar-height: 20px;
+#app-main{
+	margin-bottom: $footer-height-mobile;
+}
+
+.application__content{
+	min-height: 200px;
+}
+
+.application__footer{
+	position: absolute;
+	bottom: 0;
+	background: #ccc;
+	overflow: hidden;
+	button{
+		border: none;
+		background: transparent;
+		height: $footer-height-mobile;
+	}
+}

@@ -1,4 +1,5 @@
 import Marionette from 'backbone.marionette';
+import Radio from 'backbone.radio';
 import $ from 'jquery';
 import {history} from 'backbone';
 import View from './view';
@@ -13,14 +14,25 @@ let Route = Marionette.Object.extend({
 	 */
 	initialize(options){
 		this.container = options.container;
-
 		if( ! this.validate() ){
 			return history.navigate('notfound', {trigger: true});
 		}
-
-		this.container.show(new View({model: new Model()}));
+		this.updateNav();
+		this.container.show(new View({model: new Model()}));		
 	},
 
+	updateNav() {
+		Radio.trigger('NavChannel','footer:update', [{
+			label: 'Users',
+			path: 'users'
+		},{
+			label: 'thing',
+			path: 'things'
+		},{
+			label: 'thing2',
+			path: 'things2'
+		}]);
+	},
 
 	/**
 	 * Validate User's Permissions
@@ -31,6 +43,5 @@ let Route = Marionette.Object.extend({
 	}
 
 });
-
 
 export default Route;

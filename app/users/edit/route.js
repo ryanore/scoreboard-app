@@ -1,5 +1,6 @@
-import Marionette from 'backbone.marionette';
 import $ from 'jquery';
+import Marionette from 'backbone.marionette';
+import Radio from 'backbone.radio';
 import {history} from 'backbone';
 import View from './view';
 import Model from '../model';
@@ -19,13 +20,25 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('notfound', {trigger: true});
 		}
-
 		this.fetch().then((m) => {
 			this.container.show(new View({model: m}));
+			this.updateNav();
 		});
 	},
 
 
+	updateNav() {
+		Radio.trigger('NavChannel','footer:update', [{
+			label: 'Testing',
+			path: 'users'
+		},{
+			label: 'blahbg',
+			path: 'things'
+		},{
+			label: 'abcded',
+			path: 'things2'
+		}]);
+	},
 	/**
 	 * Fetch Model
 	 * @return {Promise}

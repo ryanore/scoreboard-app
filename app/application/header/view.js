@@ -1,43 +1,46 @@
 import _ from 'lodash';
 import {history} from 'backbone';
 import {ItemView} from 'backbone.marionette';
+import {Model} from 'backbone';
+import {Collection} from 'backbone';
+import {Radio} from 'backbone';
 import template from './template.hbs';
 
 export default ItemView.extend({
   template: template,
+  
   tagName: 'nav',
+  
   className: 'header navbar navbar-default navbar-fixed-top',
-
-  attributes: {
-    role: 'navigation'
-  },
-
+  
+  navChannel: Radio.channel('NavChannel'),
+    
   collectionEvents: {
-    all: 'render'
+    'add': 'render'
+  },
+  
+  initialize(options) {
+  	options.container.show(this);
+  	this.listenTo(this.navChannel, 'header:item:add', this.addItem);
+  	this.listenTo(this.navChannel, 'header:item:remove', this.removeItem);
   },
 
-  templateHelpers() {
-    return {
-      primaryItems   : this.serializeWhere({ type: 'primary' }),
-      secondaryItems : this.serializeWhere({ type: 'secondary' })
-    };
+  addItem(item) {
+  	let model = new Model(item);
+  	this.collection.add(item);
   },
 
-  serializeWhere(props) {
-    return _.invoke(this.collection.where(props), 'toJSON');
+  removeItem(item) {
+  	let model = new Model(item);
+  	this.collection.remove(item);
   },
 
-  ui: {
-    collapse: '#navbar-collapse'
-  },
-
-  events: {
-    'show.bs.collapse #navbar-collapse' : 'onCollapseShow'
-  },
-
-  onCollapseShow() {
-    this.listenToOnce(history, 'route', () => {
-      this.ui.collapse.collapse('hide');
-    });
+  activate(item) {
+  	this.collection.invoke('set', 'active', false);
+  	let model = this.collection.findWhere(item);
+    if (model) {
+      model.set('active', true);
+    }
   }
+
 });
