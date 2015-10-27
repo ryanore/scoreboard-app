@@ -37,7 +37,7 @@ npm run selenium:start
 
 ## Build
 - needs prod config for webpack.
-- `npm run build:assets` - will build the assets for production, Once you do that you can view them with any server by entering the assets folder and using python or something
+- `npm run build:assets` - will build the assets for production, Once you do that you can view them with any server 
 ## References
 
 - [Web app (Karma+Mocha example)](https://github.com/cesarandreu/web-app)

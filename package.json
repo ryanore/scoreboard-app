@@ -15,7 +15,7 @@
     "packages:reinstall": "rm -rf node_modules && npm install",
     "packages:updates": "npm-check-updates",
     "packages:upgrade": "npm-check-updates -u",
-    "build:assets": "webpack --config prod.webpack.config.js --progress --profile --colors",
+    "build:assets": "webpack --config dev.webpack.config.js --progress --profile --colors",
     "server:assets": "NODE_ENV=development PORT=2992 webpack-dev-server --config dev.webpack-server.config.js --hot --progress --colors --port 2992 --inline --host 0.0.0.0",
     "server:start": "node dev.server.js",
     "selenium:install": "selenium-standalone install",
@@ -28,11 +28,11 @@
     "test:unit": "karma start",
     "test:unit:live": "karma start --auto-watch --no-single-run"
   },
-  "author": "Michael Chau @mikechau",
+  "author": "@ryanore",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mikechau/backbone-webpack-boilerplate.git"
+    "url": ""
   },
   "devDependencies": {
     "babel": "^5.5.8",
@@ -40,8 +40,11 @@
     "babel-eslint": "^3.1.15",
     "babel-loader": "^5.1.4",
     "babel-runtime": "^5.5.8",
+    "bootstrap-sass": "^3.3.5",
     "chai": "^3.0.0",
+    "compass-mixins": "^0.12.7",
     "compression-webpack-plugin": "^0.2.0",
+    "css-loader": "^0.21.0",
     "deepmerge": "^0.2.10",
     "eslint": "^0.23.0",
     "eslint-loader": "^0.14.0",
@@ -68,6 +71,7 @@
     "sass-loader": "^1.0.2",
     "selenium-standalone": "^4.4.2",
     "sinon": "^1.15.3",
+    "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webdriverio": "^2.4.5",
     "webpack": "^1.9.11",

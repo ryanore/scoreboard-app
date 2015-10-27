@@ -1,7 +1,12 @@
 'use strict';
-
+//devserver
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var cssLoader = ExtractTextPlugin.extract('style-loader', 'css');
+// var scssLoader = ExtractTextPlugin.extract('style-loader', 'css!sass?sourceMap');
+var cssLoader = 'style-loader!css-loader!purifycss-loader';
+var scssLoader = 'style-loader!css-loader!sass-loader?sourceMap';
 
 module.exports = {
   output: {
@@ -30,7 +35,7 @@ module.exports = {
   },
 
   resolve: {
-    root: path.join(__dirname, 'src'),
+    root: path.join(__dirname, 'app'),
     modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.jsx']
   },
@@ -54,7 +59,7 @@ module.exports = {
         loader: 'babel-loader?stage=0&optional=runtime'
       },
       {
-        test: /\.(scss|sass)$/,
+        test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader'
       },
       {
