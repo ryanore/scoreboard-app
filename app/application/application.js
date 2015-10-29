@@ -5,7 +5,7 @@ import {Application} from 'backbone.marionette';
 import LayoutView from './layout-view';
 import Header from './header/view';
 import Footer from './footer/view';
-import './styles.scss';
+// import './styles.scss';
 
 let routerChannel = Radio.channel('router');
 

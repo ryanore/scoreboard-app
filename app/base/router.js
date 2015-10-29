@@ -1,4 +1,6 @@
 import {Router} from 'backbone';
+import {Events} from 'backbone';
+import {history} from 'backbone';
 import _ from 'lodash';
 
 let originalRoute = Router.prototype.route;
@@ -35,6 +37,8 @@ let DopeRouter = Router.extend({
 			}
 
 			if (_.isFunction(this.afterRoute)) {
+				Events.trigger('route');
+
 				afterCallback = this.afterRoute;
 			} else if (typeof this.afterRoute[route] !== 'undefined') {
 				afterCallback = this.afterRoute[route];

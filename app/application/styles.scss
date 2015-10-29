@@ -1,22 +1,24 @@
-$header-height-mobile: 40px;
-$footer-height-mobile: 40px;
-$navbar-height: 20px;
+$footer-height-small: 40px;
+$footer-height-large: 40px;
+
 #app-main{
-	margin-bottom: $footer-height-mobile;
+	margin-bottom: $footer-height-small;
+	overflow: hidden;
 }
 
 .application__content{
+	padding-top: $navbar-height;
+	padding-bottom: $footer-height-small;
 	min-height: 200px;
 }
 
 .application__footer{
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	background: #ccc;
-	overflow: hidden;
 	button{
 		border: none;
 		background: transparent;
-		height: $footer-height-mobile;
+		height: $footer-height-small;
 	}
 }
