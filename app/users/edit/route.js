@@ -26,19 +26,17 @@ let Route = Marionette.Object.extend({
 		});
 	},
 
-
+	/**
+	 * Update header/footer links in context to this route
+	 */
 	updateNav() {
 		Radio.trigger('NavChannel','footer:update', [{
-			label: 'Testing',
-			path: 'users'
-		},{
-			label: 'blahbg',
-			path: 'things'
-		},{
-			label: 'abcded',
-			path: 'things2'
+			label: 'About',
+			path: 'about'
 		}]);
 	},
+
+
 	/**
 	 * Fetch Model
 	 * @return {Promise}

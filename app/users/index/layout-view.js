@@ -1,6 +1,7 @@
+import {history} from 'backbone';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './collection-view';
-import {Collection} from 'backbone';
+import {Collection} from '../../base/collection';
 import template from './layout-template.hbs';
 
 export default LayoutView.extend({
@@ -10,10 +11,19 @@ export default LayoutView.extend({
   regions: {
     list: '.users__list'
   },
+	
+	events: {
+  	'click .btn-new-user': 'newUser',
+  	'click .btn-delete': 'deleteUsers'
+  },
+  
+  newUser() {
+  	history.navigate('users/new', {trigger: true});
+  },
 
-  initialize(options = {}) {},
-
-  onBeforeRender() {},
+  deleteUsers() {
+  	this.collectionView.deleteUsers();
+  },
 
   onAttach() {
     this.collectionView = new CollectionView({

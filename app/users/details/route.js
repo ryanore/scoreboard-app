@@ -1,5 +1,6 @@
-import Marionette from 'backbone.marionette';
 import $ from 'jquery';
+import Marionette from 'backbone.marionette';
+import Radio from 'backbone.radio';
 import {history} from 'backbone';
 import View from './view';
 import Model from '../model';
@@ -25,6 +26,15 @@ let Route = Marionette.Object.extend({
 		});
 	},
 
+	/**
+	 * Update header/footer links in context to this route
+	 */
+	updateNav() {
+		Radio.trigger('NavChannel','footer:update', [{
+			label: 'About',
+			path: 'about'
+		}]);
+	},
 
 	/**
 	 * Fetch Model

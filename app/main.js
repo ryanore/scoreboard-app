@@ -4,7 +4,7 @@ import Backbone from 'backbone';
 import IndexRouter from './index/router';
 import UsersRouter from './users/router';
 import Application from './application/application';
-import './styles.scss';
+import './main.scss';
 
 let app = new Application();
 

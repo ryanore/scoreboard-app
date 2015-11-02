@@ -1,7 +1,7 @@
 import Model from './model';
-import {Collection} from 'backbone';
+import Collection from '../base/collection';
 
-let UsersCollection = Backbone.Collection.extend({
+let UsersCollection = Collection.extend({
 	url: 'http://localhost:3000/users',
 	model: Model
 });

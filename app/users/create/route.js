@@ -20,19 +20,17 @@ let Route = Marionette.Object.extend({
 		this.updateNav();
 		this.container.show(new View({model: new Model()}));		
 	},
-
+	
+	/**
+	 * Update header/footer links in context to this route
+	 */
 	updateNav() {
 		Radio.trigger('NavChannel','footer:update', [{
-			label: 'Users',
-			path: 'users'
-		},{
-			label: 'thing',
-			path: 'things'
-		},{
-			label: 'thing2',
-			path: 'things2'
+			label: 'About',
+			path: 'about'
 		}]);
 	},
+
 
 	/**
 	 * Validate User's Permissions

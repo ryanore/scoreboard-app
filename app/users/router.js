@@ -1,5 +1,5 @@
 import Radio from 'backbone.radio';
-import Router from '../base/router';
+import Router from '../base/router/router';
 import IndexRoute from './index/route';
 import CreateRoute from './create/route';
 import DetailsRoute from './details/route';
@@ -50,6 +50,7 @@ export default Router.extend({
 
 	edit(id) {
 		return new EditRoute({
+			_id: id,
 			container: this.container
 		});
 	},

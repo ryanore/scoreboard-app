@@ -82,6 +82,8 @@
     "backbone": "^1.2.1",
     "backbone.marionette": "^2.4.3",
     "backbone.radio": "^1.0.2",
+    "backbone.syphon": "^0.6.3",
+    "backbone.validation": "^0.7.1",
     "handlebars": "^4.0.3",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"

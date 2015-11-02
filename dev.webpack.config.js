@@ -25,7 +25,7 @@ module.exports = {
     main: [
       'webpack-dev-server/client?http://localhost:9999',
       'webpack/hot/only-dev-server',
-      './app/index.js'
+      './app/main.js'
     ]
   },
 

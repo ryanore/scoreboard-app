@@ -17,29 +17,24 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('notfound', {trigger: true});
 		}
-		this.updateNav();
-		this.container = options.container;
 		this.fetch().then((c) => {
+			this.container = options.container;
+			this.updateNav();
 			this.container.show(new View({collection: c}));
 		});
 	},
 	
+
 	/**
-	 * Update with items 
-	 * @return {Promise}
+	 * Update header/footer links in context to this route
 	 */
 	updateNav() {
 		Radio.trigger('NavChannel','footer:update', [{
-			label: 'Testing',
-			path: 'users'
-		},{
-			label: 'info',
-			path: 'things'
-		},{
-			label: 'abcded',
-			path: 'things2'
+			label: 'About',
+			path: 'about'
 		}]);
 	},
+
 
 	/**
 	 * Fetch Model

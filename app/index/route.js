@@ -1,4 +1,3 @@
-// import BaseRoute from '../base/route';
 import Marionette from 'backbone.marionette';
 import View from './view';
 
