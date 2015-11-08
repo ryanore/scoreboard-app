@@ -1,4 +1,4 @@
-import FormBehavior from '../../base/form-behavior';
+import FormBehavior from '../../base/forms/form-behavior';
 import {Backbone} from 'backbone';
 import {history} from 'backbone';
 import {ItemView} from 'backbone.marionette';
@@ -7,7 +7,7 @@ import template from './template.hbs';
 export default ItemView.extend({
 	tagName: 'div',
 	template: template,
-	className: 'row users__create container',
+	className: 'row users__create',
 
 	initialize() {
 		console.log('init View ');

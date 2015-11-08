@@ -11,7 +11,7 @@ let routerChannel = Radio.channel('router');
 
 export default Application.extend({
 	initialize() {
-		$('body').append('<div id="app-main"></div>');
+		$('body').append('<div id="app-main" class="container-fluid"></div>');
 		
 		this.layout = new LayoutView();
 		

@@ -1,4 +1,4 @@
-require('plugins');
+require('./plugins');
 
 import Backbone from 'backbone';
 import IndexRouter from './index/router';

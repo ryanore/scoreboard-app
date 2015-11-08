@@ -53,6 +53,9 @@ module.exports = {
     //   }
     // ],
     loaders: [
+      { 
+          test: /\.hbs$/, loader: "handlebars-loader" 
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -97,9 +100,6 @@ module.exports = {
       {
         test: /\.(md|markdown)$/,
         loaders: ['html-loader', 'markdown-loader']
-      },
-      { 
-          test: /\.hbs$/, loader: "handlebars-loader" 
       }
     ]
   },
