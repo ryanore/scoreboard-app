@@ -7,7 +7,7 @@ import template from './template.hbs';
 export default ItemView.extend({
 	tagName: 'div',
 	template: template,
-	className: 'row users__create',
+	className: 'users__create container',
 
 	initialize() {
 		console.log('init View ');
@@ -18,7 +18,9 @@ export default ItemView.extend({
 	},
 
 	behaviors: {
-		form: { behaviorClass: FormBehavior }
+		form: { 
+			behaviorClass: FormBehavior
+		}
 	},
 	
 	templateHelpers() {

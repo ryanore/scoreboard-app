@@ -1,1 +1,84 @@
-<h4 class="detail-heading">DETAILS: {{firstName}}</h4>
+	<header class="">
+		<h1>{{username}}</h1>
+	</header>
+
+	<div class="panels row">
+
+		<div class="col-sm-4">
+			<div class="panel panel-default ">
+				<div class="panel-heading">
+		    	<h2 class="panel-title">Options:</h2>
+		  	</div>			
+		  	{{#if errors}}
+				<div class="alert alert-warning">
+					<ul>
+						{{#each errors}}
+							<li>{{this}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			{{/if}}	
+				<div class="panel-body controls  ">
+					<ul>
+					
+					{{#if allowEdit}}
+						<li>
+						<button type="button" data-toggle="edit" class="btn-edit-profile btn btn-default btn-xs">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+						</button>	
+						</li>
+						<li>
+						<button  type="button" data-toggle="password" class="btn-change-pw btn-xs btn btn-default">
+							<span class="glyphicon" aria-hidden="true"></span> 
+						</button>	
+						</li>	
+					{{/if}}	
+
+					{{#if allowDelete }}
+						<li>
+						<button type="button" class="btn-delete btn btn-default btn-xs">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+							Delete User
+						</button>
+						</li>		
+					{{/if}}				
+					</ul>
+
+					<p class="message">
+						{{message}}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-8">
+			<div class="panel panel-default ">
+		  	<div class="panel-heading">
+		    	<h2 class="panel-title">User Details:</h2>
+		  	</div>				
+		  	<form class="panel-body stats-container">
+					<dl class="">
+						<dt class="col-xs-4 itemlabel ">Joined:</dt>
+						<dd class="col-xs-8 col-sm-8 value">{{createdAt }}</dd>
+					</dl>	
+					<dl class="control-group">
+						<dt class="col-xs-4 itemlabel">Username:</dt>
+						<dd><input type="text" name="username" class="col-xs-8  validate" value="{{username}}"></dd>
+					</dl>
+					<dl class="control-group">
+						<dt class="col-xs-4  itemlabel">First Name:</dt>
+						<dd><input type="text" name="firstName" class="col-xs-8 validate" value="{{firstName}}"></dd>
+					</dl>
+					<dl class="control-group	">
+						<dt class="col-xs-4  itemlabel">Last Name:</dt>
+						<dd><input type="text"  name="lastName" class="col-xs-8 validate" value="{{lastName}}"></dd>
+					</dl>
+					<div class="editmode">
+						<br>
+						<button class="save col-sm-3 col-sm-offset-9  btn  btn-primary" type="submit">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>

@@ -42,7 +42,7 @@ let Route = Marionette.Object.extend({
 	 */
 	fetch() {     
     let defer = $.Deferred();
-    let m = new Model();
+    let m = new Model({_id: this._id});
     m.fetch({success: function(){
       defer.resolve(m);
     }});
