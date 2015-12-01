@@ -1,11 +1,12 @@
 import FormBehavior from '../../base/forms/form-behavior';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
+import session from '../../auth/session';
 
 export default ItemView.extend({
   tagName: 'div',
   template: template,
-  className: 'users__detail view',
+  className: 'users__detail view container',
   initialize() {
   	console.log('this.model ', this.model);
   },
@@ -25,7 +26,8 @@ export default ItemView.extend({
 	
 	templateHelpers() {
 		return {
-			errors: this.errors
+			errors: this.errors,
+			allowEdit: session.isUser() || session.level(1)
 		};
 	},
 

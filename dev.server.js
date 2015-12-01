@@ -4,7 +4,6 @@ var config = require('./dev.webpack.config');
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
-  hot: true,
   historyApiFallback: {
     index: './templates/dev/index.html'
   },
@@ -12,8 +11,7 @@ new WebpackDevServer(webpack(config), {
     colors: true,
     exclude: [
       /.*-dev-server/,
-      /buildin/,
-      /hot/
+      /buildin/
     ]
   }
 }).listen(9999, 'localhost', function (err, result) {

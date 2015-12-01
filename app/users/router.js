@@ -22,6 +22,7 @@ export default Router.extend({
 	},
 
 	updateNav() {
+		console.log('updateNav Users');
 		Radio.trigger('NavChannel','header:item:add', {
 			label: 'Users',
 			level: 1,

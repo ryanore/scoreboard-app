@@ -3,8 +3,6 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var cssLoader = ExtractTextPlugin.extract('style-loader', 'css');
-// var scssLoader = ExtractTextPlugin.extract('style-loader', 'css!sass?sourceMap');
 var cssLoader = 'style-loader!css-loader!purifycss-loader';
 var scssLoader = 'style-loader!css-loader!sass-loader?sourceMap';
 
@@ -24,7 +22,6 @@ module.exports = {
   entry: {
     main: [
       'webpack-dev-server/client?http://localhost:9999',
-      'webpack/hot/only-dev-server',
       './app/main.js'
     ]
   },
@@ -105,7 +102,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify('development')

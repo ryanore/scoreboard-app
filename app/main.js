@@ -17,3 +17,5 @@ app.users = new UsersRouter({
 });
 
 Backbone.history.start();
+
+export default app;

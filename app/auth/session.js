@@ -13,8 +13,9 @@ let Session = class {
 	isUser(id) {
 		let is = false;
 		if( this.user && this.loggedIn ){
-			is =  this.user._id === id ;
+			is = this.user._id === id ;
 		}
+		console.log('user =  ', this.user);
 		return is;
 	}
 

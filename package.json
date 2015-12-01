@@ -16,7 +16,6 @@
     "packages:updates": "npm-check-updates",
     "packages:upgrade": "npm-check-updates -u",
     "build:assets": "webpack --config dev.webpack.config.js --progress --profile --colors",
-    "server:assets": "NODE_ENV=development PORT=2992 webpack-dev-server --config dev.webpack-server.config.js --hot --progress --colors --port 2992 --inline --host 0.0.0.0",
     "server:start": "node dev.server.js",
     "selenium:install": "selenium-standalone install",
     "selenium:start": "selenium-standalone start",
