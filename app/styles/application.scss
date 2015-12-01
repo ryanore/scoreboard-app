@@ -1,0 +1,47 @@
+$footer-height-small: 40px;
+$footer-height-large: 40px;
+$lightGrey1: #ccc;
+
+html{
+	min-height:100%;
+}
+
+body{
+background-image: -webkit-gradient(
+	linear,
+	right bottom,
+	right bottom,
+	color-stop(0, #000000),
+	color-stop(1, #5C5C5C)
+);
+background-image: -o-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
+background-image: -moz-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
+background-image: -webkit-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
+background-image: -ms-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
+background-image: linear-gradient(to right bottom, #000000 0%, #5C5C5C 100%);
+background-repeat: no-repeat;
+}
+
+.application__footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #ccc;
+	button{
+		border: none;
+		background: transparent;
+		height: $footer-height-small;
+	}
+}
+
+.application__content{
+	padding-top: $navbar-height;
+	padding-bottom: $footer-height-small;
+	min-height: 200px;
+}
+
+
+#app-main{
+	margin-bottom: $footer-height-small;
+	overflow: hidden;
+}

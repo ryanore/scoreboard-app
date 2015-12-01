@@ -1,0 +1,19 @@
+.view header{
+	background: #151515;
+	color: #fff;
+	text-align: center;
+	width: 112%;
+	margin-left: -6%;
+	h1{
+		margin-top: 0;
+	}
+	@media(min-width: $screen-tablet){
+		width: auto;
+		margin-left: 0;
+		background: none;
+		h1{
+			padding-top: 1em;
+		}
+	}
+	
+}

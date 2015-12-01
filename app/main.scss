@@ -1,6 +1,11 @@
 $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';  
-
+$font-size-base: 16px !default;
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; 
-/*@import "./node_modules/compass-mixins/lib/compass";*/
+@import "node_modules/compass-mixins/lib/compass";
 
-@import './application/styles';
+@import './styles/application';
+@import './styles/type';
+@import './styles/components/navbar';
+@import './styles/components/view';
+@import './styles/components/forms';
+@import './styles/components/table-view';
