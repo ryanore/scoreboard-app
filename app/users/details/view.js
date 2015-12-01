@@ -11,7 +11,10 @@ export default ItemView.extend({
   	console.log('this.model ', this.model);
   },
   events: {
-  	'submit form': 'onFormSubmit'
+  	'submit form': 'onFormSubmit',
+  	'click .btn-delete-user': 'handleClickDelete',
+  	'click .btn-edit-profile': 'handleClickEdit',
+  	'click .btn-change-pw': 'handleClickPassword'
   },
   
   modelEvents: {
@@ -27,11 +30,25 @@ export default ItemView.extend({
 	templateHelpers() {
 		return {
 			errors: this.errors,
-			allowEdit: session.isUser() || session.level(1)
+			allowEdit: session.isUser() || session.level(1),
+			allowDelete: session.isUser() || session.level(1)
 		};
 	},
 
+	handleClickEdit() {
+		alert('edit');
+	},
+
+	handleClickDelete() {
+		alert('delete');
+	},
+
+	handleClickPassword() {
+		alert('handleClickPassword');
+	},
+
 	onFormSubmit() {
+		alert('submit')
 		let errors = this.model.validate(this.form);
 		if (errors) {
 			this.errors = errors;

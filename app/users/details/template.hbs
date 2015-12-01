@@ -1,61 +1,34 @@
 	<header class="">
 		<h1>{{username}}</h1>
+		<div class="dropdown">
+		  <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Options
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				{{#if allowEdit}}
+					<li class="btn-edit-profile">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						Edit Details 
+					</li>
+					<li class="btn-change-pw">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+						Change Password
+					</li>	
+				{{/if}}	
+				{{#if allowDelete }}
+					<li class="btn-delete-user">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+						Delete Account
+					</li>		
+				{{/if}}
+		  </ul>
+		</div>
 	</header>
 
 	<div class="panels row">
-
-		<div class="col-sm-4">
-			<div class="panel panel-default ">
-				<div class="panel-heading">
-		    	<h2 class="panel-title">Options:</h2>
-		  	</div>			
-		  	{{#if errors}}
-				<div class="alert alert-warning">
-					<ul>
-						{{#each errors}}
-							<li>{{this}}</li>
-						{{/each}}
-					</ul>
-				</div>
-			{{/if}}	
-				<div class="panel-body controls  ">
-					<ul>
-					
-					{{#if allowEdit}}
-						<li>
-						<button type="button" data-toggle="edit" class="btn-edit-profile btn btn-default btn-xs">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
-						</button>	
-						</li>
-						<li>
-						<button  type="button" data-toggle="password" class="btn-change-pw btn-xs btn btn-default">
-							<span class="glyphicon" aria-hidden="true"></span> 
-						</button>	
-						</li>	
-					{{/if}}	
-
-					{{#if allowDelete }}
-						<li>
-						<button type="button" class="btn-delete btn btn-default btn-xs">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
-							Delete User
-						</button>
-						</li>		
-					{{/if}}				
-					</ul>
-
-					<p class="message">
-						{{message}}
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-8">
-			<div class="panel panel-default ">
-		  	<div class="panel-heading">
-		    	<h2 class="panel-title">User Details:</h2>
-		  	</div>				
+		<div class="col-sm-12">
+			<div class="panel panel-default container">
 		  	<form class="panel-body stats-container">
 					<dl class="">
 						<dt class="col-xs-4 itemlabel ">Joined:</dt>
@@ -80,5 +53,5 @@
 				</form>
 			</div>
 		</div>
-
 	</div>
+				

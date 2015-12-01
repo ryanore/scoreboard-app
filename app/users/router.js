@@ -3,7 +3,6 @@ import Router from '../base/router/router';
 import IndexRoute from './index/route';
 import CreateRoute from './create/route';
 import DetailsRoute from './details/route';
-import EditRoute from './edit/route';
 import {history} from 'backbone';
 
 export default Router.extend({
@@ -44,13 +43,6 @@ export default Router.extend({
 
 	details(id) {
 		return new DetailsRoute({
-			_id: id,
-			container: this.container
-		});
-	},
-
-	edit(id) {
-		return new EditRoute({
 			_id: id,
 			container: this.container
 		});

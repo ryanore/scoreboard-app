@@ -8,11 +8,7 @@ export default ItemView.extend({
 	tagName: 'div',
 	template: template,
 	className: 'users__create container',
-
-	initialize() {
-		console.log('init View ');
-	},
-
+	
 	events: {
 		'submit form': 'onFormSubmit'
 	},
