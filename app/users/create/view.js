@@ -7,7 +7,7 @@ import template from './template.hbs';
 export default ItemView.extend({
 	tagName: 'div',
 	template: template,
-	className: 'users__create container',
+	className: 'view users__create container',
 	
 	events: {
 		'submit form': 'onFormSubmit'

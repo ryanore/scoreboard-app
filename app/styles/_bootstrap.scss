@@ -1,0 +1,20 @@
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';  
+$font-size-base: 16px !default;
+$brand-primary: #fc9911;
+
+// This container is a custom one, Bootstrap out of the box has 3 containers.
+$ContainerPhone: 460px;
+
+// Intermediate small screen / phone. (Custom breakpoint).
+$screen-is: 480px;
+
+// Minimum screen size for the custom grid.
+$screen-is-min: ($screen-is);
+
+// Maximum screen size for the custom grid.
+$screen-is-max: 767px;
+
+// Maximum screen size for Extra small screen / phone (We have to call it before bootstrap).
+$screen-xs-max: ($screen-is-min - 1);
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; 

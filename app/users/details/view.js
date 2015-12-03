@@ -2,14 +2,13 @@ import FormBehavior from '../../base/forms/form-behavior';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import session from '../../auth/session';
+import {formatDate} from '../../utils/date';
 
 export default ItemView.extend({
   tagName: 'div',
   template: template,
   className: 'users__detail view container',
-  initialize() {
-  	console.log('this.model ', this.model);
-  },
+ 
   events: {
   	'submit form': 'onFormSubmit',
   	'click .btn-delete-user': 'handleClickDelete',
@@ -30,6 +29,7 @@ export default ItemView.extend({
 	templateHelpers() {
 		return {
 			errors: this.errors,
+			createdAt: formatDate(this.model.get('createdAt'), 'short'),
 			allowEdit: session.isUser() || session.level(1),
 			allowDelete: session.isUser() || session.level(1)
 		};

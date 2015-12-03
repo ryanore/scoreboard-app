@@ -12,7 +12,7 @@ export default ItemView.extend({
   
   tagName: 'nav',
   
-  className: 'header navbar navbar-inverse navbar-fixed-top',
+  className: 'header navbar navbar-inverse navbar-fixed-top ',
   
   navChannel: Radio.channel('NavChannel'),
 

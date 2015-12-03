@@ -1,57 +1,73 @@
-	<header class="">
-		<h1>{{username}}</h1>
-		<div class="dropdown">
-		  <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    Options
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				{{#if allowEdit}}
-					<li class="btn-edit-profile">
-						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						Edit Details 
-					</li>
-					<li class="btn-change-pw">
-						<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
-						Change Password
-					</li>	
-				{{/if}}	
-				{{#if allowDelete }}
-					<li class="btn-delete-user">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
-						Delete Account
-					</li>		
-				{{/if}}
-		  </ul>
-		</div>
-	</header>
-
-	<div class="panels row">
-		<div class="col-sm-12">
-			<div class="panel panel-default container">
-		  	<form class="panel-body stats-container">
-					<dl class="">
-						<dt class="col-xs-4 itemlabel ">Joined:</dt>
-						<dd class="col-xs-8 col-sm-8 value">{{createdAt }}</dd>
-					</dl>	
-					<dl class="control-group">
-						<dt class="col-xs-4 itemlabel">Username:</dt>
-						<dd><input type="text" name="username" class="col-xs-8  validate" value="{{username}}"></dd>
-					</dl>
-					<dl class="control-group">
-						<dt class="col-xs-4  itemlabel">First Name:</dt>
-						<dd><input type="text" name="firstName" class="col-xs-8 validate" value="{{firstName}}"></dd>
-					</dl>
-					<dl class="control-group	">
-						<dt class="col-xs-4  itemlabel">Last Name:</dt>
-						<dd><input type="text"  name="lastName" class="col-xs-8 validate" value="{{lastName}}"></dd>
-					</dl>
-					<div class="editmode">
-						<br>
-						<button class="save col-sm-3 col-sm-offset-9  btn  btn-primary" type="submit">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
+<header class="">
+	<div class="container">
+		<h1>
+			{{firstName}} {{lastName}}
+			<span class="small block"> Since {{createdAt }}</span>
+		</h1>
 	</div>
-				
+</header>
+
+<div class="options user-options container col-sm-4">
+	<h2>Options</h2>
+	<div class="content-section">
+		<ul>
+		{{#if allowEdit}}
+			<li>
+				<button  class="btn-edit">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					Edit Details 
+				</button>
+			</li>
+			<li>
+				<button  class="btn-change-pw">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+					Change Password
+				</button>
+			</li>	
+		{{/if}}	
+		{{#if allowDelete }}
+			<li>
+				<button class="btn-delete-user">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+					Delete Account
+				</button>
+			</li>		
+		{{/if}}
+  	</ul>
+	</div>
+</div>
+
+<div class="user-details container col-sm-8">
+	<h2>Details</h2>
+	<form class="content-section">      
+		<div class="form-group">
+     
+      <div class="row">
+        <div class="col-sm-6 control-group" >
+            <label class="control-label">First Name</label>
+            <input type="text" class="form-control" name="firstName"  />
+        </div>
+        <div class="col-sm-6 control-group" >
+            <label class="control-label">Last Name</label>
+            <input type="text" class="form-control" name="lastName"  />
+        </div>
+        <div class="col-sm-4 control-group" >
+            <label class="control-label">Username</label>
+            <input type="text" class="form-control" name="userName"  />
+        </div>
+        <div class="col-sm-8 control-group" >
+            <label class="control-label">Email</label>
+            <input type="email" class="form-control" name="email" />
+        </div>            
+   		</div>
+
+	   	<div class="row">
+				<div class="col-sm-3 control-group  pull-right" >
+					<button class="btn btn-primary btn-block" type="submit">Create</button>
+				</div>            
+	   	</div>
+
+    </div>
+	</form>
+</div>
+

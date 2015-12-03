@@ -7,20 +7,21 @@ html{
 }
 
 body{
-background-image: -webkit-gradient(
-	linear,
-	right bottom,
-	right bottom,
-	color-stop(0, #000000),
-	color-stop(1, #5C5C5C)
-);
-background-image: -o-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
-background-image: -moz-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
-background-image: -webkit-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
-background-image: -ms-linear-gradient(right bottom, #000000 0%, #5C5C5C 100%);
-background-image: linear-gradient(to right bottom, #000000 0%, #5C5C5C 100%);
-background-repeat: no-repeat;
+	background-image: -webkit-gradient(
+		linear,
+		right bottom,
+		right bottom,
+		color-stop(1, #222),
+		color-stop(0, #5C5C5C)
+	);
+	background-image: -o-linear-gradient(right bottom, #5C5C5C 0%, #222 100%);
+	background-image: -moz-linear-gradient(right bottom, #5C5C5C 0%, #222 100%);
+	background-image: -webkit-linear-gradient(right bottom, #5C5C5C 0%, #222 100%);
+	background-image: -ms-linear-gradient(right bottom, #5C5C5C 0%, #222 100%);
+	background-image: linear-gradient(to right bottom, #5C5C5C 0%, #222 100%);
+	background-repeat: no-repeat;
 }
+
 
 .application__footer{
 	position: fixed;
@@ -36,7 +37,7 @@ background-repeat: no-repeat;
 
 .application__content{
 	padding-top: $navbar-height;
-	padding-bottom: $footer-height-small;
+	/*padding-bottom: $footer-height-small;*/
 	min-height: 200px;
 }
 
