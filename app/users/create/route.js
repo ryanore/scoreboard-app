@@ -23,14 +23,14 @@ let Route = Marionette.Object.extend({
 	
 	/**
 	 * Update header/footer links in context to this route
-	 */
+	
 	updateNav() {
 		Radio.trigger('NavChannel','footer:update', [{
 			label: 'About',
 			path: 'about'
 		}]);
 	},
-
+ */
 
 	/**
 	 * Validate User's Permissions
