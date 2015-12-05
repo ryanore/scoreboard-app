@@ -14,7 +14,7 @@ new WebpackDevServer(webpack(config), {
       /buildin/
     ]
   }
-}).listen(9999, 'localhost', function (err, result) {
+}).listen(9999, '0.0.0.0', function (err, result) {
   if (err) {
     console.log(err);
   }

@@ -1,0 +1,46 @@
+<header class="">
+	<div class="container">
+		<h1>New User</h1>
+	</div>
+</header>
+
+<div class="new-user container col-sm-8 col-sm-offset-2">
+	<h2>Create Your Account Now!</h2>
+	<p>I promise no bullshit will come from supplying your email, this is a no bullshit app.</p>
+	<form class="content-section">      
+		<div class="form-group">
+			{{#if errors}}
+				<div class="alert alert-warning">
+					<ul>
+						{{#each errors}}
+							<li>{{this}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			{{/if}}
+      <div class="row">
+        <div class="col-sm-4 control-group" >
+            <label class="control-label">Username</label>
+            <input type="text" class="form-control" name="username"  />
+        </div>
+        <div class="col-sm-8 control-group" >
+            <label class="control-label">Email</label>
+            <input type="email" class="form-control" name="email" />
+        </div>            
+        <div class="col-sm-6 control-group" >
+            <label class="control-label">Password</label>
+            <input type="password" class="form-control" name="password" />
+        </div>            
+        <div class="col-sm-6 control-group" >
+            <label class="control-label">Confirm</label>
+            <input type="password" class="form-control" name="password-confirm" />
+        </div>            
+   		</div>
+			<div class="row">
+				<div class=" col-sm-3 control-group">
+					<button class="btn btn-primary btn-block" type="submit">Create</button>
+				</div>
+			</div>
+		</div>
+	</form> 
+</div> 

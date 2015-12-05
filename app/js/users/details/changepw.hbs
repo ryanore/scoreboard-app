@@ -1,0 +1,32 @@
+<h2>Update Password</h2>
+
+<div class="form-group content-section">
+
+	{{#if errors}}
+		<div class="alert alert-warning">
+			<ul>
+				{{#each errors}}
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
+	{{/if}}
+
+  <div class="row">
+    <div class="col-sm-6 control-group" >
+        <label class="control-label">New Password</label>
+        <input type="text" class="form-control" name="firstName" placeholder="optional" />
+    </div>
+    <div class="col-sm-6 control-group" >
+        <label class="control-label">Confirm</label>
+        <input type="text" class="form-control" name="lastName" placeholder="optional"  />
+    </div>
+	</div>
+
+ 	<div class="row">
+		<div class="col-sm-3 control-group  pull-right" >
+			<button class="btn btn-primary btn-block" type="submit">Create</button>
+		</div>            
+ 	</div>
+
+</div>

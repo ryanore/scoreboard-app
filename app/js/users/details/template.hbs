@@ -1,0 +1,38 @@
+<header class="">
+	<div class="container">
+		<h1>
+			{{displayName}}
+			<span class="small block"> Since {{createdAt }}</span>
+		</h1>
+	</div>
+</header>
+
+<div class="options user-options container col-sm-4">
+	<h2>Options</h2>
+	<div class="content-section">
+		<ul>
+		{{#if allowEdit}}
+			<li>
+				<button data-toggle="edit">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				</button>
+			</li>
+			<li>
+				<button  data-toggle="changepw">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+				</button>
+			</li>	
+		{{/if}}	
+		{{#if allowDelete }}
+			<li>
+				<button  data-toggle="delete">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+				</button>
+			</li>		
+		{{/if}}
+  	</ul>
+	</div>
+</div>
+
+<div class="user__details_area container col-sm-8"></div>
+

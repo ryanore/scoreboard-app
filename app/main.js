@@ -1,9 +1,9 @@
-require('./plugins');
+require('./js/plugins');
 
 import Backbone from 'backbone';
-import IndexRouter from './index/router';
-import UsersRouter from './users/router';
-import Application from './application/application';
+import IndexRouter from './js/index/router';
+import UsersRouter from './js/users/router';
+import Application from './js/application/application';
 import './main.scss';
 
 let app = new Application();
