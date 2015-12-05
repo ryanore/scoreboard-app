@@ -1,0 +1,49 @@
+$footer-height-small: 40px;
+$footer-height-large: 40px;
+$lightGrey1: #ccc;
+
+$brand-highlight: #fc9911;
+
+html{
+	min-height:100%;
+}
+
+body{
+	background-image: -webkit-gradient( linear, right bottom, right bottom, color-stop(1, #222),color-stop(0, #4c4c4c) );
+	background-image: linear-gradient(to right bottom, #4c4c4c 0%, #222 100%);
+	background-repeat: no-repeat;
+}
+
+button:focus,
+.btn:focus, 
+.btn.focus,
+.btn:active:focus, 
+.btn:active.focus,
+.btn.active:focus,
+.btn.active.focus{
+	outline: none;
+	font-weight: bold;
+}
+
+.application__footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #ccc;
+	button{
+		border: none;
+		background: transparent;
+		height: $footer-height-small;
+	}
+}
+
+.application__content{
+	padding-top: $navbar-height;
+	min-height: 200px;
+}
+
+
+#app-main{
+	margin-bottom: $footer-height-small;
+	overflow: hidden;
+}

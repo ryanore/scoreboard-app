@@ -1,20 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+$font-body: 'Open Sans', sans-serif;
+$font-headline: 'Open Sans Condensed', sans-serif;
+
 
 body{
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-	font-weight: 300;
+	font-family: $font-body;
+	font-weight: 100;
 	color: #fff;
 }
 
 h1{
+	font-family: $font-headline;
 	font-size: 1.75em;
 	font-weight: 700;
 }
 
 
+h2{
+	font-size: 1.3em;
+	font-weight: 100;
+}
+
+
 @media(min-width: $screen-sm-min ){
 	h1{
-		font-size: 2.3em;
+		font-size: 2.6em;
 	}
+	
+	h2{
+		font-size: 1.5em;
+	}	
 }
 
 

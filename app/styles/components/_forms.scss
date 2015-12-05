@@ -1,0 +1,39 @@
+// form rows
+form .row{
+	&:last-child{
+		margin-top: 1em;
+	}
+	.control-group{
+		margin-bottom: .5em;
+	}
+	@media(min-width: $screen-sm-min ){
+		.control-group{
+			margin-bottom: 1em;
+		}
+	}
+}
+
+
+// make all text inputs smaller without adding stupid classes
+// remove glow from focus
+.form-control{
+	@extend .input-sm;
+	font-weight: bold;
+	font-family: $font-body;
+	font-size: 1em;
+
+	&:focus{
+		border-color: $brand-primary;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		background: #444;
+		color: #fff;
+	}
+}
+
+// input labels
+.control-label{
+	font-weight: normal;
+}
+
+

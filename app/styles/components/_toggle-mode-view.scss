@@ -1,0 +1,48 @@
+%cancel{
+	color: $brand-primary;
+	&:after{
+		content: 'Cancel';
+	}
+}
+
+.view.toggle-mode{
+	[data-toggle="edit"]{
+		&:after{
+			content: 'Edit Details';
+		}
+	}
+	[data-toggle="changepw"]{
+		&:after{
+			content: 'Change Password';
+		}
+	}
+	[data-toggle="delete"]{
+		&:after{
+			content: 'Delete Account';
+		}
+	}
+
+
+
+	// Edit Mode
+	&[data-mode="edit"]{
+		[data-toggle="edit"]{
+			@extend %cancel;
+		}
+	}
+	
+	// Change Password Mode
+	&[data-mode="changepw"]{
+		[data-toggle="changepw"]{
+			@extend %cancel;
+		}
+	}
+
+	// Delete Account Mode
+	&[data-mode="delete"]{
+		[data-toggle="delete"]{
+			@extend %cancel;
+		}
+	}
+
+}

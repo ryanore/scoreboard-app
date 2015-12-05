@@ -4,22 +4,24 @@
 	text-align: center;
 	width: 900%;
 	margin-left: -400%;
+	/*min-height: 100px;*/
+
 	h1{
 		margin: 0;
 		padding: .5em 0;
 		.small{
-			font-size: .5em;
+			font-size: .45em;
+			font-weight: bold;
 		}
 		.block{
 			display: block;
 			line-height: 1.5em;
 		}
-
 	}
+
 	@media(min-width: $screen-tablet){
 		h1{}
 	}
-	
 }
 
 
@@ -28,6 +30,7 @@ ul{
 	padding: 0;
 	list-style: none;
 }
+
 
 .options{
 	ul button{
@@ -38,13 +41,10 @@ ul{
 	}
 }
 
+
 .content-section{
 	background: rgba(0,0,0,0.3);
 	border: 1px solid #444;
 	overflow: hidden;
 	padding: 1.5em;
-
-	form{
-		padding: 1em;
-	}
 }
