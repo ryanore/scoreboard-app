@@ -26,8 +26,7 @@ export default ItemView.extend({
 	},
 
 	onFormSubmit() {
-		let errors = this.model.validate(this.form);
-
+		let errors = this.model.validate_create(this.form);
 		if (errors) {
 			this.errors = errors;
 			this.render();

@@ -2,16 +2,20 @@ import {ItemView} from 'backbone.marionette';
 import FormBehavior from '../../base/forms/form-behavior';
 import template from './details-form.hbs';
 import {history} from 'backbone';
+import Radio from 'backbone.radio';
+
+let	UserChannel = Radio.channel('router');
 
 export default ItemView.extend({
-	tagName: 'form',
+	tagName: 'div',
 	template: template,
 	className: 'users__create_form ',
+
 	initialize() {
 		console.log('init ', this.model.attributes);
 	},
 	events: {
-		'submit': 'onFormSubmit'
+		'submit form': 'onFormSubmit'
 	},
 
 	behaviors: {
@@ -27,16 +31,15 @@ export default ItemView.extend({
 	},
 
 	onFormSubmit() {
-		let errors = this.model.validate(this.form);
+		let errors = this.model.validate_details(this.form);
 		if (errors) {
 			this.errors = errors;
 			this.render();
 		} else {
-			console.log('this.form ', this.form);
 			this.model.set(this.form);
 			this.model.save({})
 				.done(() => {
-					history.navigate('users', { trigger: true });
+					Radio.trigger('UserChannel','user:details:saved');
 				})
 				.fail(() => {
 					alert('error saving model');

@@ -2,7 +2,8 @@
 	.table{
 		.t-row span{
 			border-color: $lightGrey;
-			background: 
+			background: #eee;
+			color: #222;
 			&:first-child{
 				background: $brand-primary;
 				width: 25%;

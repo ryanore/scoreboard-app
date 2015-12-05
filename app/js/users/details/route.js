@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import Marionette from 'backbone.marionette';
-import Radio from 'backbone.radio';
 import {history} from 'backbone';
 import session from '../../auth/session';
 import Model from '../model';

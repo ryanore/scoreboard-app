@@ -20,10 +20,7 @@ export default Behavior.extend({
 
 	onChange() {
 		this.view.form = this.view.model.attributes;
-		console.log('CHANGE ', this.view.model);
 		this.deserialize();
-		console.log('DESERIALOZE ', this.view.model);
-
 	},
 
 	onBeforeRender() {

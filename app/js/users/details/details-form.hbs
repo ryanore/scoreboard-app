@@ -1,6 +1,15 @@
 <h2>Edit Your Details</h2>
-
+<form>
 <div class="form-group content-section">
+	{{#if errors}}
+		<div class="alert alert-warning">
+			<ul>
+				{{#each errors}}
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
+	{{/if}}
  
   <div class="row">
     <div class="col-sm-6 control-group" >
@@ -28,3 +37,4 @@
  	</div>
 
 </div>
+</form>

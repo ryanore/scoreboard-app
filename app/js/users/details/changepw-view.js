@@ -36,11 +36,10 @@ export default ItemView.extend({
 			this.model.set(this.form);
 			this.model.save({})
 				.done(() => {
-					history.navigate('users', { trigger: true });
+					Radio.trigger('UserChannel','user:details:saved');
 				})
 				.fail(() => {
 					alert('error saving model');
-				});
-		}
+				});		}
 	}
 });

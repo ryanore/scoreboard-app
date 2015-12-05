@@ -1,4 +1,5 @@
 import {LayoutView} from 'backbone.marionette';
+import Radio from 'backbone.radio';
 import FormBehavior from '../../base/forms/form-behavior';
 import session from '../../auth/session';
 import {formatDate} from '../../utils/date';
@@ -8,17 +9,26 @@ import ListView from './details-list-view';
 import ChangePwView from './changepw-view';
 import DeleteUserView from './delete-user-view';
 
+let	UserChannel = Radio.channel('UserChannel');
+
+
 export default LayoutView.extend({
   tagName: 'div',
   template: template,
   className: 'users__detail view toggle-mode container',
- 	
+
  	regions: {
  		details: '.user__details_area'
  	},
 
   events: {
   	'click [data-toggle]': 'handleClickToggle'
+  },
+
+  initialize() {
+		this.listenTo(UserChannel, {
+			'user:details:saved': this.updateMode
+		});
   },
 
 	getDisplayName() {
@@ -51,7 +61,7 @@ export default LayoutView.extend({
 		this.updateMode(mode);
 	},
 
-	updateMode(mode){
+	updateMode(mode = 'list'){
 		var view;
 		this.$el.attr('data-mode', mode);	
 		this.mode = mode;	

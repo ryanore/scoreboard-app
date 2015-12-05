@@ -7,9 +7,6 @@ export default ItemView.extend({
 	tagName: 'form',
 	template: template,
 	className: 'users__create_form ',
-	initialize() {
-		console.log('init ', this.model.attributes);
-	},
 	events: {
 		'submit': 'onFormSubmit'
 	},
