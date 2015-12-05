@@ -65,7 +65,8 @@ import {Collection} from 'backbone';
 		 *	Sort by attribute
 		 *	Calls sort on collection after setting direction and sorting key
 		 */
-		sortByField(fieldName, dir) {
+		sortByField(fieldName, dir = -1) {
+
 			if( this.sort_key != fieldName ){
 				this.sort_key = fieldName;
 			}else{

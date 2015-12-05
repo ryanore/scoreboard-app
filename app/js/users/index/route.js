@@ -19,7 +19,7 @@ let Route = Marionette.Object.extend({
 		}
 		this.fetch().then((c) => {
 			this.container = options.container;
-			this.updateNav();
+			// this.updateNav();
 			this.container.show(new View({collection: c}));
 		});
 	},

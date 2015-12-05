@@ -1,0 +1,72 @@
+$rowColor: #fafafa;
+$rowColorStripe: lighten($rowColor, 5%);
+
+.collection-tableview{
+	.navbar{
+		background: $rowColor;
+	}
+
+	table{    
+		border-collapse: collapse;
+		border:none;
+	  table-layout: fixed;
+	  word-wrap: break-word;
+		border: 1px solid $rowColor;
+
+	  &.links tr{
+	      cursor: pointer;
+	  }
+
+	  thead td,
+	  thead tr{
+	    vertical-align: middle;
+	    background-color: #999;
+	  }
+		
+		thead tr th, 
+		thead tr td{
+			border: 1px solid $rowColor;
+		}
+	  
+	  .selectCol{
+	      width: 40px;
+	  }
+
+	  &.striped{
+	      tbody tr{
+	          &:nth-child(even){
+	              background-color: $rowColorStripe;
+	          }
+	      }
+	  }
+
+	  &.links tbody tr{
+	  		background-color: $rowColor;
+	  		color: #454545;
+	  		border: none;
+	  		font-weight: normal;
+	      &:hover{
+	          background-color: lighten($brand-primary, 40%);
+	      }
+	  }
+
+	  th.sort{
+	      .sort-icon{
+	          @extend .right;
+	          @extend .glyphicon;
+	          @extend .glyphicon-arrow-down;
+	          @extend .glyphicon-align-right;
+	          font-size: .8em;
+	          color: $brand-primary;
+	          pointer-events: none;
+	          
+	      }
+	      &.desc{
+	        .sort-icon{
+	            @extend .glyphicon-arrow-up;
+	        }
+	      }
+	  }    
+	}
+
+}

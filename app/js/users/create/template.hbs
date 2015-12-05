@@ -4,20 +4,16 @@
 	</div>
 </header>
 
-<div class="new-user container col-sm-8 col-sm-offset-2">
-	<h2>Create Your Account Now!</h2>
-	<p>I promise no bullshit will come from supplying your email, this is a no bullshit app.</p>
+<div class="new-user container col-md-8 col-md-offset-2">
+	<div class="container">
+		<!-- Should this be a container?  seems kind of overzealous on the markup -->
+		<div class="col-xs-12">
+			<h2>Create Your Account Now!</h2>
+			<p>I promise no bullshit will come from supplying your email, this is a no bullshit app.</p>
+		</div>
+	</div>
 	<form class="content-section">      
-		<div class="form-group">
-			{{#if errors}}
-				<div class="alert alert-warning">
-					<ul>
-						{{#each errors}}
-							<li>{{this}}</li>
-						{{/each}}
-					</ul>
-				</div>
-			{{/if}}
+		<div class="form-group">			
       <div class="row">
         <div class="col-sm-4 control-group" >
             <label class="control-label">Username</label>
@@ -28,6 +24,14 @@
             <input type="email" class="form-control" name="email" />
         </div>            
         <div class="col-sm-6 control-group" >
+            <label class="control-label">First Name</label>
+            <input type="text" class="form-control" name="firstName" />
+        </div>            
+        <div class="col-sm-6 control-group" >
+            <label class="control-label">Last Name</label>
+            <input type="text" class="form-control" name="lastName" />
+        </div>            
+        <div class="col-sm-6 control-group" >
             <label class="control-label">Password</label>
             <input type="password" class="form-control" name="password" />
         </div>            
@@ -36,7 +40,19 @@
             <input type="password" class="form-control" name="password_confirm" />
         </div>            
    		</div>
+
 			<div class="row">
+						{{#if errors}}
+				<div class=" col-sm-12 control-group">
+					<div class="alert alert-warning">
+						<ul>
+							{{#each errors}}
+								<li>{{this}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			{{/if}}
 				<div class=" col-sm-3 control-group">
 					<button class="btn btn-primary btn-block" type="submit">Create</button>
 				</div>

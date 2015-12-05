@@ -9,8 +9,8 @@ html{
 }
 
 body{
-	background-image: -webkit-gradient( linear, right bottom, right bottom, color-stop(1, #222),color-stop(0, #4c4c4c) );
-	background-image: linear-gradient(to right bottom, #4c4c4c 0%, #222 100%);
+	background-image: -webkit-gradient( linear, right bottom, right bottom, color-stop(1, $dkGrey),color-stop(0, #4c4c4c) );
+	background-image: linear-gradient(to right bottom, #4c4c4c 0%, $dkGrey 100%);
 	background-repeat: no-repeat;
 }
 
@@ -29,7 +29,7 @@ button:focus,
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	background: #ccc;
+	background: $lightGrey;
 	button{
 		border: none;
 		background: transparent;

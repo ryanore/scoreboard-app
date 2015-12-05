@@ -3,7 +3,7 @@ import Radio from 'backbone.radio';
 import FormBehavior from '../../base/forms/form-behavior';
 import session from '../../auth/session';
 import {formatDate} from '../../utils/date';
-import template from './template.hbs';
+import template from './layout-template.hbs';
 import EditView from './details-form-view';
 import ListView from './details-list-view';
 import ChangePwView from './changepw-view';

@@ -1,10 +1,12 @@
 import {ItemView} from 'backbone.marionette';
-import template from './item-template.hbs';
 import {history} from 'backbone';
+import {formatDate} from '../../utils/date';
+import template from './item-template.hbs';
+
 export default ItemView.extend({
-  tagName: 'div',
+  tagName: 'tr',
   template: template,
-  className: ' tablerow users__item list-group-item',
+  className: 'users__item',
   modelEvents: {},
   onRender() {},
   events:{
@@ -39,6 +41,7 @@ export default ItemView.extend({
    */
 	templateHelpers() {
 		return {
+			createdAt: formatDate(this.model.get('createdAt'), 'short'),
 			level: this.model.get('access') > 0 ? 'admin': 'user'
 		};
 	}

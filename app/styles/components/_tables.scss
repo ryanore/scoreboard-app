@@ -1,17 +1,25 @@
-div.table{
-	display: table;	
+
+//	General CSS Tables
+//
+
+
+.table   { 
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
 	table-layout: fixed;
 }
-.t-row{
+
+.t-row, .t-header{
 	display: table-row;
 	> *{
 		display: table-cell;
 		padding: .5em 1em;
 		margin: .5em 0;
+
 		.bordered &{
 			border-collapse: collapse;
 			border: 1px solid $medGrey;
 		}
 	}
 }
-

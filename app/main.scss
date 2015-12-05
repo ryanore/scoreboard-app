@@ -1,13 +1,18 @@
 @import "node_modules/compass-mixins/lib/compass";
+
+// load variables before bootstrap
+@import './styles/variables';
 @import './styles/bootstrap';
+
+// load bootstrap before the project files
 @import "./styles/grids";
 @import './styles/application';
 @import './styles/type';
 @import './styles/components/navbar';
 @import './styles/components/view';
 @import './styles/components/forms';
-@import './styles/components/table-view';
 @import './styles/components/toggle-mode-view';
 @import './styles/components/tables';
+@import './styles/components/table-collectionview';
 @import './styles/pages/user';
 @import './styles/pages/home';

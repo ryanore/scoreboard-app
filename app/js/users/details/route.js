@@ -3,7 +3,7 @@ import Marionette from 'backbone.marionette';
 import {history} from 'backbone';
 import session from '../../auth/session';
 import Model from '../model';
-import View from './view';
+import View from './layout-view';
 
 let Route = Marionette.Object.extend({
 	
