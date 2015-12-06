@@ -1,6 +1,6 @@
 import {Collection} from 'backbone';
 
-	let DopeCollection = Collection.extend({
+	let SortableDeletable = Collection.extend({
 		sort_key: '_id',
 		rev: false,
 		url: '',
@@ -65,20 +65,17 @@ import {Collection} from 'backbone';
 		 *	Sort by attribute
 		 *	Calls sort on collection after setting direction and sorting key
 		 */
-		sortByField(fieldName, dir = -1) {
-
+		sortByField(fieldName) {
 			if( this.sort_key != fieldName ){
 				this.sort_key = fieldName;
+				this.rev = false;
 			}else{
 				this.rev = !this.rev;
 			}
 
-			if( dir ){
-				this.rev = dir == -1 ? true  : false; 
-			}
 			this.sort();			
 		}
 	});
 
-	export default DopeCollection;
+	export default SortableDeletable;
 

@@ -2,13 +2,16 @@ import {ItemView} from 'backbone.marionette';
 import {history} from 'backbone';
 import {formatDate} from '../../utils/date';
 import template from './item-template.hbs';
+import Radio from 'backbone.radio';
 
 export default ItemView.extend({
   tagName: 'tr',
   template: template,
   className: 'users__item',
   modelEvents: {},
-  onRender() {},
+  onRender() {
+  	this.listenTo(this.model, 'change:markedForDelete', this.markedForDelete);
+  },
   events:{
   	'click': 'handleClickRow',
   	'change [type="checkbox"]': 'handleSelectRow'
@@ -24,6 +27,10 @@ export default ItemView.extend({
   	if(!e.target.classList.contains('noclick')){
   		history.navigate(`#users/details/${this.model.get('_id')}`, {trigger: true});
   	}
+  },
+
+  markedForDelete() {
+  	this.$('[type="checkbox"]').prop('checked', this.model.get('markedForDelete'));
   },
 
   /**

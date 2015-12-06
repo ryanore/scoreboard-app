@@ -40,6 +40,7 @@ export default ItemView.extend({
 				})
 				.fail(() => {
 					alert('error saving model');
-				});		}
+				});		
+			}
 	}
 });
