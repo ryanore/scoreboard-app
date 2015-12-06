@@ -4,7 +4,7 @@ import $ from 'jquery';
 import {history} from 'backbone';
 import View from './view';
 import Model from '../model';
-import session from '../../auth/session';
+import Session from '../../auth/session';
 
 let Route = Marionette.Object.extend({
 	/**
@@ -17,18 +17,16 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('notfound', {trigger: true});
 		}
-		// this.updateNav();
+		this.updateNav();
 		this.container.show(new View({model: new Model()}));		
+		console.log('init ');
 	},
 	
 	/**
 	 * Update header/footer links in context to this route
 	 */
 	updateNav() {
-		Radio.trigger('NavChannel','footer:update', [{
-			label: 'About',
-			path: 'about'
-		}]);
+
 	},
 
 
@@ -37,7 +35,7 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} ONLY admin can create users
 	 */
 	validate() {
- 		return( session.level(1));
+		return( Session.level() < 0 );
 	}
 
 });

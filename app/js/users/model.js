@@ -46,6 +46,17 @@ let UserModel = Model.extend({
       errors.push('Missing "password" field');
     }
     return errors.length > 0 ? errors : undefined;
+  },
+
+  validate_login(attrs) {
+    let errors = [];
+    if (attrs.password === '') {
+      errors.push('Missing "password" field');
+    }
+    if (attrs.username === '') {
+      errors.push('Missing "username" field');
+    }
+    return errors.length > 0 ? errors : undefined;
   }
 
 });

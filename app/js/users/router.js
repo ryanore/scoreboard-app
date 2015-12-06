@@ -1,5 +1,6 @@
 import Radio from 'backbone.radio';
 import Router from '../base/router/router';
+import Session from '../auth/session';
 import IndexRoute from './index/route';
 import CreateRoute from './create/route';
 import DetailsRoute from './details/route';
@@ -20,12 +21,19 @@ export default Router.extend({
 		'users/new': 'create'
 	},
 
+	/**
+	 * Update the main nav with The Users link 
+	 * Only if the user is admin
+	 * @return {null} 
+	 */
 	updateNav() {
-		Radio.trigger('NavChannel','header:item:add', {
-			label: 'Users',
-			level: 1,
-			path: 'users'
-		});
+		if(Session.level(1)){
+			Radio.trigger('NavChannel','header:item:add', {
+				label: 'Users',
+				level: 1,
+				path: 'users'
+			});
+		}
 	},
 
 	index() {
