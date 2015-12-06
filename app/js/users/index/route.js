@@ -15,7 +15,7 @@ let Route = Marionette.Object.extend({
 	 */
 	initialize(options){
 		if( ! this.validate() ){
-			return history.navigate('notfound', {trigger: true});
+			return history.navigate('/', {trigger: true});
 		}
 		this.fetch().then((c) => {
 			this.container = options.container;

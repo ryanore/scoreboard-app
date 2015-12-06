@@ -6,8 +6,8 @@ import radio from 'backbone.radio';
  */
 let Session = class {
 	constructor() {
-		this.loggedIn = false;
-		this.access = -1;
+		this.loggedIn = true;
+		this.access = 1;
 		this.user = null;
 	}
 
@@ -43,6 +43,7 @@ let Session = class {
 
 	logOutUser() {
 		this.loggedIn = false;
+		this.access = -1;
 		this.user = null;
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('user');

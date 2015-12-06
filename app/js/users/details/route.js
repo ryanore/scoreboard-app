@@ -17,7 +17,7 @@ let Route = Marionette.Object.extend({
 		this.container = options.container;
 
 		if( ! this.validate() ){
-			return history.navigate('notfound', {trigger: true});
+			return history.navigate('/', {trigger: true});
 		}
 
 		this.fetch().then((m) => {
@@ -32,9 +32,13 @@ let Route = Marionette.Object.extend({
 	fetch() {     
     let defer = $.Deferred();
     let m = new Model({_id: this._id});
-    m.fetch({success: function(){
-      defer.resolve(m);
-    }});
+    m.fetch({
+    	success: function(){
+      	defer.resolve(m);
+    	},
+    	error: function(){
+    		return history.navigate('notfound', {trigger: true});
+    	}});
     return defer;
 	},
 

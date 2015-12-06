@@ -4,7 +4,7 @@ let stringReg = /^[^!@#${}%^&*()<>~`;:,.?'"|\[\]\\0-9]*$/i
 
 let UserModel = Model.extend({
 	idAttribute: '_id',
-	urlRoot: 'http://localhost:3000/users',
+	urlRoot: API + 'users',
 
 
   validate_create(attrs) {

@@ -15,7 +15,7 @@ let Route = Marionette.Object.extend({
 	initialize(options){
 		this.container = options.container;
 		if( ! this.validate() ){
-			return history.navigate('notfound', {trigger: true});
+			return history.navigate('/', {trigger: true});
 		}
 		this.updateNav();
 		this.container.show(new View({model: new User()}));		
@@ -25,7 +25,6 @@ let Route = Marionette.Object.extend({
 	 * Update header/footer links in context to this route
 	 */
 	updateNav() {
-		console.log('Updatenav ', );
 		Radio.trigger('NavChannel','header:item:activate', 'login');
 	},
 

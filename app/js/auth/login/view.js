@@ -31,14 +31,17 @@ export default ItemView.extend({
 			this.errors = errors;
 			this.render();
 		} else {
-			this.model.set(this.form);
-			this.model.save({})
-				.done(() => {
-					history.navigate('users', { trigger: true });
-				})
-				.fail(() => {
-					alert('error saving model');
-				});
+		 $.ajax({
+        url: API + 'login',
+        type: 'POST',
+        data: this.form
+      })
+      .done(function(data, textStatus, jqXHR) {
+        session.update(data);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        alert('fail');
+      });
 		}
 	}
 });

@@ -11,7 +11,8 @@ export default Router.extend({
 	},
 
 	routes: {
-		'login': 'login'
+		'login': 'logIn',
+		'logout': 'logOut'
 	},
 
 	/**
@@ -19,7 +20,7 @@ export default Router.extend({
 	 * @return {null} 
 	 */
 	updateNav() {
-		if(!Session.level(0)){
+		if(!Session.level() < 0){
 			Radio.trigger('NavChannel','header:item:add', {
 				label: 'Login',
 				path: 'login'
@@ -29,13 +30,22 @@ export default Router.extend({
 				path: 'users/new'
 			});
 		}
+		else{
+			Radio.trigger('NavChannel','header:item:add', {
+				label: 'Log Out',
+				path: 'logout'
+			});			
+		}
 	},
 
-	login() {
-		console.log('LOGIN ');
+	logIn() {
 		return new LoginRoute({
 			container: this.container
 		});
+	},
+	logOut() {
+		Session.logOutUser();
+		history.navigate('', {trigger: true});
 	}
 
 });

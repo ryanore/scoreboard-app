@@ -15,7 +15,7 @@ let Route = Marionette.Object.extend({
 	initialize(options){
 		this.container = options.container;
 		if( ! this.validate() ){
-			return history.navigate('notfound', {trigger: true});
+			return history.navigate('/', {trigger: true});
 		}
 		this.updateNav();
 		this.container.show(new View({model: new Model()}));		
@@ -35,7 +35,7 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} ONLY admin can create users
 	 */
 	validate() {
-		return( Session.level() < 0 );
+		return( Session.level() < 0   ||  Session.level(1));
 	}
 
 });
