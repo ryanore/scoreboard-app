@@ -5,6 +5,7 @@ import {Events} from 'backbone';
 import {Model} from 'backbone';
 import {Collection} from 'backbone';
 import {Radio} from 'backbone';
+import Session from '../../auth/session';
 import template from './template.hbs';
 
 export default ItemView.extend({
@@ -17,19 +18,33 @@ export default ItemView.extend({
   navChannel: Radio.channel('NavChannel'),
 
   collectionEvents: {
-    'add': 'render'
+    'all': 'render'
   },
   
+  /**
+   * Marionette Method -
+   * listen for routes and update based on access level
+   * Listen for nav events to add/remove elements
+   * @param  {Object} options
+   * @return {null}
+   */
   initialize(options) {
   	options.container.show(this);
   	this.listenTo(Events, 'route', this.handleRoute );
+  	this.listenTo(this.navChannel, 'header:item:activate', this.activate);
   	this.listenTo(this.navChannel, 'header:item:add', this.addItem);
   	this.listenTo(this.navChannel, 'header:item:remove', this.removeItem);
   },
 
+  /**
+   * On each route Check access and remove items
+   * @param  {String} Name of route
+   */
   handleRoute(name) {
-  	console.log('handleRoute ');
-  	this.nav.collapse('hide');
+		let m = this.collection.filter(function(m){
+			return m.level > Session.level();
+		})
+		this.collection.remove(m);
   },
 
   onRender() {
@@ -37,18 +52,20 @@ export default ItemView.extend({
   },
 
   addItem(item) {
-  	let model = new Model(item);
-  	this.collection.add(item);
+  	this.collection.add(new Model(item));
   },
 
   removeItem(item) {
-  	let model = new Model(item);
-  	this.collection.remove(item);
+  	this.collection.remove(new Model(item));
   },
 
+  /**
+   * Activate visual state of links when route changes
+   * @param  {String} item The path of the route that was triggered
+   * @return {null}
+   */
   activate(item) {
-  	this.collection.invoke('set', 'active', false);
-  	let model = this.collection.findWhere(item);
+  	let model = this.collection.where({path: 'login'})[0];
     if (model) {
       model.set('active', true);
     }
