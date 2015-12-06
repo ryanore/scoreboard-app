@@ -1,6 +1,7 @@
-require('./js/plugins');
+require('./js/base/plugins');
 
 import Backbone from 'backbone';
+import AuthRouter from './js/auth/router';
 import IndexRouter from './js/index/router';
 import UsersRouter from './js/users/router';
 import Application from './js/application/application';
@@ -8,11 +9,15 @@ import './main.scss';
 
 let app = new Application();
 
-app.index = new IndexRouter({
+new IndexRouter({
 	container: app.layout.content
 });
 
-app.users = new UsersRouter({
+new UsersRouter({
+	container: app.layout.content
+});
+
+new AuthRouter({
 	container: app.layout.content
 });
 
