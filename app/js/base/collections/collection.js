@@ -27,7 +27,6 @@ import {Collection} from 'backbone';
 			let self = this;
 			let c = new Collection(a);
 			let list = JSON.stringify(c.pluck('_id'));
-			console.log('list ', list);
 			$.ajax({
 				url: self.url + '/batch',
 				type: 'POST',

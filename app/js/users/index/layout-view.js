@@ -30,7 +30,7 @@ export default LayoutView.extend({
 
   handleSelectRow() {
    	let selected = this.collection.where({markedForDelete: true});
-		this.$('.btn-delete').prop('disabled', selected.length===0);  	
+		this.btnDelete.prop('disabled', selected.length===0);  	
   },
 
   onAttach() {
