@@ -26,9 +26,7 @@ export default LayoutView.extend({
   },
 
   initialize() {
-		this.listenTo(UserChannel, {
-			'user:details:saved': this.updateMode
-		});
+		this.listenTo(this.model, 'change', this.updateMode);
   },
 
 	getDisplayName() {
