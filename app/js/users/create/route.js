@@ -17,18 +17,8 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('/', {trigger: true});
 		}
-		this.updateNav();
 		this.container.show(new View({model: new Model()}));		
-		console.log('init ');
 	},
-	
-	/**
-	 * Update header/footer links in context to this route
-	 */
-	updateNav() {
-
-	},
-
 
 	/**
 	 * Validate User's Permissions

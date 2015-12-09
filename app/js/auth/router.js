@@ -20,32 +20,22 @@ export default Router.extend({
 	 * @return {null} 
 	 */
 	updateNav() {
-		if(!Session.level() < 0){
-			Radio.trigger('NavChannel','header:item:add', {
-				label: 'Login',
-				path: 'login'
-			});
-			Radio.trigger('NavChannel','header:item:add', {
-				label: 'Sign Up',
-				path: 'users/new'
-			});
-		}
-		else{
-			Radio.trigger('NavChannel','header:item:add', {
-				label: 'Log Out',
-				path: 'logout'
-			});			
-		}
+		Radio.trigger('NavChannel','header:item:add', [
+			{ label: 'Login', 	path: 'login', 		 max: -1 } , 
+			{ label: 'Log Out', path: 'logout', 	 min: 0, }
+		]);		
 	},
 
 	logIn() {
+		Radio.trigger('NavChannel','header:item:activate', 'login');		
 		return new LoginRoute({
 			container: this.container
 		});
 	},
+
 	logOut() {
 		Session.logOutUser();
+		Radio.trigger('NavChannel','header:item:activate', '');		
 		history.navigate('', {trigger: true});
 	}
-
 });

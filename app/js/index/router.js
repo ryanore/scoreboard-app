@@ -10,6 +10,7 @@ export default Router.extend({
 	},
 
   index() {
+  	console.log('index ');
     return new IndexRoute({
       container: this.container
      });

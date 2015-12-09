@@ -1,10 +1,11 @@
 import {Router} from 'backbone';
 import {Events} from 'backbone';
 import {history} from 'backbone';
+import Radio from 'backbone.radio';
 import _ from 'lodash';
 
 let originalRoute = Router.prototype.route;
-
+let HistoryChannel = Radio.channel('HistoryChannel');
 let nop = function() {};
 
 let DopeRouter = Router.extend({
@@ -38,7 +39,7 @@ let DopeRouter = Router.extend({
 
 			if (_.isFunction(this.afterRoute)) {
 				Events.trigger('route');
-
+				Radio.trigger('HistoryChannel', 'history:add', history.fragment);
 				afterCallback = this.afterRoute;
 			} else if (typeof this.afterRoute[route] !== 'undefined') {
 				afterCallback = this.afterRoute[route];

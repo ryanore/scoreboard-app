@@ -17,7 +17,7 @@ let Route = Marionette.Object.extend({
 		this.container = options.container;
 
 		if( ! this.validate() ){
-			return history.navigate('/', {trigger: true});
+			return history.navigate('login', {trigger: true});
 		}
 
 		this.fetch().then((m) => {
@@ -53,5 +53,5 @@ let Route = Marionette.Object.extend({
 
 });
 
-
 export default Route;
+

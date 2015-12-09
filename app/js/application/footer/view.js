@@ -8,7 +8,7 @@ export default ItemView.extend({
   tagName: 'footer',
   className: 'btn-group btn-group-justified',
 
-  navChannel: Radio.channel('NavChannel'),
+  NavChannel: Radio.channel('NavChannel'),
     
   collectionEvents: {
     'all': 'render'
@@ -16,7 +16,7 @@ export default ItemView.extend({
   
   initialize(options) {
   	options.container.show(this);
-  	this.listenTo(this.navChannel, 'footer:update', this.update);
+  	this.listenTo(this.NavChannel, 'footer:update', this.update);
   },
 
   update(items) {

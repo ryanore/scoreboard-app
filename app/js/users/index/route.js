@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
-import {history} from 'backbone';
+import Backbone from 'backbone';
 import View from './layout-view';
 import Collection from '../collection';
 import session from '../../auth/session';
@@ -15,26 +15,15 @@ let Route = Marionette.Object.extend({
 	 */
 	initialize(options){
 		if( ! this.validate() ){
-			return history.navigate('/', {trigger: true});
+			Backbone.history.returnFragment = 'users';
+			return Backbone.history.navigate('login', {trigger: true});
 		}
 		this.fetch().then((c) => {
 			this.container = options.container;
-			// this.updateNav();
 			this.container.show(new View({collection: c}));
 		});
 	},
 	
-
-	/**
-	 * Update header/footer links in context to this route
-	 */
-	updateNav() {
-		Radio.trigger('NavChannel','footer:update', [{
-			label: 'About',
-			path: 'about'
-		}]);
-	},
-
 
 	/**
 	 * Fetch Model

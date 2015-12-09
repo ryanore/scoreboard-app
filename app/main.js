@@ -8,24 +8,25 @@ import ErrorRouter from './js/error/router';
 import Application from './js/application/application';
 import './main.scss';
 
-let app = new Application();
+window.originalURI = window.location.href;
 
-new IndexRouter({
-	container: app.layout.content
+let app = new Application().on('start', function(){
+	new IndexRouter({
+		container: app.layout.content
+	});
+
+	new UsersRouter({
+		container: app.layout.content
+	});
+
+	new AuthRouter({
+		container: app.layout.content
+	});
+
+	new ErrorRouter({
+		container: app.layout.content
+	});
+	
+	Backbone.history.start();
+
 });
-
-new UsersRouter({
-	container: app.layout.content
-});
-
-new AuthRouter({
-	container: app.layout.content
-});
-
-new ErrorRouter({
-	container: app.layout.content
-});
-
-Backbone.history.start();
-
-export default app;

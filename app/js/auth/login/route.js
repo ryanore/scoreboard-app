@@ -7,7 +7,7 @@ import User from '../../users/model';
 import View from './view';
 
 let Route = Marionette.Object.extend({
-		/**
+	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
 	 * @return  {null}

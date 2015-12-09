@@ -7,18 +7,17 @@ import DetailsRoute from './details/route';
 import {history} from 'backbone';
 
 export default Router.extend({
+	routes: {
+		'signup': 'create',
+		'users': 'index',
+		'users/details/:id': 'details',
+		'users/edit/:id': 'edit',
+		'users/*notFound': 'notFound'	
+	},
+
 	initialize(options = {}) {
 		this.container = options.container;
 		this.updateNav();
-	},
-
-	routes: {
-		'users': 'index',
-		'users/details/': 'notFound',
-		'users/details/:id': 'details',
-		'users/edit': 'notFound',
-		'users/edit/:id': 'edit',
-		'users/new': 'create'
 	},
 
 	/**
@@ -27,28 +26,28 @@ export default Router.extend({
 	 * @return {null} 
 	 */
 	updateNav() {
-		if(Session.level(1)){
-			Radio.trigger('NavChannel','header:item:add', {
-				label: 'Users',
-				level: 1,
-				path: 'users'
-			});
-		}
-	},
-
-	index() {
-		return new IndexRoute({
-			container: this.container
-		});
+		Radio.trigger('NavChannel','header:item:add', [
+			{ label: 'Users', 	path: 'users', min: 1 },
+			{ label: 'Sign Up', path: 'signup', max: -1} , 
+		]);		
 	},
 
 	create() {
+		Radio.trigger('NavChannel','header:item:activate', 'signup');
 		return new CreateRoute({
 			container: this.container
 		});
 	},
 
+	index() {
+		Radio.trigger('NavChannel','header:item:activate', 'users');
+		return new IndexRoute({
+			container: this.container
+		});
+	},
+
 	details(id) {
+		Radio.trigger('NavChannel','header:item:activate', 'signup');		
 		return new DetailsRoute({
 			_id: id,
 			container: this.container

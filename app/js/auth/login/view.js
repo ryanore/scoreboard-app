@@ -1,14 +1,15 @@
 import FormBehavior from '../../base/forms/form-behavior';
-import {Backbone} from 'backbone';
-import {history} from 'backbone';
+import Session from '../session';
+import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
+import history from '../../utils/history';
 
 export default ItemView.extend({
 	tagName: 'div',
 	template: template,
 	className: 'view users__login',
-	
+
 	events: {
 		'submit form': 'onFormSubmit'
 	},
@@ -27,6 +28,8 @@ export default ItemView.extend({
 
 	onFormSubmit() {
 		let errors = this.model.validate_login(this.form);
+		let frag = Backbone.history.returnFragment || '/';
+		
 		if (errors) {
 			this.errors = errors;
 			this.render();
@@ -37,7 +40,8 @@ export default ItemView.extend({
         data: this.form
       })
       .done(function(data, textStatus, jqXHR) {
-        session.update(data);
+        Session.update(data);
+        Backbone.history.navigate(frag, {trigger: true});
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         alert('fail');
