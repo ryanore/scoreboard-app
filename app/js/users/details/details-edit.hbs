@@ -1,16 +1,6 @@
 <h2>Edit Your Details</h2>
 <form>
 <div class="form-group content-section">
-	{{#if errors}}
-		<div class="alert alert-warning">
-			<ul>
-				{{#each errors}}
-					<li>{{this}}</li>
-				{{/each}}
-			</ul>
-		</div>
-	{{/if}}
- 
   <div class="row">
     <div class="col-sm-6 control-group" >
         <label class="control-label">First Name</label>
@@ -31,6 +21,17 @@
 		</div>
 
  	<div class="row">
+		{{#if errors}}
+			<div class=" col-sm-12 control-group">
+				<div class="alert alert-warning">
+					<ul>
+						{{#each errors}}
+							<li>{{this}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		{{/if}}
 		<div class="col-sm-3 control-group  pull-right" >
 			<button class="btn btn-primary btn-block" type="submit">Create</button>
 		</div>            

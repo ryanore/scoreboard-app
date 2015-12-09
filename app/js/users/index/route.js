@@ -18,8 +18,8 @@ let Route = Marionette.Object.extend({
 			Backbone.history.returnFragment = 'users';
 			return Backbone.history.navigate('login', {trigger: true});
 		}
+		this.container = options.container;
 		this.fetch().then((c) => {
-			this.container = options.container;
 			this.container.show(new View({collection: c}));
 		});
 	},
@@ -37,6 +37,16 @@ let Route = Marionette.Object.extend({
     }});
     return defer;
 	},
+
+
+	/**
+	 * Tell the nav what to do
+	 * @return {null}
+	 */
+	updateNav() {
+		Radio.trigger('NavChannel','header:item:activate', 'login');
+	},
+
 
 	/**
 	 * Validate User's Permissions

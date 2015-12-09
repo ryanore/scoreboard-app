@@ -7,6 +7,7 @@ import User from '../../users/model';
 import View from './view';
 
 let Route = Marionette.Object.extend({
+	
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
@@ -17,12 +18,13 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('/', {trigger: true});
 		}
-		this.updateNav();
 		this.container.show(new View({model: new User()}));		
 	},
-	
+
+
 	/**
-	 * Update header/footer links in context to this route
+	 * Tell the nav what to do
+	 * @return {null}
 	 */
 	updateNav() {
 		Radio.trigger('NavChannel','header:item:activate', 'login');

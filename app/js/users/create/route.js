@@ -1,7 +1,7 @@
+import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import $ from 'jquery';
-import {history} from 'backbone';
 import View from './view';
 import Model from '../model';
 import Session from '../../auth/session';
@@ -13,11 +13,19 @@ let Route = Marionette.Object.extend({
 	 * @return  {null}
 	 */
 	initialize(options){
-		this.container = options.container;
 		if( ! this.validate() ){
-			return history.navigate('/', {trigger: true});
+			return Backbone.history.navigate('/', {trigger: true});
 		}
-		this.container.show(new View({model: new Model()}));		
+		this.container = options.container;
+		this.container.show(new View({model: new Model()}));
+	},
+
+	/**
+	 * Tell the nav what to do
+	 * @return {null}
+	 */
+	updateNav() {
+		Radio.trigger('NavChannel','header:item:activate', 'users');
 	},
 
 	/**

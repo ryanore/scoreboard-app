@@ -3,6 +3,7 @@ import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import template from './template.hbs';
 import Session from '../../auth/session';
+import {errMap} from '../../utils/form';
 
 export default ItemView.extend({
 	tagName: 'div',
@@ -26,21 +27,22 @@ export default ItemView.extend({
 	},
 
 	onFormSubmit() {
+		this.errors = [];
 		let errors = this.model.validate_create(this.form);
-		let frag = Backbone.history.returnFragment || 'users';
+		
 		if (errors) {
 			this.errors = errors;
 			this.render();
-		} else {
-			this.model.set(this.form);
-			this.model.save({},{
-				success: function(mod){
+		} 
+		else {
+			let _this = this;
+			this.model.save(this.form,{
+				success: function(mod) {
 					Backbone.history.navigate('users/details/'+mod.get('_id'), {trigger: true});
-        	// Backbone.history.navigate(frag, {trigger: true});
 				},
-				error: function(){
-					this.errors = ['There was a problem saving...'];
-					this.render();
+				error: function(mod, promise, xhr) {
+					_this.errors = errMap( xhr.xhr.responseText, _this.errors );
+					_this.render();
 				}
 			});
 		}

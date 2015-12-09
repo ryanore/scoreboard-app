@@ -29,6 +29,9 @@ let UserModel = Model.extend({
 
   validate_details(attrs) {
     let errors = [];
+    if (attrs.username === '') {
+      errors.push('Missing "username" field');
+    }
     if (attrs.email === '' ) {
       errors.push('Missing "email" field');
     }
