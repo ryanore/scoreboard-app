@@ -103,6 +103,7 @@ let Session = class {
 			this.user = data.user;
 			this.access = data.user.access;
 			this.access_token = data.access_token;
+			console.log('USER LOGGED IN ');
  			// Radio.trigger('AuthChannel','userLogged:in');	
 		}else{
 			console.log('NO UPDATE ', data);
