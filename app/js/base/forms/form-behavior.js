@@ -7,8 +7,6 @@ export default Behavior.extend({
 	},
 
 	initialize() {
-		Backbone.Syphon.ignoredTypes.push("password");
-
 		this.listenTo(this.view.options.model, 'change', this.onChange);
 	},
 
