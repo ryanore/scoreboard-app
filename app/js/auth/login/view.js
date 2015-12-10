@@ -1,9 +1,8 @@
-import FormBehavior from '../../base/forms/form-behavior';
-import Session from '../session';
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
+import FormBehavior from '../../base/forms/form-behavior';
+import Session from '../session';
 import template from './template.hbs';
-import history from '../../utils/history';
 
 export default ItemView.extend({
 	tagName: 'div',
