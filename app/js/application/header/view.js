@@ -21,8 +21,7 @@ export default ItemView.extend({
   },
   
   /**
-   * listen for routes and update based on access level
-   * Listen for nav events to add/remove elements
+   * listen for routes and nav events, update based on access level
    * @param  {Object} options
    * @return {null}
    */
@@ -46,13 +45,6 @@ export default ItemView.extend({
    * On each route Check access and remove items
    * @param  {String} Name of route
    */
-
-
-// The only time they will change is on init, login and logout
-// Maybe there needs to be a pre init function on the app wehere sub sections register themselves (including nav)
-
-
-
   handleRoute() {
 		let m = this.navCollection.filter(function(m){
 			let min = typeof m.get('min') === 'undefined' ? -1000  : m.get('min');
@@ -63,7 +55,9 @@ export default ItemView.extend({
 		this.collection.reset(m);
   },
 
+
   /**
+   * When Application starts,
    * Add items to menu, single object or array
    * Triggered by NavChannel Event
    * @param {null} items object or array

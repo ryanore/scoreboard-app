@@ -1,10 +1,10 @@
+import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Router from '../base/router/router';
 import Session from '../auth/session';
 import IndexRoute from './index/route';
 import CreateRoute from './create/route';
 import DetailsRoute from './details/route';
-import {history} from 'backbone';
 
 export default Router.extend({
 	routes: {
@@ -12,7 +12,7 @@ export default Router.extend({
 		'users': 'index',
 		'users/details/:id': 'details',
 		'users/edit/:id': 'edit',
-		'users/*notFound': 'notFound'	
+		'users/*notFound': 'notFound'
 	},
 
 	initialize(options = {}) {
@@ -26,28 +26,44 @@ export default Router.extend({
 	 * @return {null} 
 	 */
 	updateNav() {
-		Radio.trigger('NavChannel','header:item:add', [
-			{ label: 'Users', 	path: 'users', min: 1 },
-			{ label: 'Sign Up', path: 'signup', max: -1} , 
-		]);		
+		// console.log('Session.user ', Session.user);
+		Radio.trigger('NavChannel', 'header:item:add', [{
+			label: 'Users',
+			path: 'users',
+			min: 1
+		}, {
+			label: 'Sign Up',
+			path: 'signup',
+			max: -1
+		}, {
+			className: 'user',
+			min: 0,
+			children: [{
+					label: 'Logout',
+					path: 'logout'
+				}, {
+					label: 'Your Details',
+					path: `users/details/`
+			}]
+		}]);
 	},
 
 	create() {
-		Radio.trigger('NavChannel','header:item:activate', 'signup');
+		Radio.trigger('NavChannel', 'header:item:activate', 'signup');
 		return new CreateRoute({
 			container: this.container
 		});
 	},
 
 	index() {
-		Radio.trigger('NavChannel','header:item:activate', 'users');
+		Radio.trigger('NavChannel', 'header:item:activate', 'users');
 		return new IndexRoute({
 			container: this.container
 		});
 	},
 
 	details(id) {
-		Radio.trigger('NavChannel','header:item:activate', 'signup');		
+		Radio.trigger('NavChannel', 'header:item:activate', 'user');
 		return new DetailsRoute({
 			_id: id,
 			container: this.container
@@ -55,7 +71,9 @@ export default Router.extend({
 	},
 
 	notFound() {
-		history.navigate('notfound', {trigger:true});
+		Backbone.history.navigate('notfound', {
+			trigger: true
+		});
 	}
 
 });

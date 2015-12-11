@@ -8,8 +8,6 @@ import ErrorRouter from './js/error/router';
 import Application from './js/application/application';
 import './main.scss';
 
-window.originalURI = window.location.href;
-
 let app = new Application().on('start', function(){
 	new IndexRouter({
 		container: app.layout.content
