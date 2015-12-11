@@ -1,10 +1,5 @@
-import _ from 'lodash';
 import Backbone from 'backbone';
-import {history} from 'backbone';
 import {ItemView} from 'backbone.marionette';
-import {Events} from 'backbone';
-import {Model} from 'backbone';
-import {Collection} from 'backbone';
 import {Radio} from 'backbone';
 import Session from '../../auth/session';
 import template from './template.hbs';
@@ -20,6 +15,7 @@ export default ItemView.extend({
     'all': 'render'
   },
   
+
   /**
    * listen for routes and nav events, update based on access level
    * @param  {Object} options
@@ -27,19 +23,10 @@ export default ItemView.extend({
    */
   initialize(options) {
   	options.container.show(this);
-  	this.listenTo(Events, 'route', this.handleRoute );
+  	this.listenTo(Backbone.Events, 'route', this.handleRoute );
   	this.listenTo(this.NavChannel, 'header:item:activate', this.activate);
   	this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
   },
-
-  /**
-   * Marionette callback after render - close menu after each render
-   * @return {null}
-   */
-  onRender() {
-  	this.nav = this.$el.find('.collapse');
-  },
-
 
   /**
    * On each route Check access and remove items
@@ -53,6 +40,7 @@ export default ItemView.extend({
 			return (level >= min) && (level <= max); 
 		})
 		this.collection.reset(m);
+  	this.nav = this.$el.find('.collapse');
   },
 
 
