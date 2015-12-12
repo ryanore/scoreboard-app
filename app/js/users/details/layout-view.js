@@ -38,11 +38,12 @@ export default LayoutView.extend({
 	},
 
 	templateHelpers() {
+		let isUser = session.isUser(this.model.get('_id'));
 		return {
 			errors: this.errors,
 			createdAt: formatDate(this.model.get('createdAt'), 'short'),
-			allowEdit: session.isUser() || session.level(1),
-			allowDelete: session.isUser() || session.level(1),
+			allowEdit: isUser || session.level(1),
+			allowDelete: isUser || session.level(1),
 			displayName: this.getDisplayName()
 		};
 	},

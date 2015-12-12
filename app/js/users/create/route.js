@@ -30,7 +30,7 @@ let Route = Marionette.Object.extend({
 
 	/**
 	 * Validate User's Permissions
-	 * @return {boolean} ONLY admin can create users
+	 * @return {boolean} Must be admin, or not logged in
 	 */
 	validate() {
 		return( Session.level() < 0   ||  Session.level(1));

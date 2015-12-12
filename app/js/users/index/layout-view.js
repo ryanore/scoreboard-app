@@ -21,7 +21,7 @@ export default LayoutView.extend({
   },
 
   newUser() {
-  	history.navigate('users/new', {trigger: true});
+  	history.navigate('signup', {trigger: true});
   },
 
   deleteUsers() {
