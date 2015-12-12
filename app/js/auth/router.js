@@ -21,8 +21,7 @@ export default Router.extend({
 	 */
 	updateNav() {
 		Radio.trigger('NavChannel','header:item:add', [
-			{ label: 'Login', 	path: 'login', 		 max: -1 } , 
-			{ label: 'Log Out', path: 'logout', 	 min: 0, }
+			{ label: 'Login', 	path: 'login', 		 max: -1 }
 		]);		
 	},
 

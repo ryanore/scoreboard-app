@@ -10,6 +10,7 @@ export default Router.extend({
 	routes: {
 		'signup': 'create',
 		'users': 'index',
+		'users/details/me': 'details',
 		'users/details/:id': 'details',
 		'users/edit/:id': 'edit',
 		'users/*notFound': 'notFound'
@@ -43,7 +44,7 @@ export default Router.extend({
 					path: 'logout'
 				}, {
 					label: 'Your Details',
-					path: `users/details/`
+					path: 'users/details/me'
 			}]
 		}]);
 	},
@@ -63,6 +64,13 @@ export default Router.extend({
 	},
 
 	details(id) {
+		if(!id){
+			if(Session.user){
+				id = Session.user._id;
+			}
+		}
+				console.log('ID ', id);
+
 		Radio.trigger('NavChannel', 'header:item:activate', 'user');
 		return new DetailsRoute({
 			_id: id,

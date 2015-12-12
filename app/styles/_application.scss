@@ -9,9 +9,10 @@ html{
 }
 
 body{
-	background-image: -webkit-gradient( linear, right bottom, right bottom, color-stop(1, $dkGrey),color-stop(0, #4c4c4c) );
-	background-image: linear-gradient(to right bottom, #4c4c4c 0%, $dkGrey 100%);
+	background: #222;
+	background-image: url(images/bg.jpg);
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 button:focus,

@@ -2,10 +2,10 @@ $rowColor: #fafafa;
 $rowColorStripe: lighten($rowColor, 5%);
 
 .collection-tableview{
-	.navbar{
+/*	.navbar{
 		background: $rowColor;
 	}
-
+*/
 	table{    
 		border-collapse: collapse;
 		border:none;
