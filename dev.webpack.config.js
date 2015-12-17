@@ -54,6 +54,10 @@ module.exports = {
           test: /\.hbs$/, loader: "handlebars-loader" 
       },
       {
+        test: require.resolve('backbone.validation'),
+        loader: 'expose?Backbone.Validation'
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader?stage=0&optional=runtime'

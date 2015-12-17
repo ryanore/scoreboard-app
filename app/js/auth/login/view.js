@@ -8,7 +8,7 @@ export default ItemView.extend({
 	tagName: 'div',
 	template: template,
 	className: 'view users__login',
-
+	errors: [],
 	events: {
 		'submit form': 'onFormSubmit'
 	},
@@ -26,25 +26,28 @@ export default ItemView.extend({
 	},
 
 	onFormSubmit() {
-		let errors = this.model.validate_login(this.form);
-		let frag = Backbone.history.returnFragment || '/';
+		let frag = Backbone.history.returnFragment || '/';		
 		
-		if (errors) {
-			this.errors = errors;
-			this.render();
-		} else {
-		 $.ajax({
-        url: API + 'login',
-        type: 'POST',
-        data: this.form
-      })
-      .done(function(data, textStatus, jqXHR) {
-        Session.update(data);
-        Backbone.history.navigate(frag, {trigger: true});
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        alert('fail');
-      });
-		}
+		this.model.set(this.form);
+		this.model.validate();
+		if( !this.model.isValid()){
+			return false;
+		}		
+
+	 	$.ajax({
+      url: API + 'login',
+      type: 'POST',
+      data: this.form
+    })
+    .done((data, textStatus, jqXHR) => {
+      Session.update(data);
+      Backbone.history.navigate(frag, {trigger: true});
+    })
+    .fail((xhr, textStatus, errorThrown) => {
+    	if( xhr.status === 401 ){
+    		this.errors.push('Bad login attempt. Try again!')
+    	}
+    	this.render();
+    });
 	}
 });

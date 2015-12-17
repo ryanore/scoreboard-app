@@ -5,6 +5,7 @@ import {history} from 'backbone';
 import Session from '../session';
 import User from '../../users/model';
 import View from './view';
+import validation from './validation';
 
 let Route = Marionette.Object.extend({
 	
@@ -18,7 +19,13 @@ let Route = Marionette.Object.extend({
 		if( ! this.validate() ){
 			return history.navigate('/', {trigger: true});
 		}
-		this.container.show(new View({model: new User()}));		
+		this.container.show(
+			new View({
+				model: new User({},{
+					validation: validation
+				})
+			})
+		);		
 	},
 
 

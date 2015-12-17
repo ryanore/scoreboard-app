@@ -27,7 +27,6 @@ export default Router.extend({
 	 * @return {null} 
 	 */
 	updateNav() {
-		// console.log('Session.user ', Session.user);
 		Radio.trigger('NavChannel', 'header:item:add', [{
 			label: 'Users',
 			path: 'users',
@@ -69,8 +68,6 @@ export default Router.extend({
 				id = Session.user._id;
 			}
 		}
-				console.log('ID ', id);
-
 		Radio.trigger('NavChannel', 'header:item:activate', 'user');
 		return new DetailsRoute({
 			_id: id,

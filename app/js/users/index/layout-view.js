@@ -3,9 +3,6 @@ import {LayoutView} from 'backbone.marionette';
 import CollectionView from './collection-view';
 import {Collection} from '../../base/collections/collection';
 import template from './layout-template.hbs';
-import Radio from 'backbone.radio';
-
-let	UserChannel = Radio.channel('UserChannel');
 
 export default LayoutView.extend({
   template: template,

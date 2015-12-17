@@ -25,18 +25,19 @@ export default LayoutView.extend({
   	'click [data-toggle]': 'handleClickToggle'
   },
 
+  /**
+   * Init Class - Marionette method
+   * @return {null}
+   */
   initialize() {
-		this.listenTo(this.model, 'change', this.updateMode);
+  	this.listenTo(UserChannel, 'user:updated', this.render);
   },
 
-	getDisplayName() {
-		if( this.model.get('firstName') || this.model.get('lastName') ){
-			return this.model.get('firstName') +' '+ this.model.get('lastName') ;
-		} else {
-			return this.model.get('username');
-		}
-	},
 
+	/**
+	 * Add Variables to template - Marionette method.
+	 * @return {Object}
+	 */
 	templateHelpers() {
 		let isUser = session.isUser(this.model.get('_id'));
 		return {
@@ -48,10 +49,34 @@ export default LayoutView.extend({
 		};
 	},
  
+
+ 	/**
+ 	 * Render callback - Marionette method
+ 	 * @return {null}
+ 	 */
 	onRender() {
 		this.updateMode('list');
   },
 
+
+  /**
+   * Get the name to display in the header.
+   * If the user didn't provide first or last, display username
+   * @return {String}
+   */
+	getDisplayName() {
+		if( this.model.get('firstName') || this.model.get('lastName') ){
+			return this.model.get('firstName') +' '+ this.model.get('lastName') ;
+		} else {
+			return this.model.get('username');
+		}
+	},
+
+
+  /**
+   * Click handler - anything with data-toggle attribute switches the region content
+   * @return {null}
+   */
 	handleClickToggle(e) {
 		var mode = e.target.getAttribute('data-toggle');
 		if( this.mode === mode ){
@@ -60,6 +85,12 @@ export default LayoutView.extend({
 		this.updateMode(mode);
 	},
 
+
+	/**
+	 * Switching modes by changing the content in the Details Region
+	 * @param  {String} mode Which mode should we be in (List, Change Password, Edit, Delete)
+	 * @return {null}
+	 */
 	updateMode(mode = 'list'){
 		var view;
 		this.$el.attr('data-mode', mode);	
