@@ -1,4 +1,10 @@
-// form rows
+.loading form{
+	input, button{
+		opacity: .1;
+		pointer-events: none;
+	}
+}
+
 form .row{
 	&:last-child{
 		margin-top: 1em;

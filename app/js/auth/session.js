@@ -54,7 +54,6 @@ let Session = class {
 		this.user = null;
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('user');
-		history.navigate('/', {trigger: true});
  		// Radio.trigger('AuthChannel','userLogged:in');	
 	}
 

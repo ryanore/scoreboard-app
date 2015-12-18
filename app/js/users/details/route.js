@@ -5,7 +5,6 @@ import Backbone from 'backbone';
 import session from '../../auth/session';
 import User from '../model';
 import View from './layout-view';
-import validation from './validation';
 
 let Route = Marionette.Object.extend({
 	
@@ -36,7 +35,7 @@ let Route = Marionette.Object.extend({
 	 */
 	fetch() {     
     let defer = $.Deferred();
-    let m = new User({_id: this._id},{validation: validation});
+    let m = new User({_id: this._id});
     m.fetch({
     	success: function(){
       	defer.resolve(m);

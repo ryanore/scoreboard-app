@@ -1,16 +1,20 @@
-.view.users__detail{
-	.table{
-		.t-row span{
-			border-color: $lightGrey;
-			background: #eee;
-			color: #222;
-			&:first-child{
-				background: $brand-primary;
-				width: 25%;
-				max-width: 50px;
-				font-weight: bold;
-				color: #fff;
-			}
+/*.table,
+table,
+tbody{
+	tr,
+	.t-row span{
+		border-color: $lightGrey;
+		background: #eee;
+		color: #222;
+		vertical-align: middle;
+		
+		&:first-child{
+			background: $brand-primary;
+			width: 25%;
+			max-width: 50px;
+			font-weight: bold;
+			color: #fff;
 		}
 	}
 }
+*/

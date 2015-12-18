@@ -5,7 +5,7 @@ let UserModel = Model.extend({
 	urlRoot: API + 'users',
 	validation: null,
 
-	initialize(vals, options) {
+	initialize(vals, options = {}) {
 		if( options.validation ){
 			this.validation = options.validation;
 		}

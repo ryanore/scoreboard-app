@@ -3,31 +3,33 @@ import Radio from 'backbone.radio';
 import FormBehavior from '../../base/forms/form-behavior';
 import template from './details-edit.hbs';
 import {history} from 'backbone';
-import validation from './validation';
+import {edit as validation} from './validation';
 
 let	UserChannel = Radio.channel('UserChannel');
 
 export default ItemView.extend({
 	tagName: 'div',
 	template: template,
-	className: 'users__create_form ',
+	className: 'users__edit_form ',
 	errors: [],
 	events: {
 		'submit form': 'onFormSubmit'
 	},
-
 	behaviors: {
 		form: { 
 			behaviorClass: FormBehavior
 		}
 	},
-	
+
+	initialize() {
+		this.model.validation = validation;
+	},
+
 	onFormSubmit(e) {
-		let _this = this;		
 		e.preventDefault();
+		let _this = this;		
 		this.errors = [];
 		this.model.set(this.form);
-		this.model.validate();
 
 		if( !this.model.isValid()){
 			return false;

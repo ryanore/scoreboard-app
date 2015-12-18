@@ -1,65 +1,67 @@
 import {ItemView} from 'backbone.marionette';
 import Syphon from 'backbone.syphon';
-import template from './changepw.hbs';
 import {history} from 'backbone';
+import Session from '../../auth/session';
+import FormBehavior from '../../base/forms/form-behavior';
+import template from './changepw.hbs';
+import {changePassword as validation} from './validation';
 
 export default ItemView.extend({
-	tagName: 'form',
+	tagName: 'div',
 	template: template,
-	className: 'users__create_form ',
-	form: {},
+	className: 'users__changepassword_form ',
+	success: false,
 	errors: [],
 	events: {
-		'submit': 'onFormSubmit'
+		'submit form': 'onFormSubmit'
+	},
+	behaviors: {
+		form: { 
+			behaviorClass: FormBehavior
+		}
 	},
 
 	initialize() {
-		console.log('init cpw');
+		this.model.validation = validation;
 	},
 
 	templateHelpers() {
 		return {
-			errors: this.errors
+			errors: this.errors,
+			success: this.success,
 		};
-	},
-
-	validate() {
-		console.log('Validate ', this.form);
-		_.each(this.form, (i, e) => {
-			if( !i.length ){
-				this.errors.push('All fields required');
-				return;
-			}
-		})
-		if( this.form.password !== this.form.password_confirm ) {
-			this.errors.push('Passwords don\'t match');
-		}
-		else {
-			console.log(' Valid Form' );
-		}
-
 	},
 
 	onFormSubmit(e) {
 		e.preventDefault();
-		console.log('this ', this.errors);
-		this.form = Syphon.serialize(this);
-		this.errors = this.validate();
-		// if (this.errors.length) {
-		// 	this.render();
-		// } else {
-		// 	$.ajax({
-		// 	  url: API + 'login',
-		// 	  type: 'POST',
-		// 	  data: formData
-		// 	})
-		// 	.done(function(data, textStatus, jqXHR) {
-		// 	  Session.update(data);
-		// 	  Backbone.history.navigate(frag, {trigger: true});
-		// 	})
-		// 	.fail(function(jqXHR, textStatus, errorThrown) {
-		// 	  alert('fail');
-		// 	});
-		// }
+		let _this = this;		
+		this.errors = [];
+		this.form.username = Session.user.username;
+		this.model.set(this.form);
+
+		if( !this.model.isValid() || this.loading === true){
+			return false;
+		}
+
+		this.loading = true;
+		this.el.classList.add('loading');
+
+		$.ajax({
+		  url: API + 'users/changepassword',
+		  type: 'POST',
+		  data: this.form
+		})
+		.done(function(data, textStatus, jqXHR) {
+			Session.logOutUser();
+			_this.success = true;
+		})
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			_this.success = false;
+		  _this.errors.push('Oh no, there was a problem!');
+		})
+		.always(function(){
+			_this.loading = false;
+			_this.render();
+		});
 	}
 });

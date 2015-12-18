@@ -1,32 +1,45 @@
 <h2>Update Password</h2>
+<form >
+	<div class="form-group content-section">
 
-<div class="form-group content-section">
+		{{#if errors}}
+			<div class="alert alert-warning">
+				<ul>
+					{{#each errors}}
+						<li>{{this}}</li>
+					{{/each}}
+				</ul>
+			</div>
+		{{/if}}
 
-	{{#if errors}}
-		<div class="alert alert-warning">
-			<ul>
-				{{#each errors}}
-					<li>{{this}}</li>
-				{{/each}}
-			</ul>
-		</div>
-	{{/if}}
+		{{#if success}}
+			<h2>Success!</h2>
+			<p>You should get an email confirming that you updated your password. You'll need to log in again before you can do much else.</p>
+			<p><a class="btn btn-primary" href="#login">log in now</a></p>
+		{{else}}
+			  <div class="row">
+			    <div class="col-sm-6 control-group" >
+			        <label class="control-label">Current Password</label>
+			        <input type="password" class="form-control" name="password" placeholder="******" />
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col-sm-6 control-group" >
+			        <label class="control-label">New Password</label>
+			        <input type="password" class="form-control" name="newPassword" placeholder="******" />
+			    </div>
+			    <div class="col-sm-6 control-group" >
+			        <label class="control-label">Confirm</label>
+			        <input type="password" class="form-control" name="password_confirm"  placeholder="******" />
+			    </div>
+				</div>
 
-  <div class="row">
-    <div class="col-sm-6 control-group" >
-        <label class="control-label">New Password</label>
-        <input type="password" class="form-control" name="password" placeholder="******" />
-    </div>
-    <div class="col-sm-6 control-group" >
-        <label class="control-label">Confirm</label>
-        <input type="password" class="form-control" name="password_confirm"  placeholder="******" />
-    </div>
+			 	<div class="row">
+					<div class="col-sm-3 control-group  pull-right" >
+						<button class="btn btn-primary btn-block" type="submit">Create</button>
+					</div>            
+			 	</div>
+		{{/if}}
+
 	</div>
-
- 	<div class="row">
-		<div class="col-sm-3 control-group  pull-right" >
-			<button class="btn btn-primary btn-block" type="submit">Create</button>
-		</div>            
- 	</div>
-
-</div>
+</form>
