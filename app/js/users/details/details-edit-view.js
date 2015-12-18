@@ -31,9 +31,12 @@ export default ItemView.extend({
 		this.errors = [];
 		this.model.set(this.form);
 
-		if( !this.model.isValid()){
+		if( !this.model.isValid() || this.loading === true){
 			return false;
 		}
+
+		this.loading = true;
+		this.el.classList.add('loading');
 
 		this.model.save(null,{
 			success: (mod) => {
