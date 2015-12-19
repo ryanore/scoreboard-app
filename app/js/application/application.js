@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import history from '../utils/history';
 import {Collection} from 'backbone';
 import {Application} from 'backbone.marionette';
 import LayoutView from './layout-view';

@@ -1,10 +1,11 @@
 require('./js/base/plugins');
 import './main.scss';
 import Backbone from 'backbone';
-import AuthRouter from './js/auth/router';
-import IndexRouter from './js/index/router';
-import UsersRouter from './js/users/router';
-import ErrorRouter from './js/error/router';
+import AuthRouter from './js/routes/auth/router';
+import IndexRouter from './js/routes/index/router';
+import UsersRouter from './js/routes/users/router';
+import GamesRouter from './js/routes/games/router';
+import ErrorRouter from './js/routes/error/router';
 import Application from './js/application/application';
 
 let app = new Application().on('start', function(){
@@ -12,7 +13,7 @@ let app = new Application().on('start', function(){
 		container: app.layout.content
 	});
 
-	new UsersRouter({
+	new GamesRouter({
 		container: app.layout.content
 	});
 
@@ -21,6 +22,10 @@ let app = new Application().on('start', function(){
 	});
 
 	new ErrorRouter({
+		container: app.layout.content
+	});
+
+	new UsersRouter({
 		container: app.layout.content
 	});
 	
