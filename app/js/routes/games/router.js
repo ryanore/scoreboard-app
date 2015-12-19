@@ -28,7 +28,7 @@ export default Router.extend({
 			path: 'games'
 		}, {
 			label: 'My Games',
-			path: 'mygames',
+			path: 'games/mygames',
 			min: 0
 		}]);
 	},
@@ -42,7 +42,7 @@ export default Router.extend({
 	},
 
 	mygames() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'games');
+		Radio.trigger('NavChannel', 'header:item:activate', 'mygames');
 		return new IndexRoute({
 			container: this.container
 		});
