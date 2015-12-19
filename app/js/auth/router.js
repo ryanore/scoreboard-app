@@ -2,6 +2,7 @@ import Radio from 'backbone.radio';
 import Router from '../base/router/router';
 import Session from './session';
 import LoginRoute from './login/route';
+import ForgotRoute from './forgot/route';
 import {history} from 'backbone';
 
 export default Router.extend({
@@ -12,7 +13,8 @@ export default Router.extend({
 
 	routes: {
 		'login': 'logIn',
-		'logout': 'logOut'
+		'logout': 'logOut',
+		'forgotpassword': 'forgotpassword'
 	},
 
 	/**
@@ -36,5 +38,12 @@ export default Router.extend({
 		Session.logOutUser();
 		Radio.trigger('NavChannel','header:item:activate', '');		
 		history.navigate('', {trigger: true});
+	},
+
+	forgotpassword() {
+		Radio.trigger('NavChannel','header:item:activate', '');		
+		return new ForgotRoute({
+			container: this.container
+		});
 	}
 });

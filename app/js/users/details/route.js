@@ -15,7 +15,7 @@ let Route = Marionette.Object.extend({
 	 * @return  {null}
 	 */
 	initialize(options){
-		this._id = options._id || session.user._id;
+		this._id = options._id;
 		this.container = options.container;
 
 		if( ! this.validate() ){
@@ -61,7 +61,12 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} User can only edit thier own account (unless admin)
 	 */
 	validate() {
- 		return( session.isUser(this._id) || session.level(1));
+		if( !this._id ){
+			console.log('noid ');
+		}
+ 		else{
+ 			return( session.isUser(this._id) || session.level(1));
+ 		}
 	}
 
 });

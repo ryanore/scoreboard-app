@@ -66,6 +66,8 @@ export default Router.extend({
 		if(!id){
 			if(Session.user){
 				id = Session.user._id;
+			} else {
+				id = null;
 			}
 		}
 		Radio.trigger('NavChannel', 'header:item:activate', 'user');
