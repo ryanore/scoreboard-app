@@ -2,8 +2,8 @@ import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import $ from 'jquery';
 import {history} from 'backbone';
-import Session from '../session';
-import User from '../../users/model';
+import Session from '../../entities/session';
+import User from '../../entities/models/user';
 import View from './view';
 import validation from './validation';
 

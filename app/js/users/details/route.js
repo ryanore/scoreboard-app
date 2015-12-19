@@ -2,8 +2,8 @@ import $ from 'jquery';
 import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import Backbone from 'backbone';
-import session from '../../auth/session';
-import User from '../model';
+import Session from '../../entities/session';
+import User from '../../entities/models/user';
 import View from './layout-view';
 
 let Route = Marionette.Object.extend({
@@ -65,7 +65,7 @@ let Route = Marionette.Object.extend({
 			console.log('noid ');
 		}
  		else{
- 			return( session.isUser(this._id) || session.level(1));
+ 			return( Session.isUser(this._id) || Session.level(1));
  		}
 	}
 

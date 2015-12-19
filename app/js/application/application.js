@@ -5,7 +5,7 @@ import {Application} from 'backbone.marionette';
 import LayoutView from './layout-view';
 import Header from './header/view';
 import Footer from './footer/view';
-import Session from '../auth/session';
+import Session from '../entities/session';
 import socket from '../base/socket';
 
 export default Application.extend({

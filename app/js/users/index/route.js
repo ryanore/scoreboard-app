@@ -3,8 +3,8 @@ import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import Backbone from 'backbone';
 import View from './layout-view';
-import Collection from '../collection';
-import session from '../../auth/session';
+import Collection from '../../entities/collections/users';
+import Session from '../../entities/session';
 
 let Route = Marionette.Object.extend({
 	
@@ -53,7 +53,7 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} ONLY admin can see list of users
 	 */
 	validate() {
-		return session.level(1);
+		return Session.level(1);
 	}
 });
 

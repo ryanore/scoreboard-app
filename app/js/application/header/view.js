@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import {Radio} from 'backbone';
-import Session from '../../auth/session';
+import Session from '../../entities/session';
 import template from './template.hbs';
 
 export default ItemView.extend({

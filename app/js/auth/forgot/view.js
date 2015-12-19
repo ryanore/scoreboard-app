@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
 import FormBehavior from '../../base/forms/form-behavior';
-import Session from '../session';
+import Session from '../../entities/session';
 import template from './template.hbs';
 
 export default ItemView.extend({

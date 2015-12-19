@@ -1,7 +1,7 @@
 import {LayoutView} from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import FormBehavior from '../../base/forms/form-behavior';
-import session from '../../auth/session';
+import Session from '../../entities/session';
 import {formatDate} from '../../utils/date';
 import template from './layout-template.hbs';
 import EditView from './details-edit-view';
@@ -39,12 +39,12 @@ export default LayoutView.extend({
 	 * @return {Object}
 	 */
 	templateHelpers() {
-		let isUser = session.isUser(this.model.get('_id'));
+		let isUser = Session.isUser(this.model.get('_id'));
 		return {
 			errors: this.errors,
 			createdAt: formatDate(this.model.get('createdAt'), 'short'),
-			allowEdit: isUser || session.level(1),
-			allowDelete: isUser || session.level(1),
+			allowEdit: isUser || Session.level(1),
+			allowDelete: isUser || Session.level(1),
 			displayName: this.getDisplayName()
 		};
 	},
