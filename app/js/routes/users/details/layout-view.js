@@ -2,7 +2,7 @@ import {LayoutView} from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import FormBehavior from '../../../base/forms/form-behavior';
 import Session from '../../../entities/session';
-import {formatDate} from '../../utils/date';
+import {formatDate} from '../../../utils/date';
 import template from './layout-template.hbs';
 import EditView from './details-edit-view';
 import ListView from './details-list-view';

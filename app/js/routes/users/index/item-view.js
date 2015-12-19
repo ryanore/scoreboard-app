@@ -1,6 +1,6 @@
 import BaseClass from '../../../base/views/collection-table-itemview';
 import {history} from 'backbone';
-import {formatDate} from '../../utils/date';
+import {formatDate} from '../../../utils/date';
 import template from './item-template.hbs';
 
 export default BaseClass.extend({
