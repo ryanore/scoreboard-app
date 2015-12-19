@@ -5,14 +5,19 @@
 </header>
 
 <div class="new-user container col-md-8 col-lg-6 col-lg-offset-3 col-md-offset-2">
-	<div class="container">
+	<div class="">
 		<!-- Should this be a container?  seems kind of overzealous on the markup -->
 		<div class="col-xs-12">
 			<h2>Create Your Account Now!</h2>
 			<p>I promise no bullshit will come from supplying your email, this is a no bullshit app.</p>
 		</div>
 	</div>
-	<form class="content-section">      
+	<form class="content-section">  
+	{{#if success}}
+		<h2>Thanks for Joining!</h2>
+		<p>After you log in you can go start a new game or series. </p>
+		<p><a class="btn btn-primary" href="#login">log in now</a></p>
+	{{else}}    
 		<div class="form-group">			
       <div class="row">
         <div class="col-sm-4 control-group" >
@@ -50,5 +55,6 @@
 				</div>
 			</div>
 		</div>
+	{{/if}}
 	</form> 
 </div> 

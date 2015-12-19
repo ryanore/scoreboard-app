@@ -43,7 +43,6 @@ export default ItemView.extend({
 			return false;
 		}
 
-		this.loading = true;
 		this.el.classList.add('loading');
 
 		$.ajax({
@@ -60,7 +59,6 @@ export default ItemView.extend({
 		  _this.errors.push('Oh no, there was a problem!');
 		})
 		.always(function(){
-			_this.loading = false;
 			_this.render();
 		});
 	}

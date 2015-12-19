@@ -4,6 +4,7 @@ import FormBehavior from '../../base/forms/form-behavior';
 import template from './template.hbs';
 import Session from '../../auth/session';
 import {errMap} from '../../utils/form';
+import {validation} from './validation';
 
 export default ItemView.extend({
 	tagName: 'div',
@@ -20,33 +21,45 @@ export default ItemView.extend({
 		}
 	},
 
+	initialize() {
+		this.model.validation = validation;
+	},
+
 	templateHelpers() {
 		return {
-			errors: this.errors
+			errors: this.errors,
+			success: this.success
 		};
 	},
 
 	onFormSubmit(e) {
 		e.preventDefault();
-		let _this = this;		
 		this.errors = [];
-
 		this.model.set(this.form);
-		this.model.validate();
 		
 		if( !this.model.isValid()){
 			return false;
 		}		
+		console.log('valid ');
+		this.loading = true;
+		this.success = false;
+		this.el.classList.add('loading');
 
-		this.model.save({},{
-			success: function(mod) {
-				Backbone.history.navigate('users/details/'+mod.get('_id'), {trigger: true});
+
+		this.model.save(null,{
+			success: (mod) => {
+				console.log('success');
+				this.success = true;
+				this.el.classList.remove('loading');
+				this.render();
 			},
-			error: function(mod, promise, xhr) {
-				errMap(xhr.xhr.responseText, _this.errors);
-				console.log('_this.errors ', _this.errors);
-				_this.render();
+			error: (mod, promise, xhr) => {
+				console.log('error');
+				errMap(xhr.xhr.responseText, this.errors);
+				this.success = false;
+				this.el.classList.remove('loading');
+				this.render();
 			}
-		});
+		})
 	}
 });

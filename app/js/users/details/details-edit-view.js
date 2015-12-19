@@ -27,7 +27,6 @@ export default ItemView.extend({
 
 	onFormSubmit(e) {
 		e.preventDefault();
-		let _this = this;		
 		this.errors = [];
 		this.model.set(this.form);
 

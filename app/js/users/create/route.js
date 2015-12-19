@@ -23,9 +23,7 @@ let Route = Marionette.Object.extend({
 		}
 		this.container = options.container;
 		this.container.show(new View({
-			model: new Model({},{
-				validation: validation
-			})
+			model: new Model()
 		}));
 	},
 
