@@ -1,7 +1,7 @@
 import {history} from 'backbone';
 import {LayoutView} from 'backbone.marionette';
 import CollectionView from './collection-view';
-import {Collection} from '../../base/collections/collection';
+import {Collection} from '../../../base/collections/collection';
 import template from './layout-template.hbs';
 
 export default LayoutView.extend({

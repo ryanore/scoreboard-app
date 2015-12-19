@@ -3,7 +3,7 @@
  * Requires a Sortable/BatchDelete Collection
  */
 import {CompositeView} from 'backbone.marionette';
-import BaseClass from '../../base/views/collection-table-view';
+import BaseClass from '../../../base/views/collection-table-view';
 import ItemView from './item-view';
 import template from './collection-template.hbs';
 

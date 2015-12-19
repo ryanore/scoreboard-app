@@ -1,4 +1,4 @@
-import BaseClass from '../../base/views/collection-table-itemview';
+import BaseClass from '../../../base/views/collection-table-itemview';
 import {history} from 'backbone';
 import {formatDate} from '../../utils/date';
 import template from './item-template.hbs';

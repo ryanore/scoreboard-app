@@ -3,8 +3,8 @@ import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import Backbone from 'backbone';
 import View from './layout-view';
-import Collection from '../../entities/collections/users';
-import Session from '../../entities/session';
+import Collection from '../../../entities/collections/users';
+import Session from '../../../entities/session';
 
 let Route = Marionette.Object.extend({
 	

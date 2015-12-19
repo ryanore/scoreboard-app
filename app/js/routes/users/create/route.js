@@ -3,8 +3,8 @@ import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import $ from 'jquery';
 import View from './view';
-import User from '../../entities/models/user';
-import Session from '../../entities/session';
+import User from '../../../entities/models/user';
+import Session from '../../../entities/session';
 import validation from './validation';
 
 let Route = Marionette.Object.extend({

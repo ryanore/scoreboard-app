@@ -1,8 +1,8 @@
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
-import FormBehavior from '../../base/forms/form-behavior';
+import FormBehavior from '../../../base/forms/form-behavior';
 import template from './template.hbs';
-import Session from '../../entities/session';
+import Session from '../../../entities/session';
 import {errMap} from '../../utils/form';
 import {validation} from './validation';
 

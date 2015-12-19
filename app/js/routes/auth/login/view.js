@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
-import FormBehavior from '../../base/forms/form-behavior';
-import Session from '../../entities/session';
+import FormBehavior from '../../../base/forms/form-behavior';
+import Session from '../../../entities/session';
 import template from './template.hbs';
 
 export default ItemView.extend({
@@ -21,43 +21,33 @@ export default ItemView.extend({
 	
 	templateHelpers() {
 		return {
-			errors: this.errors,
-			success: this.success
+			errors: this.errors
 		};
 	},
 
-
-	onFormSubmit(e) {
-		e.preventDefault();
-		let _this = this;		
-		this.errors = [];
+	onFormSubmit() {
+		let frag = Backbone.history.returnFragment || '/';		
+		
 		this.model.set(this.form);
-
-		if( !this.model.isValid() || this.loading === true){
+		this.model.validate();
+		if( !this.model.isValid()){
 			return false;
-		}
-
-		this.loading = true;
-		this.success = false;
-		this.el.classList.add('loading');
+		}		
 
 	 	$.ajax({
-      url: API + 'users/forgotpassword',
+      url: API + 'login',
       type: 'POST',
       data: this.form
     })
     .done((data, textStatus, jqXHR) => {
-      this.success = true;
+      Session.update(data);
+      Backbone.history.navigate(frag, {trigger: true});
     })
     .fail((xhr, textStatus, errorThrown) => {
     	if( xhr.status === 401 ){
-    		this.success = false;
-    		this.errors.push('Bad request. Try again!')
+    		this.errors.push('Bad login attempt. Try again!')
     	}
-    })
-    .always(() => {
-			this.loading = true;
-     	this.render();
+    	this.render();
     });
 	}
 });

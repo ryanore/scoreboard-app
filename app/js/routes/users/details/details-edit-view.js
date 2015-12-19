@@ -1,6 +1,6 @@
 import {ItemView} from 'backbone.marionette';
 import Radio from 'backbone.radio';
-import FormBehavior from '../../base/forms/form-behavior';
+import FormBehavior from '../../../base/forms/form-behavior';
 import template from './details-edit.hbs';
 import {history} from 'backbone';
 import {edit as validation} from './validation';

@@ -1,8 +1,8 @@
 import {ItemView} from 'backbone.marionette';
 import Syphon from 'backbone.syphon';
 import {history} from 'backbone';
-import Session from '../../entities/session';
-import FormBehavior from '../../base/forms/form-behavior';
+import Session from '../../../entities/session';
+import FormBehavior from '../../../base/forms/form-behavior';
 import template from './changepw.hbs';
 import {changePassword as validation} from './validation';
 

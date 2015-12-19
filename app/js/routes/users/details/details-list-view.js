@@ -1,5 +1,5 @@
 import {ItemView} from 'backbone.marionette';
-import FormBehavior from '../../base/forms/form-behavior';
+import FormBehavior from '../../../base/forms/form-behavior';
 import template from './details-list.hbs';
 import {history} from 'backbone';
 
