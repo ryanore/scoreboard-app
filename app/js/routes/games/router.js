@@ -28,7 +28,7 @@ export default Router.extend({
 			path: 'games'
 		}, {
 			label: 'My Games',
-			path: 'games',
+			path: 'mygames',
 			min: 0
 		}]);
 	},
