@@ -6,6 +6,7 @@ import LayoutView from './layout-view';
 import Header from './header/view';
 import Footer from './footer/view';
 import Session from '../auth/session';
+import socket from '../base/socket';
 
 export default Application.extend({
 	
@@ -23,6 +24,7 @@ export default Application.extend({
 				this.start();
 			},1);
 		});
+
 	},
 
 
