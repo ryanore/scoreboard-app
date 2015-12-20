@@ -1,22 +1,31 @@
+
 //	General CSS Tables
 //
 
+.table    { display: table }
+.tr       { display: table-row }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td, .th   { display: table-cell }
+.caption  { display: table-caption }
+
+
+// Table Styling
+
 .table   { 
-	display: table;
 	border-collapse: collapse;
 	width: 100%;
 	table-layout: auto;
 	word-wrap: break-word;
-
-	//remove bootstrap's default
-	thead{
-		tr th{
-			border: none;
-		}
+	.td,
+	.th{
+		vertical-align: middle;
 	}
-
-	.t-row,
-	.t-header{
+	.tr,
+	.thead{
 		border: none;
 		display: table-row;
 		> *{
@@ -27,31 +36,4 @@
 			border: 1px solid $medGrey;
 		}
 	}
-
-	td, .td{
-		/*background: $offWhite;*/
-	}
 }
-
-/*
-   
-.table,
-table,
-tbody{
-	tr,
-	.t-row span,
-	tr td{
-		border-color: $lightGrey;
-		background: #eee;
-		color: #222;
-		vertical-align: middle;
-		
-		&:first-child{
-			background: $brand-primary;
-			max-width: 2em;
-			font-weight: bold;
-			color: #fff;
-		}
-	}
-}
-*/

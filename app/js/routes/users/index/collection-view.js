@@ -10,5 +10,5 @@ import template from './collection-template.hbs';
 export default BaseClass.extend({
 	template: template,
 	childView: ItemView,
-	childViewContainer: 'tbody'
+	childViewContainer: '.tbody'
 });

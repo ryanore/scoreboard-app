@@ -1,3 +1,10 @@
+.view.container-fluid{
+	max-width: $container-desktop;
+	.navbar{
+		background: $offWhite;
+	}
+}
+
 .view header{
 	background: rgba(#151515, .5);
 	border-bottom: 1px solid #222;

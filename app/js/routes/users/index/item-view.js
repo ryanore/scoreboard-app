@@ -4,9 +4,9 @@ import {formatDate} from '../../../utils/date';
 import template from './item-template.hbs';
 
 export default BaseClass.extend({
-  tagName: 'tr',
+  tagName: 'div',
   template: template,
-  className: 'users__item',
+  className: 'tr users__item',
   
   /**
    * Overwrites abstract base method

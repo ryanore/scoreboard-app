@@ -6,7 +6,7 @@ import template from './layout-template.hbs';
 
 export default LayoutView.extend({
   template: template,
-  className: 'users view users--index container',
+  className: 'users view users--index container-fluid',
 
   regions: {
     list: '.users__list'
