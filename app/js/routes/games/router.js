@@ -3,6 +3,7 @@ import Radio from 'backbone.radio';
 import Router from '../../base/router/router';
 import Session from '../../entities/session';
 import IndexRoute from './index/route';
+import CreateRoute from './create/route';
 
 export default Router.extend({
 	routes: {
@@ -18,21 +19,22 @@ export default Router.extend({
 		this.updateNav();
 	},
 
+
 	/**
-	 * Update the main nav
+	 * Update the main nav with The Games link 
+	 * Only if the user is admin
 	 * @return {null} 
 	 */
 	updateNav() {
-		Radio.trigger('NavChannel', 'header:item:add', [{
-			label: 'Games',
-			path: 'games'
-		}, {
-			label: 'My Games',
-			path: 'games/mygames',
-			min: 0
-		}]);
+		Radio.trigger('NavChannel', 'header:item:add',[{
+					label: 'New Game',
+					path: 'games/new'
+				}, {
+					label: 'Games',
+					path: 'games'
+				}
+		]);
 	},
-
 
 	index() {
 		Radio.trigger('NavChannel', 'header:item:activate', 'games');
@@ -50,7 +52,7 @@ export default Router.extend({
 
 	create() {
 		Radio.trigger('NavChannel', 'header:item:activate', 'games');
-		return new IndexRoute({
+		return new CreateRoute({
 			container: this.container
 		});
 	},

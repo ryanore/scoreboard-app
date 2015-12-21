@@ -48,3 +48,9 @@ button:focus,
 	margin-bottom: $footer-height-small;
 	overflow: hidden;
 }
+
+.application__header{
+	[data-nav="user"] .glyphicon{
+		@extend .glyphicon-user;
+	}
+}

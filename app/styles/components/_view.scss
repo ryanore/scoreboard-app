@@ -60,6 +60,8 @@ ul{
 	padding: 1.5em;
 
 	h2, h3, h4{
+		border-bottom: 1px solid $medGrey;
+		padding-bottom: .5em;
 		margin-top: 0;
 	}
 }

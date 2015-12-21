@@ -28,10 +28,6 @@ export default Router.extend({
 	 */
 	updateNav() {
 		Radio.trigger('NavChannel', 'header:item:add', [{
-			label: 'Users',
-			path: 'users',
-			min: 1
-		}, {
 			label: 'Sign Up',
 			path: 'signup',
 			max: -1
@@ -39,6 +35,10 @@ export default Router.extend({
 			className: 'user',
 			min: 0,
 			children: [{
+				label: 'Users',
+				path: 'users',
+				min: 1
+				}, 	{
 					label: 'Logout',
 					path: 'logout'
 				}, {

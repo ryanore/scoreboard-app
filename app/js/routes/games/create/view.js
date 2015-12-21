@@ -4,7 +4,7 @@ import template from './template.hbs';
 
 export default FormView.extend({
 	template: template,
-	className: 'view users__create',
+	className: 'view games__create',
 	initialize() {
 		this.model.validation = validation;
 	}

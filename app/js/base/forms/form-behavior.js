@@ -73,7 +73,6 @@ export default Behavior.extend({
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log('Syphon.serialize ', this);
 		this.view.form = Syphon.serialize(this);
 	}
 });
