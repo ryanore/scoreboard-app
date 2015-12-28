@@ -1,4 +1,19 @@
-.add-team{
+.btn-add-team{
 	padding: .5em 0;
 	display: block;
+}
+
+.team-name{
+	label{
+		display: block;
+	}
+}
+.btn-remove-team{
+	text-align: right;
+	float: right;
+
+	span{
+		display: inline-block;
+		vertical-align: middle;			
+	}
 }

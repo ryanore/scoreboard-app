@@ -5,12 +5,11 @@ export default ItemView.extend({
 	template: template,
 	className: 'games__create_team',
 	events: {
-		'click .remove': 'removeSelf'
-	},
-	initialize() {
-		console.log('model ', this.model.attributes);
+		'click .btn-remove-team': 'removeSelf'
 	},
 	removeSelf() {
-		console.log('REMOVE ME!');
+		console.log('this.mdoel ', this.model);
+		this.model.destroy();
+		console.log('this.mdoel ', this.model);
 	}
 });

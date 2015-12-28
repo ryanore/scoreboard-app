@@ -1,4 +1,18 @@
-<div class="col-sm-6 control-group">
-	<label class="control-label">Team Name</label>
+{{#if empty}}
+<div class="col-sm-6 control-group team-name">
+	<label class="control-label">
+		Please add some teams.
+	</label>
+</div>
+{{else}}
+<div class="col-sm-6 control-group team-name">
+	<label class="control-label">
+		Team Name
+		<a class="btn-remove-team link">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+			 remove
+		</a>
+	</label>
 	<input type="text" class="form-control"  />
 </div>
+{{/if}}
