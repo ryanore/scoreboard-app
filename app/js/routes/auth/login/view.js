@@ -21,7 +21,7 @@ export default ItemView.extend({
 	
 	templateHelpers() {
 		return {
-			errors: this.errors
+			errors: this.model.errors
 		};
 	},
 
@@ -45,7 +45,7 @@ export default ItemView.extend({
     })
     .fail((xhr, textStatus, errorThrown) => {
     	if( xhr.status === 401 ){
-    		this.errors.push('Bad login attempt. Try again!')
+    		this.model.errors.push('Bad login attempt. Try again!')
     	}
     	this.render();
     });

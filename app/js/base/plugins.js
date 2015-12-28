@@ -5,6 +5,7 @@ window.$ = $;
 require('bootstrap-sass');
 
 
+
 /*
 * Extend Backbone.validation callbacks to work with bootstrap
 */

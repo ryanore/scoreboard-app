@@ -5,26 +5,24 @@
 </header>
 
 <div class="new-user container col-md-8 col-lg-6 col-lg-offset-3 col-md-offset-2">
-	<div class="">
-		<!-- Should this be a container?  seems kind of overzealous on the markup -->
-		<div class="col-xs-12">
-			<h2>Start a new game here!</h2>
-		</div>
-	</div>
 	<form class="content-section">  
 		<div class="form-group">			
       <div class="row">
         <div class="col-xs-12"><h4>The Game</h4></div>
         <div class="col-sm-4 control-group" >
             <label class="control-label">Game Title</label>
-            <input type="text" class="form-control" name="username"  />
+            <input type="text" class="form-control" name="title"  />
+        </div>
+        <div class="col-sm-8 control-group" >
+            <label class="control-label">Description</label>
+            <textarea type="text" class="form-control" name="description" ></textarea>
         </div>
    		</div>
    	</div>
 		<div class="form-group">			
       <div class="row">
         <div class="col-xs-12"><h4>The Teams</h4></div>
-        <div class="col-sm-4 control-group game__add_team" >
+        <div class="col-sm-12 control-group game__add_team" >
         <!-- add team div here -->
         </div>
    		</div>

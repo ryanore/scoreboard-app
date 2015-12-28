@@ -3,7 +3,7 @@ import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import $ from 'jquery';
 import View from './view';
-import User from '../../../entities/models/user';
+import Game from '../../../entities/models/game';
 import Session from '../../../entities/session';
 import validation from './validation';
 
@@ -23,7 +23,7 @@ let Route = Marionette.Object.extend({
 		}
 		this.container = options.container;
 		this.container.show(new View({
-			model: new User()
+			model: new Game()
 		}));
 	},
 
@@ -42,7 +42,7 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} Must be admin, or not logged in
 	 */
 	validate() {
-		return (Session.level() < 0 || Session.level(1));
+		return (Session.level(1));
 	}
 
 });

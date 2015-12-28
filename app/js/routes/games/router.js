@@ -28,13 +28,18 @@ export default Router.extend({
 	updateNav() {
 		Radio.trigger('NavChannel', 'header:item:add',[{
 					label: 'New Game',
-					path: 'games/new'
+					path: 'games/new',
+					min: 0
 				}, {
 					label: 'Games',
 					path: 'games'
 				}
 		]);
 	},
+
+	/**
+	 * Routes
+	 */
 
 	index() {
 		Radio.trigger('NavChannel', 'header:item:activate', 'games');

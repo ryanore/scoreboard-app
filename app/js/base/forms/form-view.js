@@ -1,11 +1,10 @@
-import {ItemView} from 'backbone.marionette';
+import {LayoutView} from 'backbone.marionette';
 import FormBehavior from './form-behavior';
 import Session from '../../entities/session';
 import {errMap} from '../../utils/form';
 
-export default ItemView.extend({
+export default LayoutView.extend({
 	className: 'view users__create',
-	errors: [],
 	validation: {},
 	
 	events: {
@@ -24,7 +23,7 @@ export default ItemView.extend({
 	 */
 	templateHelpers() {
 		return {
-			errors: this.errors,
+			errors: this.model.errors,
 			success: this.success
 		};
 	},
@@ -33,7 +32,9 @@ export default ItemView.extend({
 	 * Abstract hook for overriding before sending form.
 	 * @return {null}
 	 */
-	beforeSave() {},
+	beforeSave() {
+		console.log('beforesave ');
+	},
 
 	/**
 	 * Abstract callback for overriding, fired if saved successfully		
@@ -79,7 +80,7 @@ export default ItemView.extend({
 				this.el.classList.remove('loading');
 			},
 			error: (mod, promise, xhr) => {
-				errMap(xhr.xhr.responseText, this.errors);
+				errMap(xhr.xhr.responseText, this.model.errors);
 				this.success = false;
 				this.el.classList.remove('loading');
 				this.onErr();
@@ -95,17 +96,21 @@ export default ItemView.extend({
 	 */
 	onFormSubmit(e) {
 		e.preventDefault();
-		this.errors = [];
+		this.model.errors = [];
 		this.model.set(this.form);
-		
+		console.log('this.model.set ', this.form);
 		if( !this.model.isValid()){
 			return false;
 		}		
 
 		this.loading = true;
 		this.el.classList.add('loading');
-		this.beforeSave();
 		
+		this.beforeSave();
+		if( this.model.errors.length ){
+			return this.render();
+		}		
+
 		if( this.url ){
 			this.saveAjax();
 		} else {

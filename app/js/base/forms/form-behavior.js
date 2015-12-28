@@ -57,7 +57,6 @@ export default Behavior.extend({
 	 * @return {[type]} [description]
 	 */
 	onChange() {
-		// this.view.form = this.view.model.attributes;// not sure if i need this, but it's keeping me from using input forms that aren't in themodel (password_confirm)
 		this.deserialize();
 		this.view.model.validate();
 	},

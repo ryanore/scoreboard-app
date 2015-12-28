@@ -41,7 +41,7 @@ export default LayoutView.extend({
 	templateHelpers() {
 		let isUser = Session.isUser(this.model.get('_id'));
 		return {
-			errors: this.errors,
+			errors: this.model.errors,
 			createdAt: formatDate(this.model.get('createdAt'), 'short'),
 			allowEdit: isUser || Session.level(1),
 			allowDelete: isUser || Session.level(1),

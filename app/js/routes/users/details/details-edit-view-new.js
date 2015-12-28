@@ -22,6 +22,6 @@ export default FormView.extend({
 	},
 
 	onErr() {
-		this.errors.push('There was a problem saving...');
+		this.model.errors.push('There was a problem saving...');
 	}
 });
