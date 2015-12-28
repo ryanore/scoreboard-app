@@ -32,13 +32,14 @@ export default Router.extend({
 			path: 'signup',
 			max: -1
 		}, {
+			label: 'Users',
+			path: 'users',
+			min: 1
+		}, {
 			className: 'user',
 			min: 0,
+			path: 'users',
 			children: [{
-				label: 'Users',
-				path: 'users',
-				min: 1
-				}, 	{
 					label: 'Logout',
 					path: 'logout'
 				}, {
@@ -48,20 +49,28 @@ export default Router.extend({
 		}]);
 	},
 
+
+	/**
+	 * New User Route
+	 */
 	create() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'signup');
 		return new CreateRoute({
 			container: this.container
 		});
 	},
 
+	/**
+	 * List Users Route
+	 */
 	index() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'users');
 		return new IndexRoute({
 			container: this.container
 		});
 	},
 
+	/**
+	 * User Details Route
+	 */
 	details(id) {
 		if(!id){
 			if(Session.user){
@@ -70,13 +79,15 @@ export default Router.extend({
 				id = null;
 			}
 		}
-		Radio.trigger('NavChannel', 'header:item:activate', 'user');
 		return new DetailsRoute({
 			_id: id,
 			container: this.container
 		});
 	},
 
+	/**
+	 * Not Found Route
+	 */
 	notFound() {
 		Backbone.history.navigate('notfound', {
 			trigger: true

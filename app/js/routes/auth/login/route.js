@@ -28,16 +28,6 @@ let Route = Marionette.Object.extend({
 		);		
 	},
 
-
-	/**
-	 * Tell the nav what to do
-	 * @return {null}
-	 */
-	updateNav() {
-		Radio.trigger('NavChannel','header:item:activate', 'login');
-	},
-
-
 	/**
 	 * Validate User's Permissions
 	 * @return {boolean} ONLY if not already logged in

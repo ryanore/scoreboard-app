@@ -23,7 +23,6 @@ let Route = Marionette.Object.extend({
 		}
 
 		this.fetch().then((m) => {
-			this.updateNav();
 			this.container.show(new View({model: m}));
 		});
 	},
@@ -44,15 +43,6 @@ let Route = Marionette.Object.extend({
     		return Backbone.history.navigate('notfound', {trigger: true});
     	}});
     return defer;
-	},
-
-
-	/**
-	 * Tell the nav what to do
-	 * @return {null}
-	 */
-	updateNav() {
-		Radio.trigger('NavChannel','header:item:activate', 'users');
 	},
 
 

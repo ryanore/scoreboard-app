@@ -27,9 +27,10 @@ export default ItemView.extend({
 
 	onFormSubmit() {
 		let frag = Backbone.history.returnFragment || '/';		
-		
+		this.model.errors = [];
 		this.model.set(this.form);
 		this.model.validate();
+		
 		if( !this.model.isValid()){
 			return false;
 		}		

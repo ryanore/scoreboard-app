@@ -11,23 +11,7 @@
 
   <div class="collapse navbar-collapse" id="navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
-      {{#each items}}
-      		{{#if children}}
-          <li class="dropdown">
-              <a data-nav="user" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              	{{label}}
-                <span class="glyphicon" aria-hidden="true"></span> <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-              	{{#each children}}
-              		<li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{label}}</a></li>
-              	{{/each}}
-              </ul>
-          </li>
-          {{else}}
-      		<li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{label}}</a></li>
-      		{{/if}}
-			{{/each}}
+     
     </ul>
   </div>
 </div>

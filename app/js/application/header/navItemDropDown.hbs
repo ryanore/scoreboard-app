@@ -1,0 +1,18 @@
+{{#if display}}
+  <a 
+  	data-nav="user"
+  	href="#" 
+  	class="dropdown-toggle {{#if active}}active{{/if}}" 
+  	data-toggle="dropdown" 
+  	role="button" 
+  	aria-expanded="false">
+  	{{label}}
+    <span class="glyphicon" aria-hidden="true"></span> 
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+  	{{#each children}}
+  		<li {{#if active}}class="active"{{/if}}><a href="#{{path}}">{{label}}</a></li>
+  	{{/each}}
+  </ul>
+{{/if}}

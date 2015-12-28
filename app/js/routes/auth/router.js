@@ -28,7 +28,6 @@ export default Router.extend({
 	},
 
 	logIn() {
-		Radio.trigger('NavChannel','header:item:activate', 'login');		
 		return new LoginRoute({
 			container: this.container
 		});
@@ -36,12 +35,10 @@ export default Router.extend({
 
 	logOut() {
 		Session.logOutUser();
-		Radio.trigger('NavChannel','header:item:activate', '');		
 		history.navigate('', {trigger: true});
 	},
 
 	forgotpassword() {
-		Radio.trigger('NavChannel','header:item:activate', '');		
 		return new ForgotRoute({
 			container: this.container
 		});

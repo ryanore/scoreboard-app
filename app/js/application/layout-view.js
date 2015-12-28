@@ -11,5 +11,13 @@ export default LayoutView.extend({
 		content: '.application__content',
 		footer: '.application__footer',
 		overlay: '.application__overlay'
-	}
+	},
+
+  onBeforeShow: function() {
+  	console.log('BEFORE SHOW ');
+  // 	this.header = new Header({
+		// 	container: this.header
+		// });
+   
+  }
 });

@@ -26,6 +26,19 @@ button:focus,
 	font-weight: bold;
 }
 
+
+// Main Application Container
+// Houses All other containers
+//
+#app-main{
+	margin-bottom: $footer-height-small;
+	overflow: hidden;
+}
+
+
+// Footer doesn't show up unless items are added
+// Fixed to bottom
+//
 .application__footer{
 	position: fixed;
 	bottom: 0;
@@ -38,19 +51,26 @@ button:focus,
 	}
 }
 
+
+// Main Content of the app
+// pages etc.
 .application__content{
 	padding-top: $navbar-height;
 	min-height: 200px;
 }
 
 
-#app-main{
-	margin-bottom: $footer-height-small;
-	overflow: hidden;
-}
-
+// Fixed Bootstrap navbar header 
+// 
 .application__header{
 	[data-nav="user"] .glyphicon{
 		@extend .glyphicon-user;
 	}
+	.navbar-inverse .navbar-nav > li >*.active{
+		color: #fff !important;
+		> *{
+			color: #fff !important;
+		}
+	}
 }
+

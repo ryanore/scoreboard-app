@@ -5,7 +5,6 @@ import {errMap} from '../../utils/form';
 
 export default LayoutView.extend({
 	className: 'view users__create',
-	validation: {},
 	
 	events: {
 		'submit form': 'onFormSubmit'
@@ -33,20 +32,24 @@ export default LayoutView.extend({
 	 * @return {null}
 	 */
 	beforeSave() {
-		console.log('beforesave ');
+		console.log('beforeSave in base class should be overridden ');
 	},
 
 	/**
 	 * Abstract callback for overriding, fired if saved successfully		
 	 * @return {null}
 	 */
-	onSuccess() {},
+	onSuccess() {
+		console.log('onSuccess in base class should be overridden ');
+	},
 
 	/**
 	 * Abstract callback for overriding, fired if save fails.		
 	 * @return {null}
 	 */
-	onErr() {},
+	onErr() {
+		console.log('onErr in base class should be overridden ');
+	},
 
 	/**
 	 * Save with Jquery Ajax, in cases where non-RESTful requests are used.
@@ -75,18 +78,24 @@ export default LayoutView.extend({
 	saveModel() {
 		this.model.save(null,{
 			success: (mod) => {
-				this.onSuccess();
 				this.success = true;
+				this.onSuccess();
+				console.log('SUCCESS 1 mod', mod);
 				this.el.classList.remove('loading');
+				console.log('SUCCESS 2 el', this.el);
+				this.render();
 			},
 			error: (mod, promise, xhr) => {
 				errMap(xhr.xhr.responseText, this.model.errors);
 				this.success = false;
 				this.el.classList.remove('loading');
 				this.onErr();
+				console.log('ERRORS ', this.model.errors);
+				this.render();
 			}
 		})	
 	},
+
 
 	/**
 	 * Submit handler sets props which triggers validation.  
@@ -98,15 +107,15 @@ export default LayoutView.extend({
 		e.preventDefault();
 		this.model.errors = [];
 		this.model.set(this.form);
-		console.log('this.model.set ', this.form);
+		
 		if( !this.model.isValid()){
 			return false;
 		}		
 
 		this.loading = true;
 		this.el.classList.add('loading');
-		
 		this.beforeSave();
+
 		if( this.model.errors.length ){
 			return this.render();
 		}		

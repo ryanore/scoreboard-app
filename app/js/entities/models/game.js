@@ -5,6 +5,7 @@ let GameModel = Model.extend({
 	idAttribute: '_id',
 	urlRoot: API + 'games',
 	validation: null,
+	errors: [],
 	defaults: {
 		teams: [],
 		score: {},

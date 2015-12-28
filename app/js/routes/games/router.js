@@ -27,14 +27,13 @@ export default Router.extend({
 	 */
 	updateNav() {
 		Radio.trigger('NavChannel', 'header:item:add',[{
-					label: 'New Game',
-					path: 'games/new',
-					min: 0
-				}, {
-					label: 'Games',
-					path: 'games'
-				}
-		]);
+			label: 'New Game',
+			path: 'games/new',
+			min: 0
+		}, {
+			label: 'Games',
+			path: 'games'
+		}]);
 	},
 
 	/**
@@ -42,21 +41,18 @@ export default Router.extend({
 	 */
 
 	index() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'games');
 		return new IndexRoute({
 			container: this.container
 		});
 	},
 
 	mygames() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'mygames');
 		return new IndexRoute({
 			container: this.container
 		});
 	},
 
 	create() {
-		Radio.trigger('NavChannel', 'header:item:activate', 'games');
 		return new CreateRoute({
 			container: this.container
 		});
@@ -64,7 +60,6 @@ export default Router.extend({
 
 
 	details(id) {
-		Radio.trigger('NavChannel', 'header:item:activate', 'games');
 		return new IndexRoute({
 			container: this.container
 		});

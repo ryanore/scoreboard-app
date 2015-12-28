@@ -23,7 +23,6 @@ export default Application.extend({
 				this.start();
 			},1);
 		});
-
 	},
 
 
@@ -38,7 +37,6 @@ export default Application.extend({
 		this.layout.render();
 		
 		this.header = new Header({
-			collection: new Collection(),
 			container: this.layout.header
 		});
 
