@@ -31,7 +31,7 @@ export default LayoutView.extend({
 	},
 
   handleContent(c) {
- 		this.content.show(c);
+  	this.content.show(c);
   },
 
   handleHeader(c) {

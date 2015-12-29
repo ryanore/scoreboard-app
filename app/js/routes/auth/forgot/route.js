@@ -12,6 +12,7 @@ let Route = Marionette.Object.extend({
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
+	 * Self Destruct
 	 * @return  {null}
 	 */
 	initialize(){
@@ -23,6 +24,8 @@ let Route = Marionette.Object.extend({
 			model: new User( {}, { validation: validation} )
 		});	
   	Radio.trigger('RootChannel','content:show', userView);
+  	
+  	this.destroy();
 	},
 
 	/**

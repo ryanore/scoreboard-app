@@ -26,6 +26,8 @@ let Route = Marionette.Object.extend({
   	Radio.trigger('RootChannel','content:show', new View({
 			model: new Game()
 		}));
+	  
+	  this.destroy();
 	},
 
 

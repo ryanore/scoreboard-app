@@ -9,7 +9,6 @@ import template from './teams-collection.hbs';
 export default CompositeView.extend({
 	template: template,
 	className: 'games__create_teams_list',
-	collection: new Collection(),
 	childView: TeamName,
 	emptyView: EmptyView,
   childViewContainer: ".teams-list",
@@ -26,7 +25,13 @@ export default CompositeView.extend({
 		return this.collection.toJSON();
 	},
 
+	validate() {
+		let rmv = this.collection.where({name:''});
+		this.collection.remove(rmv);
+	},
+
 	initialize() {
+		this.collection = new Collection(),
 		this.addTeamInput();
 	}
 });

@@ -4,12 +4,19 @@ import template from './team-name.hbs';
 export default ItemView.extend({
 	template: template,
 	className: 'games__create_team',
-	events: {
-		'click .btn-remove-team': 'removeSelf'
+	initialize() {
+		this.$input = this.$el.find('input');
 	},
+	events: {
+		'click .btn-remove-team': 'removeSelf',
+		'change input': 'updateSelf'
+	},
+
+	updateSelf() {
+		this.model.set('name', this.$input.val());
+	},
+
 	removeSelf() {
-		console.log('this.mdoel ', this.model);
 		this.model.destroy();
-		console.log('this.mdoel ', this.model);
 	}
 });

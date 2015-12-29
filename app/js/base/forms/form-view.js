@@ -56,6 +56,7 @@ export default LayoutView.extend({
 	 * @return {null}
 	 */
 	saveAjax() {
+		console.log('saveAjax ');
 		$.ajax({
 		  url: this.url,
 		  type: 'POST',
@@ -76,6 +77,7 @@ export default LayoutView.extend({
 	 * @return {null}
 	 */
 	saveModel() {
+		console.log('saveModel ');
 		this.model.save(null,{
 			success: (mod) => {
 				this.success = true;

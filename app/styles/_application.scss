@@ -67,9 +67,9 @@ button:focus,
 		@extend .glyphicon-user;
 	}
 	.navbar-inverse .navbar-nav > li >.active{
-		color: #fff !important;
+		color: #fff;
 		> *{
-			color: #fff !important;
+			color: #fff;
 		}
 	}
 }

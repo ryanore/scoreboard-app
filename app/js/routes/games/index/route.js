@@ -11,16 +11,16 @@ let Route = Marionette.Object.extend({
   RootChannel: Radio.channel('RootChannel'),
 
 	/**
-	 * Initialze Route
-	 * Build model/view and send it up to the content region
+	 * Initialze Route - Build model/view and send it up to the content region
+	 * Self Destruct
 	 * @return  {null}
 	 */
 	initialize(){
 		this.fetch().then((c) => {
 	  	Radio.trigger('RootChannel','content:show', new View({collection: c}));
+	  	this.destroy();
 		});
 	},
-	
 
 	/**
 	 * Fetch Model
@@ -33,16 +33,8 @@ let Route = Marionette.Object.extend({
       defer.resolve(c);
     }});
     return defer;
-	},
-
-
-	/**
-	 * Validate User's Permissions
-	 * @return {boolean} ONLY admin can see list of users
-	 */
-	validate() {
-		return Session.level(1);
 	}
+
 });
 
 

@@ -6,6 +6,7 @@ let Route = Marionette.Object.extend({
   RootChannel: Radio.channel('RootChannel'),
 	initialize(options){
   	Radio.trigger('RootChannel','content:show', new View());	
+  	this.destroy();
 	}
 });
 

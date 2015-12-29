@@ -15,8 +15,8 @@ export default FormView.extend({
  		this.addRegions({
  			'teams': '.game__add_team'
  		});
+ 		console.log('onRender ', this.teams);
  		this.teams.show(this.teamsCollectionView);
-
 	},
 
 	/**
@@ -30,8 +30,7 @@ export default FormView.extend({
 	},
 
 	beforeSave() {
-		this.errors.push('PUSH');
-		console.log('SAVE! ' );
+		
 	}
 
 });

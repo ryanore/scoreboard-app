@@ -1,8 +1,8 @@
 import {history} from 'backbone';
-import {LayoutView} from 'backbone.marionette';
+import {ItemView} from 'backbone.marionette';
 import template from './layout-template.hbs';
 
-export default LayoutView.extend({
+export default ItemView.extend({
   template: template,
-  className: 'users view games--index container'
+	className: 'games view games--index container'
 });

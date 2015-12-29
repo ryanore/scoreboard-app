@@ -21,7 +21,6 @@ export default Router.extend({
 
 	/**
 	 * Update the main nav with The Games link 
-	 * Only if the user is admin
 	 * @return {null} 
 	 */
 	updateNav() {
@@ -35,9 +34,6 @@ export default Router.extend({
 		}]);
 	},
 
-	/**
-	 * Routes
-	 */
 
 	index() {
 		return new IndexRoute();
