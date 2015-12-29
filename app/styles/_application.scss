@@ -66,7 +66,7 @@ button:focus,
 	[data-nav="user"] .glyphicon{
 		@extend .glyphicon-user;
 	}
-	.navbar-inverse .navbar-nav > li >*.active{
+	.navbar-inverse .navbar-nav > li >.active{
 		color: #fff !important;
 		> *{
 			color: #fff !important;

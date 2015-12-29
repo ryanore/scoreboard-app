@@ -37,7 +37,7 @@ export default Router.extend({
 		}, {
 			className: 'user',
 			min: 0,
-			path: 'users',
+			path: 'users/details/me',
 			children: [{
 					label: 'Logout',
 					path: 'logout'
