@@ -1,10 +1,11 @@
 import Marionette from 'backbone.marionette';
+import {Radio} from 'backbone';
 import View from './view';
 
 let Route = Marionette.Object.extend({
+  RootChannel: Radio.channel('RootChannel'),
 	initialize(options){
-		this.container = options.container;
-		this.container.show(new View());
+  	Radio.trigger('RootChannel','content:show', new View());	
 	}
 });
 

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import {Collection} from 'backbone';
 import {Application} from 'backbone.marionette';
-import LayoutView from './layout-view';
+import LayoutView from './application-layout';
 import Header from './header/view';
 import Footer from './footer/view';
 import Session from '../entities/session';
@@ -23,6 +23,7 @@ export default Application.extend({
 				this.start();
 			},1);
 		});
+
 	},
 
 
@@ -33,17 +34,12 @@ export default Application.extend({
 	buildDom() {
 		$('body').append('<div id="app-main"></div>');
 
-		this.layout = new LayoutView();
+		this.layout = new LayoutView();		
 		this.layout.render();
 		
-		this.header = new Header({
-			container: this.layout.header
-		});
+		this.header = new Header();
 
-		this.footer = new Footer({
-			collection: new Collection(),
-			container: this.layout.footer
-		});
+		this.footer = new Footer();
 	},
 
 

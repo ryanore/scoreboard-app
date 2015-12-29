@@ -6,8 +6,7 @@ import ForgotRoute from './forgot/route';
 import {history} from 'backbone';
 
 export default Router.extend({
-	initialize(options = {}) {
-		this.container = options.container;
+	initialize() {
 		this.updateNav();
 	},
 
@@ -28,9 +27,7 @@ export default Router.extend({
 	},
 
 	logIn() {
-		return new LoginRoute({
-			container: this.container
-		});
+		return new LoginRoute();
 	},
 
 	logOut() {
@@ -39,8 +36,6 @@ export default Router.extend({
 	},
 
 	forgotpassword() {
-		return new ForgotRoute({
-			container: this.container
-		});
+		return new ForgotRoute();
 	}
 });

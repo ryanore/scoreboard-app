@@ -15,7 +15,6 @@ export default Router.extend({
 	},
 
 	initialize(options = {}) {
-		this.container = options.container;
 		this.updateNav();
 	},
 
@@ -41,28 +40,19 @@ export default Router.extend({
 	 */
 
 	index() {
-		return new IndexRoute({
-			container: this.container
-		});
+		return new IndexRoute();
 	},
 
 	mygames() {
-		return new IndexRoute({
-			container: this.container
-		});
+		return new IndexRoute();
 	},
 
 	create() {
-		return new CreateRoute({
-			container: this.container
-		});
+		return new CreateRoute();
 	},
 
-
 	details(id) {
-		return new IndexRoute({
-			container: this.container
-		});
+		return new IndexRoute();
 	},
 
 	notFound() {

@@ -8,6 +8,7 @@ import Session from '../../../entities/session';
 import validation from './validation';
 
 let Route = Marionette.Object.extend({
+  RootChannel: Radio.channel('RootChannel'),
 	
 	/**
 	 * Initialze Route
@@ -21,8 +22,8 @@ let Route = Marionette.Object.extend({
 				trigger: true
 			});
 		}
-		this.container = options.container;
-		this.container.show(new View({
+
+  	Radio.trigger('RootChannel','content:show', new View({
 			model: new Game()
 		}));
 	},

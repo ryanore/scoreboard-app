@@ -8,6 +8,8 @@ import View from './layout-view';
 
 let Route = Marionette.Object.extend({
 	
+	RootChannel: Radio.channel('RootChannel'),
+
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
@@ -23,7 +25,9 @@ let Route = Marionette.Object.extend({
 		}
 
 		this.fetch().then((m) => {
-			this.container.show(new View({model: m}));
+		  Radio.trigger('RootChannel','content:show', new View({
+		  	model: m
+		  }));
 		});
 	},
 

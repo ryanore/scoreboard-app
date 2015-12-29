@@ -7,6 +7,8 @@ import Collection from '../../../entities/collections/users';
 import Session from '../../../entities/session';
 
 let Route = Marionette.Object.extend({
+
+  RootChannel: Radio.channel('RootChannel'),
 	
 	/**
 	 * Initialze Route
@@ -18,9 +20,8 @@ let Route = Marionette.Object.extend({
 			Backbone.history.returnFragment = 'users';
 			return Backbone.history.navigate('login', {trigger: true});
 		}
-		this.container = options.container;
 		this.fetch().then((c) => {
-			this.container.show(new View({collection: c}));
+	  	Radio.trigger('RootChannel','content:show', new View( {collection: c}));
 		});
 	},
 	

@@ -8,7 +8,9 @@ import Session from '../../../entities/session';
 import validation from './validation';
 
 let Route = Marionette.Object.extend({
-	
+
+  RootChannel: Radio.channel('RootChannel'),
+
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
@@ -21,10 +23,10 @@ let Route = Marionette.Object.extend({
 				trigger: true
 			});
 		}
-		this.container = options.container;
-		this.container.show(new View({
-			model: new User()
-		}));
+
+	  Radio.trigger('RootChannel','content:show', new View({
+	  	model: new User()
+	  }));
 	},
 
 

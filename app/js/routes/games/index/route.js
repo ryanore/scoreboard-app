@@ -7,16 +7,17 @@ import Collection from '../../../entities/collections/games';
 import Session from '../../../entities/session';
 
 let Route = Marionette.Object.extend({
-	
+
+  RootChannel: Radio.channel('RootChannel'),
+
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
 	 * @return  {null}
 	 */
-	initialize(options){
-		this.container = options.container;
+	initialize(){
 		this.fetch().then((c) => {
-			this.container.show(new View({collection: c}));
+	  	Radio.trigger('RootChannel','content:show', new View({collection: c}));
 		});
 	},
 	

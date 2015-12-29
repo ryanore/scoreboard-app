@@ -17,7 +17,6 @@ export default Router.extend({
 	},
 
 	initialize(options = {}) {
-		this.container = options.container;
 		this.updateNav();
 	},
 
@@ -54,18 +53,14 @@ export default Router.extend({
 	 * New User Route
 	 */
 	create() {
-		return new CreateRoute({
-			container: this.container
-		});
+		return new CreateRoute();
 	},
 
 	/**
 	 * List Users Route
 	 */
 	index() {
-		return new IndexRoute({
-			container: this.container
-		});
+		return new IndexRoute();
 	},
 
 	/**
@@ -79,10 +74,7 @@ export default Router.extend({
 				id = null;
 			}
 		}
-		return new DetailsRoute({
-			_id: id,
-			container: this.container
-		});
+		return new DetailsRoute({ _id: id });
 	},
 
 	/**

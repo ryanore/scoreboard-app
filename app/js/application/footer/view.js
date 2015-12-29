@@ -9,14 +9,16 @@ export default ItemView.extend({
   className: 'btn-group btn-group-justified',
 
   NavChannel: Radio.channel('NavChannel'),
-    
+  RootChannel: Radio.channel('RootChannel'),
+
   collectionEvents: {
     'all': 'render'
   },
   
   initialize(options) {
-  	options.container.show(this);
+  	this.collection = new Collection();
   	this.listenTo(this.NavChannel, 'footer:update', this.update);
+  	Radio.trigger('RootChannel','footer:show', this);	
   },
 
   update(items) {

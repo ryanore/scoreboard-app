@@ -12,11 +12,12 @@ export default CompositeView.extend({
   childViewContainer: '.navbar-nav',
   className: 'header navbar navbar-inverse navbar-fixed-top ',
   NavChannel: Radio.channel('NavChannel'),
+  RootChannel: Radio.channel('RootChannel'),
 
   initialize(options) {
   	this.collection = new Backbone.Collection();
-  	options.container.show(this);
   	this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
+  	Radio.trigger('RootChannel','header:show', this);	
   },
 
   addItems(items) {

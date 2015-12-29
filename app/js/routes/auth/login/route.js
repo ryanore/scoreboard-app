@@ -8,24 +8,21 @@ import View from './view';
 import validation from './validation';
 
 let Route = Marionette.Object.extend({
-	
+  RootChannel: Radio.channel('RootChannel'),
+
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
 	 * @return  {null}
 	 */
-	initialize(options){
-		this.container = options.container;
+	initialize(){
 		if( ! this.validate() ){
 			return history.navigate('/', {trigger: true});
 		}
-		this.container.show(
-			new View({
-				model: new User({},{
-					validation: validation
-				})
-			})
-		);		
+		
+  	Radio.trigger('RootChannel','content:show', new View({
+			model: new User( {}, { validation: validation} )
+		}));
 	},
 
 	/**

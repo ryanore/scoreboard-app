@@ -9,25 +9,15 @@ import ErrorRouter from './js/routes/error/router';
 import Application from './js/application/application';
 
 let app = new Application().on('start', function(){
-	new IndexRouter({
-		container: app.layout.content
-	});
+	new IndexRouter();
 
-	new GamesRouter({
-		container: app.layout.content
-	});
+	new GamesRouter();
 
-	new AuthRouter({
-		container: app.layout.content
-	});
+	new AuthRouter();
 
-	new ErrorRouter({
-		container: app.layout.content
-	});
+	new ErrorRouter();
 
-	new UsersRouter({
-		container: app.layout.content
-	});
+	new UsersRouter();
 	
 	Backbone.history.start();
 
