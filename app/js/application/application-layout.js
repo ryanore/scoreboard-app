@@ -1,6 +1,8 @@
 import {LayoutView} from 'backbone.marionette';
 import template from './application-layout.hbs';
 import {Radio} from 'backbone';
+import Header from './header/view';
+import Footer from './footer/view';
 
 
 export default LayoutView.extend({
@@ -12,7 +14,13 @@ export default LayoutView.extend({
 		this.listenTo(this.RootChannel,'header:show', this.handleHeader);
 		this.listenTo(this.RootChannel,'footer:show', this.handleFooter);
 		this.listenTo(this.RootChannel,'content:show', this.handleContent);
+		this.render();
 	},
+
+	onRender: function(){
+		this.header = new Header();
+		this.footer = new Footer();
+  },
 
 	regions: {
 		header: '.application__header',

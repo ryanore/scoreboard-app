@@ -2,8 +2,6 @@ import $ from 'jquery';
 import {Collection} from 'backbone';
 import {Application} from 'backbone.marionette';
 import LayoutView from './application-layout';
-import Header from './header/view';
-import Footer from './footer/view';
 import Session from '../entities/session';
 import socket from '../base/socket';
 
@@ -18,12 +16,20 @@ export default Application.extend({
 		
 		this.addHeaders();
 
+		this.startApplication();
+	},
+
+
+	/**
+	 * Validate User's Token, and start the app
+	 * Use short setTimeout to get around weird async shit.
+	 */
+	startApplication() {
 		Session.validateToken().then(() => {
 			setTimeout(() => {
 				this.start();
 			},1);
 		});
-
 	},
 
 
@@ -33,13 +39,7 @@ export default Application.extend({
 	 */
 	buildDom() {
 		$('body').append('<div id="app-main"></div>');
-
 		this.layout = new LayoutView();		
-		this.layout.render();
-		
-		this.header = new Header();
-
-		this.footer = new Footer();
 	},
 
 
