@@ -10,7 +10,6 @@ export default Behavior.extend({
 
 	initialize() {
 		this.listenTo(this.view.options.model, 'change', this.onChange);
-		this.listenTo(this.view.options.model, 'validated:invalid', this.inValid);
 	},
 	
 
@@ -39,6 +38,13 @@ export default Behavior.extend({
 	 * @return {null}
 	 */
 	serialize() {
+		let include = this.view.model.validation.include;
+
+		if( include ){
+			this.view.form = Syphon.serialize(this, {
+				include: include
+			});
+		}
 		this.view.form = Syphon.serialize(this);
 	},
 
@@ -48,7 +54,15 @@ export default Behavior.extend({
 	 * @return {null}
 	 */
 	deserialize() {
+		let include = this.view.model.validation.include;
+
+		if( include ){
+			return Syphon.deserialize(this, this.view.form, {
+				include: include
+			});
+		}
 		return Syphon.deserialize(this, this.view.form);
+
 	},
 
 
@@ -72,6 +86,6 @@ export default Behavior.extend({
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.view.form = Syphon.serialize(this);
+		this.serialize();
 	}
 });

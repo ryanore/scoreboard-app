@@ -11,5 +11,6 @@ export default {
 		required: true,
 		minLength: 6,
 		msg: 'At least 6 characters.'
-	}
+	},
+	include:['title', 'description']
 };

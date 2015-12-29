@@ -21,17 +21,10 @@ export default CompositeView.extend({
 		this.collection.add( new Team() );
 	},
 
-	getTeams() {
-		return this.collection.toJSON();
-	},
-
 	validate() {
 		let rmv = this.collection.where({name:''});
 		this.collection.remove(rmv);
-	},
-
-	initialize() {
-		this.collection = new Collection(),
-		this.addTeamInput();
+		return this.collection.length >=  2;
 	}
+
 });

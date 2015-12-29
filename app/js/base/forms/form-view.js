@@ -5,7 +5,7 @@ import {errMap} from '../../utils/form';
 
 export default LayoutView.extend({
 	className: 'view users__create',
-	
+	form: {},
 	events: {
 		'submit form': 'onFormSubmit'
 	},
@@ -41,6 +41,7 @@ export default LayoutView.extend({
 	 */
 	onSuccess() {
 		console.log('onSuccess in base class should be overridden ');
+		this.render();
 	},
 
 	/**
@@ -49,6 +50,7 @@ export default LayoutView.extend({
 	 */
 	onErr() {
 		console.log('onErr in base class should be overridden ');
+		this.render();
 	},
 
 	/**
@@ -56,7 +58,6 @@ export default LayoutView.extend({
 	 * @return {null}
 	 */
 	saveAjax() {
-		console.log('saveAjax ');
 		$.ajax({
 		  url: this.url,
 		  type: 'POST',
@@ -77,23 +78,17 @@ export default LayoutView.extend({
 	 * @return {null}
 	 */
 	saveModel() {
-		console.log('saveModel ');
 		this.model.save(null,{
 			success: (mod) => {
 				this.success = true;
-				this.onSuccess();
-				console.log('SUCCESS 1 mod', mod);
 				this.el.classList.remove('loading');
-				console.log('SUCCESS 2 el', this.el);
-				this.render();
+				this.onSuccess(mod);
 			},
 			error: (mod, promise, xhr) => {
 				errMap(xhr.xhr.responseText, this.model.errors);
 				this.success = false;
 				this.el.classList.remove('loading');
-				this.onErr();
-				console.log('ERRORS ', this.model.errors);
-				this.render();
+				this.onErr(mod);
 			}
 		})	
 	},
@@ -114,11 +109,11 @@ export default LayoutView.extend({
 			return false;
 		}		
 
-		this.loading = true;
-		this.el.classList.add('loading');
 		this.beforeSave();
+		this.el.classList.add('loading');
 
 		if( this.model.errors.length ){
+			this.el.classList.remove('loading');
 			return this.render();
 		}		
 

@@ -1,36 +1,59 @@
 import FormView from '../../../base/forms/form-view';
+import Backbone from 'backbone';
 import validation from './validation';
 import template from './template.hbs';
 import TeamCollectionView from './teams-collection-view';
 
 export default FormView.extend({
 	template: template,
+	
 	className: 'view games__create',
 
 	/**
-	 * Post Render, add CollectionView
+	 * Initialize view with it's validation rules, and inclusion
 	 * @return {[type]} [description]
+	 */
+	initialize() {
+		this.model.validation = validation;
+		this.teamsCollection = new Backbone.Collection();
+	},
+
+
+	/**
+	 * After Rendering, 
+	 * Set region for CollectionView, then show it.
+	 * @return {null}
 	 */
 	onRender() {
  		this.addRegions({
  			'teams': '.game__add_team'
  		});
- 		console.log('onRender ', this.teams);
+		this.teamsCollectionView = new TeamCollectionView({collection: this.teamsCollection});
  		this.teams.show(this.teamsCollectionView);
 	},
 
+
 	/**
-	 * Initialize main form view
-	 * Add validation rules and create the collectionView for the teams which should handle itself
+	 * Callback from FormView
+	 * Validate the collection of teams.
 	 * @return {null}
 	 */
-	initialize() {
-		this.model.validation = validation;
-		this.teamsCollectionView = new TeamCollectionView();
+	beforeSave() {
+		if( !this.teamsCollectionView.validate() ){
+			this.model.errors.push('Please add at least 2 teams.');
+		} else {
+			this.model.set('teams', this.teamsCollection.toJSON())
+		}
 	},
 
-	beforeSave() {
-		
-	}
 
+	/**
+	 * Callback from FormView
+	 * Redirect to newly created resource
+	 * @param  {Object} m Backbone.Model
+	 * @return {null}
+	 */
+	onSuccess(m) {
+		Backbone.history.navigate('/games/'+m.get('_id'), {trigger: true});
+	}
 });
