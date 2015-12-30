@@ -10,7 +10,8 @@ export default FormView.extend({
 	className: 'view games__create',
 
 	/**
-	 * Initialize view with it's validation rules, and inclusion
+	 * Initialize view with it's validation rules, and inclusion 
+	 * inclusion is kind of edge case for syphon.
 	 * @return {[type]} [description]
 	 */
 	initialize() {

@@ -13,6 +13,12 @@ export default CompositeView.extend({
 	emptyView: EmptyView,
   childViewContainer: ".teams-list",
 
+  initialize() {
+  	while( this.collection.length < 2 ){
+  		this.addTeamInput();
+  	}
+  },
+
   events: {
   	'click .btn-add-team': 'addTeamInput'
   },
@@ -26,5 +32,4 @@ export default CompositeView.extend({
 		this.collection.remove(rmv);
 		return this.collection.length >=  2;
 	}
-
 });
