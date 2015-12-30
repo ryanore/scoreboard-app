@@ -4,7 +4,6 @@ import Session from '../session';
 let GameModel = Model.extend({
 	idAttribute: '_id',
 	urlRoot: API + 'games',
-	validation: null,
 	errors: [],
 	defaults: {
 		teams: [],
@@ -17,16 +16,7 @@ let GameModel = Model.extend({
 		if( options.validation ){
 			this.validation = options.validation;
 		}
-	},
-	validate() {
-		console.log('validate game ');
-		if( !this.get('teams').length > 1){
-			this.model.errors.push('more teams!');
-			return false;
-		}
-		return true;
 	}
-	
 });
 
 export default GameModel;

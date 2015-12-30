@@ -4,6 +4,7 @@ import Router from '../../base/router/router';
 import Session from '../../entities/session';
 import IndexRoute from './index/_route';
 import CreateRoute from './create/_route';
+import GameRoute from './details/_route';
 
 export default Router.extend({
 	routes: {
@@ -48,7 +49,7 @@ export default Router.extend({
 	},
 
 	details(id) {
-		return new IndexRoute();
+		return new GameRoute(id);
 	},
 
 	notFound() {
