@@ -17,7 +17,16 @@ export default CompositeView.extend({
   initialize(options) {
   	this.collection = new Backbone.Collection();
   	this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
+  	this.listenTo(Backbone.Events, 'route', this.handleRoute );
   	Radio.trigger('RootChannel','header:show', this);	
+  },
+
+  onRender() {
+	  this.nav = this.$el.find('.collapse');
+  },
+
+  handleRoute() {
+  	console.log('nav ', this.nav.collapse('hide'));
   },
 
   addItems(items) {

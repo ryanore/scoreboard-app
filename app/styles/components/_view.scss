@@ -2,7 +2,7 @@
 .view.container-fluid{
 	max-width: $container-desktop;
 	.navbar{
-		background: $offWhite;
+		background: rgba($black, .8);
 	}
 }
 

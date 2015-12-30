@@ -63,6 +63,17 @@ button:focus,
 // Fixed Bootstrap navbar header 
 // 
 .application__header{
+	nav li a{
+		border-bottom: 1px solid $medGrey;
+	}
+	nav li:last-child > a{
+		border: none;
+	}
+
+	nav ul ul li a{
+		background: $dkGrey;
+	}
+
 	[data-nav="user"] .glyphicon{
 		@extend .glyphicon-user;
 	}
@@ -72,5 +83,6 @@ button:focus,
 			color: #fff;
 		}
 	}
+	
 }
 
