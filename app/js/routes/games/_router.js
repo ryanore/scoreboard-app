@@ -2,8 +2,8 @@ import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Router from '../../base/router/router';
 import Session from '../../entities/session';
-import IndexRoute from './index/route';
-import CreateRoute from './create/route';
+import IndexRoute from './index/_route';
+import CreateRoute from './create/_route';
 
 export default Router.extend({
 	routes: {

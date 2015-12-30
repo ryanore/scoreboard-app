@@ -1,6 +1,6 @@
 import FormView from '../../../base/forms/form-view';
 import Backbone from 'backbone';
-import validation from './validation';
+import validation from './_validation';
 import template from './template.hbs';
 import TeamCollectionView from './teams-collection-view';
 

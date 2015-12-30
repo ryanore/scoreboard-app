@@ -1,21 +1,19 @@
 import {history} from 'backbone';
-import Session from '../../../entities/session';
 import BaseClass from '../../../base/views/collection-table-itemview';
+import Session from '../../../entities/session';
 import {formatDate} from '../../../utils/date';
 import template from './item-template.hbs';
-
 export default BaseClass.extend({
   tagName: 'div',
   template: template,
-  className: 'tr users__item',
+  className: 'tr games__item',
   
   /**
    * Overwrites abstract base method
    */
   rowClicked() {
-  	history.navigate(`#users/details/${this.model.get('_id')}`, {trigger: true});
+  	history.navigate(`#games/${this.model.get('_id')}`, {trigger: true});
   },
-  
   
   /**
    * Data for the template, Marionette helper

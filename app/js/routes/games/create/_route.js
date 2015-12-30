@@ -5,7 +5,6 @@ import $ from 'jquery';
 import View from './view';
 import Game from '../../../entities/models/game';
 import Session from '../../../entities/session';
-import validation from './validation';
 
 let Route = Marionette.Object.extend({
   RootChannel: Radio.channel('RootChannel'),
@@ -13,7 +12,6 @@ let Route = Marionette.Object.extend({
 	/**
 	 * Initialze Route
 	 * Build model/view and send it up to the content region
-	 * Use Backbone.Validation and importa validation config from file
 	 * @return  {null}
 	 */
 	initialize(options) {
@@ -36,7 +34,7 @@ let Route = Marionette.Object.extend({
 	 * @return {boolean} Must be admin, or not logged in
 	 */
 	validate() {
-		return (Session.level(1));
+		return (Session.level(0));
 	}
 
 });

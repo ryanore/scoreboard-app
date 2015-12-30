@@ -5,10 +5,6 @@
 import {CompositeView} from 'backbone.marionette';
 
 export default CompositeView.extend({
-	// template: template,
-	// childView: ItemView,
-	// childViewContainer: 'tbody',
-
   events: {
   	'click [data-sort]': 'handleSortClick',
   	'change .selectAll': 'handleSelectAll'

@@ -1,0 +1,12 @@
+<div id="usersTable" class="table links border-bottom">
+  <div class="thead">
+  	{{#if admin}}
+    <div class="th selectCol">
+        <input class="selectAll" type="checkbox" value="">
+    </div>
+    {{/if}}
+    <div class="th" data-sort="title" >Game <span class="sort-icon"></span></div>
+    <div class="th hidden-xs" data-sort="createdAt">Created <span class="sort-icon"></span></div>
+  </div>
+  <div class="tbody"></div>
+</div>
