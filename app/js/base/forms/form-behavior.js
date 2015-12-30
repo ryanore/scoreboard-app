@@ -29,6 +29,7 @@ export default Behavior.extend({
 	 * @return {null}
 	 */
 	onRender() {
+		this.view.form = this.view.model.attributes;
 		Validation.bind(this.view);
 	},
 
@@ -39,7 +40,6 @@ export default Behavior.extend({
 	 */
 	serialize() {
 		let include = this.view.model.validation.include;
-		console.log('seriaize: INCLUDE ', include);
 		if( include ){
 			this.view.form = Syphon.serialize(this, {
 				include: include
@@ -55,7 +55,6 @@ export default Behavior.extend({
 	 */
 	deserialize() {
 		let include = this.view.model.validation.include;
-		console.log('deseriaize: INCLUDE ', include);
 		if( include ){
 			return Syphon.deserialize(this, this.view.form, {
 				include: include

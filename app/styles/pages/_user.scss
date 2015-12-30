@@ -1,20 +1,8 @@
-/*.table,
-table,
-tbody{
-	tr,
-	.t-row span{
-		border-color: $lightGrey;
-		background: #eee;
-		color: #222;
-		vertical-align: middle;
-		
-		&:first-child{
-			background: $brand-primary;
-			width: 25%;
-			max-width: 50px;
-			font-weight: bold;
-			color: #fff;
-		}
+form.users__details_list input{
+	&[type="text"],
+	&[type="email"]{
+		background: $dkGrey;
+		border-color: $offWhite;
+		color: $offWhite;
 	}
 }
-*/

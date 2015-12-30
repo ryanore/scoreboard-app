@@ -27,7 +27,7 @@ export default ItemView.extend({
 			this.model.set('display', true);
 			this.model.set('active' , this.model.get('path') === Backbone.history.fragment);
 		}
-		// don't
+		// don't display 
 		else{
 			this.model.set('display', false);
 		}

@@ -1,4 +1,4 @@
-<h2>Edit Your Details</h2>
+<h2>{{#if editMode}}Edit{{/if}} Your Details</h2>
 <form>
 <div class="form-group content-section">
   <div class="row">
@@ -32,9 +32,11 @@
 				</div>
 			</div>
 		{{/if}}
+		{{#if editMode}}
 		<div class="col-sm-3 control-group  pull-right" >
 			<button class="btn btn-primary btn-block" type="submit">Update</button>
-		</div>            
+		</div>
+		{{/if}}
  	</div>
 
 </div>

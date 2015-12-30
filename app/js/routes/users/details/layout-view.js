@@ -14,7 +14,7 @@ let	UserChannel = Radio.channel('UserChannel');
 export default LayoutView.extend({
   tagName: 'div',
   template: template,
-  className: 'users__detail view toggle-mode container',
+  className: 'users__detail view toggle-mode container-fluid',
 
  	regions: {
  		details: '.user__details_area'

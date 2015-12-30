@@ -38,6 +38,6 @@ export default {
 			minLength: 2,
 			required: true
 		}	
-}
+	}
 
 };
