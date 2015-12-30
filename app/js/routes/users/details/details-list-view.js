@@ -3,9 +3,8 @@ import {ItemView} from 'backbone.marionette';
 import FormBehavior from '../../../base/forms/form-behavior';
 import {history} from 'backbone';
 import {formatDate} from '../../../utils/date';
-import template from './details-edit.hbs';
+import template from './details-list.hbs';
 export default ItemView.extend({
-	tagName: 'form',
 	template: template,
 	className: 'users__details_list ',
 	templateHelpers() {

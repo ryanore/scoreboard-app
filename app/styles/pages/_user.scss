@@ -1,8 +1,12 @@
-form.users__details_list input{
-	&[type="text"],
-	&[type="email"]{
-		background: $dkGrey;
-		border-color: $offWhite;
-		color: $offWhite;
-	}
+.users__details_list form .row:last-child{
+	margin-top: 0;
+}
+
+.users__details_list form  .form-control{
+	@extend input[type="text"];
+	background: $dkGrey;
+	border-color: $offWhite;
+	color: $offWhite;
+	font-weight: normal;
+	line-height: 1.3;
 }

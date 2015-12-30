@@ -22,7 +22,7 @@ export default FormView.extend({
 	},
 
 	onErr() {
-		tthis.model.errors.push('There was a problem saving...');
+		this.model.errors.push('There was a problem saving...');
 	},
 	templateHelpers() {
 		let helpers = FormView.prototype.templateHelpers.call(this);

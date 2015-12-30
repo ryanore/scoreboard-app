@@ -63,15 +63,17 @@ button:focus,
 // Fixed Bootstrap navbar header 
 // 
 .application__header{
-	nav li a{
-		border-bottom: 1px solid $medGrey;
-	}
-	nav li:last-child > a{
-		border: none;
-	}
+  @media (max-width: $grid-float-breakpoint -1) {
+		nav li a{
+			border-bottom: 1px solid $medGrey;
+		}
+		nav li:last-child > a{
+			border: none;
+		}
 
-	nav ul ul li a{
-		background: $dkGrey;
+		nav ul ul li a{
+			background: $dkGrey;
+		}
 	}
 
 	[data-nav="user"] .glyphicon{
