@@ -19,7 +19,16 @@ export default LayoutView.extend({
  	},
 
   events: {
+  	'click .btn-plus': 'scoreUp',
+  	'click .btn-minus': 'scoreDown'
+  },
 
+  scoreUp() {
+  	console.log('up ');
+  },
+
+  scoreDown() {
+  	console.log('down ');
   },
 
   initialize() {

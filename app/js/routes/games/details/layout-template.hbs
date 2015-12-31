@@ -32,6 +32,20 @@
 					</div>
 				</div>
 			</div>
+			{{#if ../allowEdit}}
+			<div class="table controls">
+				<div class="td">
+					<button type="button" class="btn-minus">
+						<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+					</button>				
+				</div>
+				<div class="td">
+					<button type="button" class="btn-plus">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>				
+				</div>
+			</div>
+			{{/if}}
 		</div>
 		{{/each}}		
 

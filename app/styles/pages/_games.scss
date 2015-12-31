@@ -28,21 +28,46 @@
 		}
 		.team-title{
 			@extend %ellipsis;
-			background: #000;
 	    display: block;
 	    margin:1em 0 .25em 0;
 	    padding: 0 1em;
+			background: #222;
+	    color: #ccc;
+	    border: 1px solid black;
 	    text-align: center;
 	    text-transform: uppercase;
 	    font-family: "Open Sans Condensed", sans-serif;
 	    font-weight: 700;
-	    color: #ccc;
-	    border: 1px solid black;
 			font-size: 1.3em;
 			@media(min-width: $screen-sm){
 				font-size: 1.6em;
 			}
 		}
+		.controls{
+			width: 100%;
+			margin-top: 10px;
+			.td{
+				width: 50%;
+		    margin:.25em 0;
+		    padding: 0;
+				background: #222;
+		    color: #ccc;
+		    border: 1px solid black;
+				font-weight: 700;
+				font-size: 1.3em;
+				button{
+					display: block;
+					width:100%;
+					background: none;
+					border: none;	
+					&:hover,
+					&:active{
+						color: $white;
+						background: $brand-primary;
+					}				
+				}
+			}
+		} 
 	}
 	
 
