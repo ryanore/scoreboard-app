@@ -35,21 +35,26 @@ export default FormView.extend({
 
 
 	/**
-	 * Callback from FormView
 	 * Validate the collection of teams.
+	 * If valid, set up the score property with team names and 0 value.
 	 * @return {null}
 	 */
 	beforeSave() {
 		if( !this.teamsCollectionView.validate() ){
 			this.model.errors.push('Please add at least 2 teams.');
 		} else {
-			this.model.set('teams', this.teamsCollection.toJSON())
+			let teams = this.teamsCollection.toJSON();
+			let score = {};
+			_.each(teams, (t) => {
+				score[t.name] = 0;
+			});
+			this.model.set('score', score);
+			this.model.set('teams', teams);
 		}
 	},
 
 
 	/**
-	 * Callback from FormView
 	 * Redirect to newly created resource
 	 * @param  {Object} m Backbone.Model
 	 * @return {null}

@@ -5,3 +5,35 @@
 		</h1>
 	</div>
 </header>
+
+<div class="game-container">
+
+	<div class="game-clock row">
+		<div class="clock-display display col-is-6 col-sm-4 col-is-offset-3 col-sm-offset-4">
+			<div class="display-wrapper">
+				<div class="inner-wrapper">
+					<div class="ghost-digits">88:88</div>
+					<div class="time digits">1:03</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="game-score row">
+
+		{{#each score}}
+		<div class="team">
+			<span class="team-title">{{@key}}</span>
+			<div class="score-display display">
+				<div class="display-wrapper">
+					<div class="inner-wrapper">
+						<div class="ghost-digits">888</div>
+						<div class="score digits">{{this}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}		
+
+	</div>
+</div>

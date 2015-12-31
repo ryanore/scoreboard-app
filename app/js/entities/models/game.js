@@ -7,15 +7,9 @@ let GameModel = Model.extend({
 	errors: [],
 	defaults: {
 		teams: [],
-		score: {},
 		title: '',
-		owner: Session.user
-	},
-
-	initialize(vals, options = {}) {
-		if( options.validation ){
-			this.validation = options.validation;
-		}
+		owner: Session.user,
+		score: {}
 	}
 });
 

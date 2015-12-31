@@ -26,7 +26,7 @@ export default CompositeView.extend({
   },
 
   handleRoute() {
-  	console.log('nav ', this.nav.collapse('hide'));
+  	this.nav.collapse('hide');
   },
 
   addItems(items) {

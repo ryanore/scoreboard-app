@@ -1,19 +1,161 @@
-.btn-add-team{
-	padding: .5em 0;
-	display: block;
+//
+//	GAME SCOREBOARD
+//
+//
+.games__detail{
+
+	padding-bottom: 2em;
+
+	.game-container{	
+		padding: 5% 0 8% ;	
+		background-color: rgba(54,54,54,1);
+		@include filter-gradient(#363636, #363636, horizontal);
+		@include background-image(linear-gradient(-168deg,#444 0%, #333 10%, #111 100%));
+		@include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.5));
+		@extend %bordered-box;
+	}
+	
+
+	//	Contains team name and score
+	//	Evenutally controls
+	//
+	.team{
+		float: left;
+		width: 50%;
+		padding: 0 2%;
+		@media( min-width: $screen-sm ){
+			padding: 0 5%;
+		}
+		.team-title{
+			@extend %ellipsis;
+			background: #000;
+	    display: block;
+	    margin:1em 0 .25em 0;
+	    padding: 0 1em;
+	    text-align: center;
+	    text-transform: uppercase;
+	    font-family: "Open Sans Condensed", sans-serif;
+	    font-weight: 700;
+	    color: #ccc;
+	    border: 1px solid black;
+			font-size: 1.3em;
+			@media(min-width: $screen-sm){
+				font-size: 1.6em;
+			}
+		}
+	}
+	
+
+	.game-clock,
+	.game-score,
+	.clock-display{
+		margin: 0 auto;
+	}
+
+	.clock-display{
+		float: none;
+		width: 100%;
+		max-width: 3em;
+	}
+	
+
+	.display{
+		text-align: center;
+		font-family: $font-digital;
+		line-height: 1;
+		font-size: 3em;
+
+		@media(min-width: $screen-is){
+			font-size: 6em;
+		}
+		@media(min-width: $screen-sm){
+			font-size: 7em;
+		}
+		@media(min-width: $screen-lg){
+			/*font-size: 8em;*/
+		}
+		
+		.display-wrapper{
+			@extend %inverse-bordered-box;
+			background-color: rgba(54,54,54,1);
+			@include filter-gradient(#363636, #363636, horizontal);
+			@include background-image(linear-gradient(11deg, #222 5%, #020202 88%, #000 100%));
+			@include box-shadow(inset 0px 0px 5px 2px rgba(0,0,0,0.5));
+
+			text-align: center;
+			.inner-wrapper{
+				text-align: right;
+				position: relative;
+				display: inline-block;
+			}
+		}	
+	}
+
+
+	.ghost-digits{
+		color: rgba($dkGrey, .67);
+	}
+
+	//	Actual Numbers, not ghost numbers
+	//
+	.digits{
+		position: absolute;
+		right: 0;
+		top:0;
+	}
+
+	.score.digits{
+		color: #1eef02;
+	}
+	.time.digits{
+		color: #f03e02;
+	}
+
 }
 
-.team-name{
-	label{
+
+
+//
+//	New Game View
+//
+//
+//
+.games__create{
+	.btn-add-team{
+		padding: .5em 0;
 		display: block;
 	}
-}
-.btn-remove-team{
-	text-align: right;
-	float: right;
 
-	span{
-		display: inline-block;
-		vertical-align: middle;			
+	.team-name{
+		label{
+			display: block;
+		}
 	}
+	.btn-remove-team{
+		text-align: right;
+		float: right;
+
+		span{
+			display: inline-block;
+			vertical-align: middle;			
+		}
+	}	
 }
+
+
+	%bordered-box{
+		border: 1px solid $black;
+		border-top: 1px solid rgba(#666, .7);
+		border-right: 1px solid rgba(#666, .5);		
+	}
+	%inverse-bordered-box{
+		border: 1px solid rgba(#222, .4);
+		border-bottom: 1px solid rgba(#666, .4);
+		border-left: 1px solid rgba(#666, .4);		
+	}
+	%ellipsis{
+		white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+	}
+	

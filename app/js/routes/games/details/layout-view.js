@@ -8,30 +8,24 @@ let	UserChannel = Radio.channel('UserChannel');
 
 export default LayoutView.extend({
   template: template,
-  className: 'games__detail view container-fluid',
+  
+  className(){
+  	return `games__detail view container-fluid teams-${this.model.get('teams').length}`; 
+  },
 
  	regions: {
-
+ 		clock: '.game-clock',
+ 		score: '.game-score'
  	},
 
   events: {
 
   },
 
-
-  /**
-   * Init Class - Marionette method
-   * @return {null}
-   */
   initialize() {
 
   },
-
-
-	/**
-	 * Add Variables to template - Marionette method.
-	 * @return {Object}
-	 */
+ 
 	templateHelpers() {
 		let isUser = Session.isUser(this.model.get('owner'));
 		return {
@@ -40,14 +34,7 @@ export default LayoutView.extend({
 		};
 	},
  
-
- 	/**
- 	 * Render callback - Marionette method
- 	 * @return {null}
- 	 */
 	onRender() {
-		console.log('rendere ', this.model);
+		console.log('rendere ', this.model.attributes);
   }
-
-
 });

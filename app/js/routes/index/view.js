@@ -7,10 +7,10 @@ export default ItemView.extend({
   className: 'home view container',
   initialize() {
   	// this.listenTo(socket, 'connect', this.onSocketConnect)
-  	console.log('connect... ');
-  	socket.on('connect', this.onSocketConnect);
+  	// console.log('connect... ');
+  	// socket.on('connect', this.onSocketConnect);
   },
   onSocketConnect() {
-  	console.log('CONNECTED TO SOCKET ');
+  	// console.log('CONNECTED TO SOCKET ');
   }
 });

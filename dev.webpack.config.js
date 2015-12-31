@@ -21,7 +21,7 @@ module.exports = {
   devtool: 'eval',
   entry: {
     main: [
-      'webpack-dev-server/client?http://localhost:9999',
+      'webpack-dev-server/client?http://0.0.0.0:9999',
       './app/main.js'
     ]
   },
