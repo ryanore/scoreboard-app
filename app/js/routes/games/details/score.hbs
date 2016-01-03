@@ -1,0 +1,25 @@
+<div class="team">
+	<span class="team-title">{{name}}</span>
+	<div class="score-display display">
+		<div class="display-wrapper">
+			<div class="inner-wrapper">
+				<div class="ghost-digits">888</div>
+				<div class="score digits">{{score}}</div>
+			</div>
+		</div>
+	</div>
+	{{#if allowEdit}}
+	<div class="table controls">
+		<div class="td">
+			<button type="button" data-dir="down" class="btn-minus">
+				<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+			</button>				
+		</div>
+		<div class="td">
+			<button type="button" data-dir="up" class="btn-plus">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			</button>				
+		</div>
+	</div>
+	{{/if}}
+</div>

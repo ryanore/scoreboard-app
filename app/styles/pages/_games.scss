@@ -4,17 +4,16 @@
 //
 .games__detail{
 
-	padding-bottom: 2em;
+	/*padding-bottom: .2em;*/
 
 	.game-container{	
 		padding: 5% 0 8% ;	
 		background-color: rgba(54,54,54,1);
 		@include filter-gradient(#363636, #363636, horizontal);
-		@include background-image(linear-gradient(-168deg,#444 0%, #333 10%, #111 100%));
+		@include background(linear-gradient(-168deg, #444 0%, #333 10%, #111 100%));
 		@include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.5));
 		@extend %bordered-box;
 	}
-
 	
 
 	//	Contains team name and score
@@ -39,7 +38,7 @@
 	    text-transform: uppercase;
 	    font-family: "Open Sans Condensed", sans-serif;
 	    font-weight: 700;
-			font-size: 1.3em;
+			font-size: 1em;
 			@media(min-width: $screen-sm){
 				font-size: 1.6em;
 			}
@@ -55,7 +54,7 @@
 		    color: #ccc;
 		    border: 1px solid black;
 				font-weight: 700;
-				font-size: 1.3em;
+				font-size: 1em;
 				button{
 					display: block;
 					width:100%;
@@ -81,7 +80,7 @@
 	.clock-display{
 		float: none;
 		width: 100%;
-		max-width: 3em;
+		max-width: 3.11em;
 	}
 	
 
@@ -136,12 +135,16 @@
 
 	.score.digits{
 		color: #1eef02;
+		text-shadow: 0px 0px 17px rgba(30, 239, 2, 0.7);	
 	}
 	.time.digits{
 		color: #f03e02;
+		text-shadow: 0px 0px 17px rgba(240, 62, 2, 0.7);
 	}
-
 }
+
+
+
 
 
 

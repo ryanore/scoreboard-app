@@ -42,14 +42,14 @@ export default FormView.extend({
 	beforeSave() {
 		if( !this.teamsCollectionView.validate() ){
 			this.model.errors.push('Please add at least 2 teams.');
-		} else {
-			let teams = this.teamsCollection.toJSON();
+		} 
+		else {
 			let score = {};
-			_.each(teams, (t) => {
-				score[t.name] = 0;
-			});
+			this.teamsCollection.each( (team) => {
+				score[team.get('name')] = 0;
+			});		
 			this.model.set('score', score);
-			this.model.set('teams', teams);
+			this.model.set('teams', this.teamsCollection.toJSON());
 		}
 	},
 
