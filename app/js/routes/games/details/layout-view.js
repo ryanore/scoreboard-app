@@ -21,10 +21,14 @@ export default LayoutView.extend({
   	return `games__detail view container-fluid teams-${this.model.get('teams').length}`; 
   },
 
+  /**
+   * Create new components and update regions
+   * Join Game through Socket
+   */
   onBeforeShow() {
   	let teams = new Backbone.Collection(this.model.get('teams'));
   	
-  	this.clock.show(new ClockView());
+  	this.clock.show(new ClockView({model: this.model}));
 
   	this.scores.show(new CollectionView({
   		collection: teams,

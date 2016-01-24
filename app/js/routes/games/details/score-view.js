@@ -17,7 +17,7 @@ export default ItemView.extend({
   	this.score = {};
   	this.teamName = this.model.get('name');
 		io.on('joined_game', this.onInitGame.bind(this));
-		io.on('score_updated', this.onScoreUpdated.bind(this));
+		io.on('score_updated', this.onScoreUpdated.bind(this));		
   },
 
   /**
@@ -25,7 +25,7 @@ export default ItemView.extend({
    */
   onInitGame(data) {
   	this.game_id = data._id;
-  	this.onScoreUpdated(data);
+  	this.onScoreUpdated(data.score);
   },
 
   /**
@@ -60,8 +60,7 @@ export default ItemView.extend({
    */
 	templateHelpers() {
 		let isUser = Session.isUser(this.model.get('owner'));
-		let	score = this.score[this.teamName] || '';
-
+		let	score = this.score[this.teamName] || '0';
 		return {
 			allowEdit: isUser || Session.level(1),
 			score: score

@@ -1,8 +1,22 @@
-<div class="clock-display display col-is-6 col-sm-4 col-is-offset-3 col-sm-offset-4">
-	<div class="display-wrapper">
-		<div class="inner-wrapper">
-			<div class="ghost-digits">88:88</div>
-			<div class="time digits">00:00</div>
+	<div class="clock-display display">
+		<div class="display-wrapper">
+			<div class="inner-wrapper">
+				<div class="ghost-digits">88:88</div>
+				<div class="time digits">00:00</div>
+			</div>
 		</div>
 	</div>
-</div>
+{{#if allowEdit}}
+	<div class="table controls">
+		<div class="td">
+			<button type="button" class="btn-playPause">
+				<span class="glyphicon" aria-hidden="true"></span>
+			</button>				
+		</div>
+		<div class="td">
+			<button type="button" class="btn-reset">
+				<span class="glyphicon  glyphicon glyphicon-refresh" aria-hidden="true"></span>
+			</button>				
+		</div>
+	</div>
+	{{/if}}
