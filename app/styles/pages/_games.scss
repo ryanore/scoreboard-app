@@ -4,8 +4,6 @@
 //
 .games__detail{
 
-	/*padding-bottom: .2em;*/
-
 	.game-container{	
 		padding: 5% 0 8% ;	
 		background-color: rgba(54,54,54,1);
@@ -17,7 +15,6 @@
 	
 
 	//	Contains team name and score
-	//	Evenutally controls
 	//
 	.team{
 		float: left;
@@ -29,7 +26,6 @@
 		.team-title{
 			@extend %ellipsis;
 	    display: block;
-	    margin:1em 0 .25em 0;
 	    padding: 0 1em;
 			background: #222;
 	    color: #ccc;
@@ -43,44 +39,69 @@
 				font-size: 1.6em;
 			}
 		}
-		.controls{
-			width: 100%;
-			margin-top: 10px;
-			.td{
-				width: 50%;
-		    margin:.25em 0;
-		    padding: 0;
-				background: #222;
-		    color: #ccc;
-		    border: 1px solid black;
-				font-weight: 700;
-				font-size: 1em;
-				button{
-					display: block;
-					width:100%;
-					background: none;
-					border: none;	
-					&:hover,
-					&:active{
-						color: $white;
-						background: $brand-primary;
-					}				
-				}
-			}
-		} 
+		
 	}
+
+	.controls{
+		width: 100%;
+		.td{
+			width: 50%;
+	    margin:.25em 0;
+	    padding: 0;
+			background: #222;
+	    color: #ccc;
+	    border: 1px solid black;
+			font-weight: 700;
+			font-size: 1em;
+			button{
+				display: block;
+				width:100%;
+				background: none;
+				border: none;	
+				&:hover,
+				&:active{
+					color: $white;
+					background: $brand-primary;
+				}				
+			}
+		}
+	} 
 	
 
 	.game-clock,
 	.game-score,
 	.clock-display{
 		margin: 0 auto;
+		text-align: center;
 	}
+
+	.clock{
+		display: inline-block;
+
+    .btn-playPause > span{
+      @extend .glyphicon-play;
+    }
+   
+    .btn-stop > span{
+      @extend .glyphicon-stop;
+    }
+
+    &[data-state="playing"]{
+      .btn-playPause > span{
+        @extend .glyphicon-pause;
+      }
+    }
+
+	}
+
 
 	.clock-display{
 		float: none;
-		width: 100%;
-		max-width: 3.11em;
+		.inner-wrapper > * {
+			padding: 0 20px;
+		}
+		/*width: 100%;*/
+		/*max-width: 3.11em;*/
 	}
 	
 
@@ -100,11 +121,12 @@
 			font-size: 6em;
 		}
 		@media(min-width: $screen-lg){
-			font-size: 8em;
+			font-size: 7em;
 		}
 
 		
 		.display-wrapper{
+			margin: .05em 0;
 			@extend %inverse-bordered-box;
 			background-color: rgba(54,54,54,1);
 			@include filter-gradient(#363636, #363636, horizontal);
@@ -120,7 +142,8 @@
 		}	
 	}
 
-
+	//  Ghosted numbers for cosmetic only
+	//
 	.ghost-digits{
 		color: rgba($dkGrey, .67);
 	}
@@ -132,7 +155,6 @@
 		right: 0;
 		top:0;
 	}
-
 	.score.digits{
 		color: #1eef02;
 		text-shadow: 0px 0px 17px rgba(30, 239, 2, 0.7);	

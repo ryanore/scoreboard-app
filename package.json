@@ -12,11 +12,11 @@
     "socket.io"
   ],
   "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack.config.prod.js --progress --profile --colors",
+    "server:dev": "NODE_ENV=development node dev.server.js",
     "packages:reinstall": "rm -rf node_modules && npm install",
     "packages:updates": "npm-check-updates",
     "packages:upgrade": "npm-check-updates -u",
-    "build:assets": "webpack --config dev.webpack.config.js --progress --profile --colors",
-    "server:start": "node dev.server.js",
     "selenium:install": "selenium-standalone install",
     "selenium:start": "selenium-standalone start",
     "shrinkwrap:build": "npm-shrinkwrap --dev",
@@ -52,6 +52,8 @@
     "file-loader": "^0.8.4",
     "glob": "^5.0.10",
     "handlebars-loader": "^1.1.4",
+    "html-loader": "^0.4.0",
+    "html-webpack-plugin": "^2.7.2",
     "karma": "^0.12.36",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
