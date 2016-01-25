@@ -5,47 +5,52 @@ import Backbone from 'backbone';
 import View from './layout-view';
 import Collection from '../../../entities/collections/users';
 import Session from '../../../entities/session';
-
 let Route = Marionette.Object.extend({
 
   RootChannel: Radio.channel('RootChannel'),
-	
-	/**
-	 * Initialze Route
-	 * Build model/view and send it up to the content region
-	 * @return  {null}
-	 */
-	initialize(options){
-		if( ! this.validate() ){
-			Backbone.history.returnFragment = 'users';
-			return Backbone.history.navigate('login', {trigger: true});
-		}
-		this.fetch().then((c) => {
-	  	Radio.trigger('RootChannel','content:show', new View( {collection: c}));
-		});
-	},
-	
 
-	/**
-	 * Fetch Model
-	 * @return {Promise}
-	 */
-	fetch() {     
+  /**
+   * Initialze Route
+   * Build model/view and send it up to the content region
+   * @return  {null}
+   */
+  initialize(options) {
+    if (!this.validate()) {
+      Backbone.history.returnFragment = 'users';
+      return Backbone.history.navigate('login', {
+        trigger: true
+      });
+    }
+    this.fetch().then((c) => {
+      Radio.trigger('RootChannel', 'content:show', new View({
+        collection: c
+      }));
+    });
+  },
+
+
+  /**
+   * Fetch Model
+   * @return {Promise}
+   */
+  fetch() {
     let defer = $.Deferred();
     let c = new Collection();
-    c.fetch({success: function(){
-      defer.resolve(c);
-    }});
+    c.fetch({
+      success: function() {
+        defer.resolve(c);
+      }
+    });
     return defer;
-	},
+  },
 
-	/**
-	 * Validate User's Permissions
-	 * @return {boolean} ONLY admin can see list of users
-	 */
-	validate() {
-		return Session.level(1);
-	}
+  /**
+   * Validate User's Permissions
+   * @return {boolean} ONLY admin can see list of users
+   */
+  validate() {
+    return Session.level(1);
+  }
 });
 
 

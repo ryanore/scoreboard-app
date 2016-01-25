@@ -6,35 +6,38 @@ import Session from '../../../entities/session';
 import User from '../../../entities/models/user';
 import View from './view';
 import validation from './validation';
-
 let Route = Marionette.Object.extend({
   RootChannel: Radio.channel('RootChannel'),
-	/**
-	 * Initialze Route
-	 * Build model/view and send it up to the content region
-	 * Self Destruct
-	 * @return  {null}
-	 */
-	initialize(){
-		if( ! this.validate() ){
-			return history.navigate('/', {trigger: true});
-		}
+  /**
+   * Initialze Route
+   * Build model/view and send it up to the content region
+   * Self Destruct
+   * @return  {null}
+   */
+  initialize() {
+    if (!this.validate()) {
+      return history.navigate('/', {
+        trigger: true
+      });
+    }
 
-		let userView = new View({
-			model: new User( {}, { validation: validation} )
-		});	
-  	Radio.trigger('RootChannel','content:show', userView);
-  	
-  	this.destroy();
-	},
+    let userView = new View({
+      model: new User({}, {
+        validation: validation
+      })
+    });
+    Radio.trigger('RootChannel', 'content:show', userView);
 
-	/**
-	 * Validate User's Permissions
-	 * @return {boolean} ONLY if not already logged in
-	 */
-	validate() {
-		return( Session.level() < 0 );
-	}
+    this.destroy();
+  },
+
+  /**
+   * Validate User's Permissions
+   * @return {boolean} ONLY if not already logged in
+   */
+  validate() {
+    return (Session.level() < 0);
+  }
 
 });
 

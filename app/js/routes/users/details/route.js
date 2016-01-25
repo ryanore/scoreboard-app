@@ -7,63 +7,68 @@ import User from '../../../entities/models/user';
 import View from './layout-view';
 
 let Route = Marionette.Object.extend({
-	
-	RootChannel: Radio.channel('RootChannel'),
 
-	/**
-	 * Initialze Route
-	 * Build model/view and send it up to the content region
-	 * If there is no id passed in, default to the current user
-	 * @return  {null}
-	 */
-	initialize(options){
-		this._id = options._id;
-		this.container = options.container;
+  RootChannel: Radio.channel('RootChannel'),
 
-		if( ! this.validate() ){
-			return Backbone.history.navigate('login', {trigger: true});
-		}
+  /**
+   * Initialze Route
+   * Build model/view and send it up to the content region
+   * If there is no id passed in, default to the current user
+   * @return  {null}
+   */
+  initialize(options) {
+    this._id = options._id;
+    this.container = options.container;
 
-		this.fetch().then((m) => {
-		  Radio.trigger('RootChannel','content:show', new View({
-		  	model: m
-		  }));
-		});
-	},
+    if (!this.validate()) {
+      return Backbone.history.navigate('login', {
+        trigger: true
+      });
+    }
+
+    this.fetch().then((m) => {
+      Radio.trigger('RootChannel', 'content:show', new View({
+        model: m
+      }));
+    });
+  },
 
 
-	/**
-	 * Fetch Model
-	 * @return {Promise}
-	 */
-	fetch() {     
+  /**
+   * Fetch Model
+   * @return {Promise}
+   */
+  fetch() {
     let defer = $.Deferred();
-    let m = new User({_id: this._id});
+    let m = new User({
+      _id: this._id
+    });
     m.fetch({
-    	success: function(){
-      	defer.resolve(m);
-    	},
-    	error: function(){
-    		return Backbone.history.navigate('notfound', {trigger: true});
-    	}});
+      success: function() {
+        defer.resolve(m);
+      },
+      error: function() {
+        return Backbone.history.navigate('notfound', {
+          trigger: true
+        });
+      }
+    });
     return defer;
-	},
+  },
 
 
-	/**
-	 * Validate User's Permissions
-	 * @return {boolean} User can only edit thier own account (unless admin)
-	 */
-	validate() {
-		if( !this._id ){
-			console.log('noid ');
-		}
- 		else{
- 			return( Session.isUser(this._id) || Session.level(1));
- 		}
-	}
+  /**
+   * Validate User's Permissions
+   * @return {boolean} User can only edit thier own account (unless admin)
+   */
+  validate() {
+    if (!this._id) {
+      console.log('noid ');
+    } else {
+      return (Session.isUser(this._id) || Session.level(1));
+    }
+  }
 
 });
 
 export default Route;
-

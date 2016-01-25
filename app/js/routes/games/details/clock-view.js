@@ -2,28 +2,27 @@ import {ItemView} from 'backbone.marionette';
 import Session from 'entities/session';
 import io from 'base/socket';
 import template from './clock.hbs';
-
 export default ItemView.extend({
-	template: template,
+  template: template,
   className: 'clock',
-	events: {
-		'click .btn-playPause': 'onClickToggle',
-		'click .btn-reset': 'onClickReset'
-	},
+  events: {
+    'click .btn-playPause': 'onClickToggle',
+    'click .btn-reset': 'onClickReset'
+  },
 
 
   ////////////  MARIONETTE METHODS  ////////////
 
 
   initialize() {
-  	this.running = false;
-		io.on('joined_game', this.onInitGame.bind(this));
+    this.running = false;
+    io.on('joined_game', this.onInitGame.bind(this));
     io.on('tic', this.onClockUpdated.bind(this));
     io.on('state', this.onStateChange.bind(this));
   },
 
   onAttach() {
-		this.$display = this.$el.find('.digits');
+    this.$display = this.$el.find('.digits');
   },
 
   templateHelpers() {
@@ -60,16 +59,16 @@ export default ItemView.extend({
 
 
   onClickToggle(e) {
-  	if( this.running ){
-  		io.emit('clock_stop');
-  	} else {
-  		io.emit('clock_start'); 
-  	}
+    if (this.running) {
+      io.emit('clock_stop');
+    } else {
+      io.emit('clock_start');
+    }
   },
 
   onClickReset() {
-  	io.emit('clock_reset');
-      console.log('emit reset ' );
+    io.emit('clock_reset');
+    console.log('emit reset ');
 
   },
 
@@ -78,13 +77,13 @@ export default ItemView.extend({
   ////////////  UTILITY METHODS   ////////////
 
 
-	parseTime(seconds) {
-		let min = (seconds / 60) | 0;
-		let sec = (seconds % 60) | 0;
-	  
-	  min = min < 10 ? "0" + min : min;
-	  sec = sec < 10 ? "0" + sec : sec;
+  parseTime(seconds) {
+    let min = (seconds / 60) | 0;
+    let sec = (seconds % 60) | 0;
 
-	  return min + ':' + sec;
-	}
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+
+    return min + ':' + sec;
+  }
 });

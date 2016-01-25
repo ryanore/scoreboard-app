@@ -3,7 +3,6 @@ import {LayoutView} from 'backbone.marionette';
 import {Collection} from 'base/collections/collection';
 import CollectionView from './collection-view';
 import template from './layout-template.hbs';
-
 export default LayoutView.extend({
   template: template,
   className: 'users view users--index container-fluid',
@@ -11,23 +10,27 @@ export default LayoutView.extend({
   regions: {
     list: '.users__list'
   },
-	
-	events: {
-  	'click .btn-new-user': 'newUser',
-  	'click .btn-delete': 'deleteUsers'
+
+  events: {
+    'click .btn-new-user': 'newUser',
+    'click .btn-delete': 'deleteUsers'
   },
 
   newUser() {
-  	history.navigate('signup', {trigger: true});
+    history.navigate('signup', {
+      trigger: true
+    });
   },
 
   deleteUsers() {
-  	this.collectionView.triggerDelete();
+    this.collectionView.triggerDelete();
   },
 
   handleSelectRow() {
-   	let selected = this.collection.where({markedForDelete: true});
-		this.btnDelete.prop('disabled', selected.length===0);  	
+    let selected = this.collection.where({
+      markedForDelete: true
+    });
+    this.btnDelete.prop('disabled', selected.length === 0);
   },
 
   onAttach() {
@@ -35,8 +38,8 @@ export default LayoutView.extend({
       collection: this.collection
     });
     this.list.show(this.collectionView);
-  	this.listenTo(this.collection, 'change:markedForDelete', this.handleSelectRow );
-  	this.btnDelete = this.$('.btn-delete').prop('disabled', true);
+    this.listenTo(this.collection, 'change:markedForDelete', this.handleSelectRow);
+    this.btnDelete = this.$('.btn-delete').prop('disabled', true);
   }
 
 });

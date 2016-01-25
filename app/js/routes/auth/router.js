@@ -6,36 +6,40 @@ import ForgotRoute from './forgot/route';
 import {history} from 'backbone';
 
 export default Router.extend({
-	initialize() {
-		this.updateNav();
-	},
+  initialize() {
+    this.updateNav();
+  },
 
-	routes: {
-		'login': 'logIn',
-		'logout': 'logOut',
-		'forgotpassword': 'forgotpassword'
-	},
+  routes: {
+    'login': 'logIn',
+    'logout': 'logOut',
+    'forgotpassword': 'forgotpassword'
+  },
 
-	/**
-	 * Update the main nav with links
-	 * @return {null} 
-	 */
-	updateNav() {
-		Radio.trigger('NavChannel','header:item:add', [
-			{ label: 'Login', 	path: 'login', 		 max: -1 }
-		]);		
-	},
+  /**
+   * Update the main nav with links
+   * @return {null} 
+   */
+  updateNav() {
+    Radio.trigger('NavChannel', 'header:item:add', [{
+      label: 'Login',
+      path: 'login',
+      max: -1
+    }]);
+  },
 
-	logIn() {
-		return new LoginRoute();
-	},
+  logIn() {
+    return new LoginRoute();
+  },
 
-	logOut() {
-		Session.logOutUser();
-		history.navigate('', {trigger: true});
-	},
+  logOut() {
+    Session.logOutUser();
+    history.navigate('', {
+      trigger: true
+    });
+  },
 
-	forgotpassword() {
-		return new ForgotRoute();
-	}
+  forgotpassword() {
+    return new ForgotRoute();
+  }
 });

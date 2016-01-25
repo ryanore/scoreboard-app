@@ -5,57 +5,56 @@ import Session from 'entities/session';
 import IndexRoute from './index/_route';
 import CreateRoute from './create/_route';
 import GameRoute from './details/_route';
-
 export default Router.extend({
-	routes: {
-		'games': 'index',
-		'games/new': 'create',
-		'games/mygames': 'mygames',
-		'games/:id': 'details',
-		'games/*notFound': 'notFound'
-	},
+  routes: {
+    'games': 'index',
+    'games/new': 'create',
+    'games/mygames': 'mygames',
+    'games/:id': 'details',
+    'games/*notFound': 'notFound'
+  },
 
-	initialize(options = {}) {
-		this.updateNav();
-	},
-
-
-	/**
-	 * Update the main nav with The Games link 
-	 * @return {null} 
-	 */
-	updateNav() {
-		Radio.trigger('NavChannel', 'header:item:add',[{
-			label: 'New Game',
-			path: 'games/new',
-			min: 0
-		}, {
-			label: 'Games',
-			path: 'games'
-		}]);
-	},
+  initialize(options = {}) {
+    this.updateNav();
+  },
 
 
-	index() {
-		return new IndexRoute();
-	},
+  /**
+   * Update the main nav with The Games link 
+   * @return {null} 
+   */
+  updateNav() {
+    Radio.trigger('NavChannel', 'header:item:add', [{
+      label: 'New Game',
+      path: 'games/new',
+      min: 0
+    }, {
+      label: 'Games',
+      path: 'games'
+    }]);
+  },
 
-	mygames() {
-		return new IndexRoute();
-	},
 
-	create() {
-		return new CreateRoute();
-	},
+  index() {
+    return new IndexRoute();
+  },
 
-	details(id) {
-		return new GameRoute(id);
-	},
+  mygames() {
+    return new IndexRoute();
+  },
 
-	notFound() {
-		Backbone.history.navigate('notfound', {
-			trigger: true
-		});
-	}
+  create() {
+    return new CreateRoute();
+  },
+
+  details(id) {
+    return new GameRoute(id);
+  },
+
+  notFound() {
+    Backbone.history.navigate('notfound', {
+      trigger: true
+    });
+  }
 
 });

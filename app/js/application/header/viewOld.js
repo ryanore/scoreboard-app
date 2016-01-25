@@ -3,7 +3,6 @@ import {ItemView} from 'backbone.marionette';
 import {Radio} from 'backbone';
 import Session from '../../entities/session';
 import template from './template.hbs';
-
 export default ItemView.extend({
   template: template,
   navCollection: new Backbone.Collection(),
@@ -14,7 +13,7 @@ export default ItemView.extend({
   collectionEvents: {
     'all': 'render'
   },
-  
+
 
   /**
    * listen for routes and nav events, update based on access level
@@ -22,9 +21,9 @@ export default ItemView.extend({
    * @return {null}
    */
   initialize(options) {
-  	options.container.show(this);
-  	this.listenTo(Backbone.Events, 'route', this.handleRoute );
-  	this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
+    options.container.show(this);
+    this.listenTo(Backbone.Events, 'route', this.handleRoute);
+    this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
   },
 
   /**
@@ -32,15 +31,15 @@ export default ItemView.extend({
    * @param  {String} Name of route
    */
   handleRoute() {
-		let m = this.navCollection.filter(function(m){
-			let min = typeof m.get('min') === 'undefined' ? -1000  : m.get('min');
-			let max = typeof m.get('max') === 'undefined' ? 1000  : m.get('max');
-			let level = Session.level();
-			return (level >= min) && (level <= max); 
-		})
-		this.collection.reset(m);
-  	this.nav = this.$el.find('.collapse');
-  	this.activate();
+    let m = this.navCollection.filter(function(m) {
+      let min = typeof m.get('min') === 'undefined' ? -1000 : m.get('min');
+      let max = typeof m.get('max') === 'undefined' ? 1000 : m.get('max');
+      let level = Session.level();
+      return (level >= min) && (level <= max);
+    })
+    this.collection.reset(m);
+    this.nav = this.$el.find('.collapse');
+    this.activate();
   },
 
 
@@ -51,9 +50,9 @@ export default ItemView.extend({
    * @param {null} items object or array
    */
   addItems(items) {
-		items.forEach(item => {
-			this.navCollection.push(item);	
-		});
+    items.forEach(item => {
+      this.navCollection.push(item);
+    });
   },
 
 
@@ -63,12 +62,16 @@ export default ItemView.extend({
    * @return {null}
    */
   activate() {
-  	// console.log('this.navcollection ', this.navCollection);
-  	let models = this.navCollection.where({path: Backbone.history.fragment});
-  	// console.log('models =  ', models);
-  	this.collection.invoke('set', {active: false});
-    _.each( models, (m) => {
-    	m.set('active', true);
+    // console.log('this.navcollection ', this.navCollection);
+    let models = this.navCollection.where({
+      path: Backbone.history.fragment
+    });
+    // console.log('models =  ', models);
+    this.collection.invoke('set', {
+      active: false
+    });
+    _.each(models, (m) => {
+      m.set('active', true);
     });
   }
 

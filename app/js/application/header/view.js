@@ -4,7 +4,6 @@ import {Radio} from 'backbone';
 import Session from '../../entities/session';
 import template from './template.hbs';
 import navItem from './navItem';
-
 export default CompositeView.extend({
   template: template,
   tagName: 'nav',
@@ -15,24 +14,24 @@ export default CompositeView.extend({
   RootChannel: Radio.channel('RootChannel'),
 
   initialize(options) {
-  	this.collection = new Backbone.Collection();
-  	this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
-  	this.listenTo(Backbone.Events, 'route', this.handleRoute );
-  	Radio.trigger('RootChannel','header:show', this);	
+    this.collection = new Backbone.Collection();
+    this.listenTo(this.NavChannel, 'header:item:add', this.addItems);
+    this.listenTo(Backbone.Events, 'route', this.handleRoute);
+    Radio.trigger('RootChannel', 'header:show', this);
   },
 
   onRender() {
-	  this.nav = this.$el.find('.collapse');
+    this.nav = this.$el.find('.collapse');
   },
 
   handleRoute() {
-  	this.nav.collapse('hide');
+    this.nav.collapse('hide');
   },
 
   addItems(items) {
-		items.forEach(item => {
-			this.collection.push(item);	
-		});
+    items.forEach(item => {
+      this.collection.push(item);
+    });
   }
 
 });
