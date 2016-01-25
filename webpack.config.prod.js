@@ -5,8 +5,6 @@ var path = require('path');
 var cssLoader = 'style-loader!css-loader!purifycss-loader';
 var scssLoader = 'style-loader!css-loader!sass-loader?sourceMap';
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-var ASSETS_PATH_FULLY_QUALIFIED = '/assets/';
 var buildDate = (new Date());
 
 module.exports = {
@@ -34,7 +32,13 @@ module.exports = {
   resolve: {
     root: path.join(__dirname, 'app'),
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      config: path.join(__dirname,'app', 'js', 'config', process.env.NODE_ENV+'.js'),
+      base: path.join(__dirname,'app', 'js', 'base'),
+      utils: path.join(__dirname,'app', 'js', 'utils'),
+      entities: path.join(__dirname,'app', 'js', 'entities')
+    }
   },
 
   resolveLoader: {
@@ -95,6 +99,13 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify('production')
+      },
+      DEBUG: true,
+      BROWSER: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       output: {
         comments: false

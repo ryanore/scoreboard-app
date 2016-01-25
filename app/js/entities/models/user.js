@@ -1,8 +1,9 @@
 import {Model} from 'backbone';
+import {apiRoot} from 'config';
 
 let UserModel = Model.extend({
 	idAttribute: '_id',
-	urlRoot: API + 'users',
+	urlRoot: apiRoot + 'users',
 	validation: null,
 	errors: [],
 

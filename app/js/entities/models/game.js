@@ -1,9 +1,10 @@
 import {Model} from 'backbone';
 import Session from '../session';
+import {apiRoot} from 'config';
 
 let GameModel = Model.extend({
 	idAttribute: '_id',
-	urlRoot: API + 'games',
+	urlRoot: apiRoot + 'games',
 	errors: [],
 	defaults: {
 		teams: [],

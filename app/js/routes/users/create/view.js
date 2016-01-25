@@ -1,4 +1,4 @@
-import FormView from '../../../base/forms/form-view';
+import FormView from 'base/forms/form-view';
 import validation from './validation';
 import template from './template.hbs';
 

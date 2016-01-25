@@ -1,6 +1,6 @@
 import Radio from 'backbone.radio';
-import FormView from '../../../base/forms/form-view';
-import Session from '../../../entities/session';
+import FormView from 'base/forms/form-view';
+import Session from 'entities/session';
 import template from './details-edit.hbs';
 import {edit as validation} from './validation';
 

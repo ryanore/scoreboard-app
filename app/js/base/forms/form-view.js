@@ -1,7 +1,7 @@
 import {LayoutView} from 'backbone.marionette';
+import Session from 'entities/session';
+import {errMap} from 'utils/form';
 import FormBehavior from './form-behavior';
-import Session from '../../entities/session';
-import {errMap} from '../../utils/form';
 
 export default LayoutView.extend({
 	className: 'view users__create',

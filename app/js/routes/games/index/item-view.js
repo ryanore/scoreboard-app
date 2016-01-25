@@ -1,7 +1,7 @@
 import {history} from 'backbone';
-import BaseClass from '../../../base/views/collection-table-itemview';
-import Session from '../../../entities/session';
-import {formatDate} from '../../../utils/date';
+import BaseClass from 'base/views/collection-table-itemview';
+import Session from 'entities/session';
+import {formatDate} from 'utils/date';
 import template from './item-template.hbs';
 export default BaseClass.extend({
   tagName: 'div',

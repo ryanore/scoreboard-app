@@ -1,6 +1,6 @@
 import {ItemView} from 'backbone.marionette';
-import Session from '../../../entities/session';
-import io from '../../../base/socket';
+import Session from 'entities/session';
+import io from 'base/socket';
 import template from './clock.hbs';
 
 export default ItemView.extend({

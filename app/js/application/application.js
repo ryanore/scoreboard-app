@@ -1,9 +1,9 @@
 import $ from 'jquery';
+import socket from 'base/socket';
 import {Collection} from 'backbone';
 import {Application} from 'backbone.marionette';
 import LayoutView from './application-layout';
 import Session from '../entities/session';
-import socket from '../base/socket';
 
 export default Application.extend({
 	

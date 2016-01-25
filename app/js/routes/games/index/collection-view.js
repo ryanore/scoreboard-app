@@ -2,10 +2,10 @@
  * Sortable / Deletable Composite View
  * Requires a Sortable/BatchDelete Collection
  */
-import BaseClass from '../../../base/views/collection-table-view';
+import BaseClass from 'base/views/collection-table-view';
+import Session from 'entities/session';
 import ItemView from './item-view';
 import template from './collection-template.hbs';
-import Session from '../../../entities/session';
 
 export default BaseClass.extend({
 	template: template,

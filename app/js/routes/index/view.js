@@ -1,5 +1,5 @@
 import {ItemView} from 'backbone.marionette';
-import socket from '../../base/socket';
+import socket from 'base/socket';
 import template from './template.hbs';
 
 export default ItemView.extend({

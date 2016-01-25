@@ -1,7 +1,7 @@
 import {history} from 'backbone';
-import Session from '../../../entities/session';
-import BaseClass from '../../../base/views/collection-table-itemview';
-import {formatDate} from '../../../utils/date';
+import Session from 'entities/session';
+import BaseClass from 'base/views/collection-table-itemview';
+import {formatDate} from 'utils/date';
 import template from './item-template.hbs';
 
 export default BaseClass.extend({

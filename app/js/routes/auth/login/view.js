@@ -1,8 +1,9 @@
 import Backbone from 'backbone';
 import {ItemView} from 'backbone.marionette';
-import FormBehavior from '../../../base/forms/form-behavior';
-import Session from '../../../entities/session';
+import FormBehavior from 'base/forms/form-behavior';
+import Session from 'entities/session';
 import template from './template.hbs';
+import {apiRoot} from 'config';
 
 export default ItemView.extend({
 	tagName: 'div',
@@ -36,7 +37,7 @@ export default ItemView.extend({
 		}		
 
 	 	$.ajax({
-      url: API + 'login',
+      url: apiRoot + 'login',
       type: 'POST',
       data: this.form
     })

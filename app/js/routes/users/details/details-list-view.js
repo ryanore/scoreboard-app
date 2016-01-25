@@ -1,8 +1,8 @@
 import Syphon from 'backbone.syphon';
 import {ItemView} from 'backbone.marionette';
-import FormBehavior from '../../../base/forms/form-behavior';
+import FormBehavior from 'base/forms/form-behavior';
 import {history} from 'backbone';
-import {formatDate} from '../../../utils/date';
+import {formatDate} from 'utils/date';
 import template from './details-list.hbs';
 export default ItemView.extend({
 	template: template,

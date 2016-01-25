@@ -1,8 +1,10 @@
-import FormView from '../../../base/forms/form-view';
+import FormView from 'base/forms/form-view';
+import {apiRoot} from 'config';
 import template from './template.hbs';
 import validation from './validation';
+
 export default FormView.extend({
-	url: API + 'users/forgotpassword',
+	url: apiRoot + 'users/forgotpassword',
 	template: template,
 	className: 'view users__login',
 	initialize() {

@@ -1,4 +1,5 @@
 import {history} from 'backbone';
+import {apiRoot} from 'config';
 
 /**
  * Session Controls auth/logged in state as well as level of access for the user
@@ -69,7 +70,7 @@ let Session = class {
 		
 		if (this.access_token) {
 			$.ajax({
-					url: API + 'verify'
+					url: apiRoot + 'verify'
 				})
 				.done(function(data, textStatus, jqXHR) {
 					self.update(data);
