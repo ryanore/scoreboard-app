@@ -1,3 +1,4 @@
+import Backbone from 'backbone';
 import FormView from 'base/forms/form-view';
 import validation from './validation';
 import template from './template.hbs';
@@ -6,10 +7,10 @@ export default FormView.extend({
   template: template,
   className: 'view users__create',
   onSuccess() {
-    console.log('onSuccess::: render ');
+    Backbone.history.navigate(`users/details/${this.model.get('_id')}`, {trigger:true});
   },
   onErr() {
-    console.log('onErr::: render ');
+
   },
   initialize() {
     this.model.validation = validation;

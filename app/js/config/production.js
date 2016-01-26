@@ -1,3 +1,3 @@
 export default {
-  apiRoot: 'http://0.0.0.0:3000/'
+  apiRoot: 'http://162.243.72.69:8080/'
 }
