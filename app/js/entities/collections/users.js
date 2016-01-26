@@ -1,8 +1,9 @@
 import Collection from 'base/collections/collection';
 import User from 'entities/models/user';
+import {apiRoot} from 'config';
 
 let UsersCollection = Collection.extend({
-  url: 'http://localhost:3000/users',
+  url: apiRoot+'users',
   model: User
 });
 
