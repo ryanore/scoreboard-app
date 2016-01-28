@@ -2,9 +2,9 @@ import $ from 'jquery';
 import Marionette from 'backbone.marionette';
 import Radio from 'backbone.radio';
 import Backbone from 'backbone';
+import Collection from 'entities/collections/games';
+import Session from 'entities/session';
 import View from './layout-view';
-import Collection from '../../../entities/collections/games';
-import Session from '../../../entities/session';
 let Route = Marionette.Object.extend({
 
   RootChannel: Radio.channel('RootChannel'),

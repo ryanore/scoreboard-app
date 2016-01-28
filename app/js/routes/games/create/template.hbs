@@ -9,7 +9,7 @@
 		<div class="form-group">			
       <div class="row">
         <div class="col-xs-12"><h4>The Game</h4></div>
-        <div class="col-sm-4 control-group" >
+        <div class="col-sm-6 control-group" >
             <label class="control-label">Game Title</label>
             <input type="text" class="form-control" name="title"  />
         </div>
@@ -17,12 +17,31 @@
             <label class="control-label">Description</label>
             <textarea type="text" class="form-control" name="description" ></textarea>
         </div>
-        <div class="col-sm-2 control-group" >
-            <label class="control-label">Duration</label>
-            <input type="text" class="form-control" name="duration" value="20">
-        </div>
    		</div>
    	</div>
+    
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12"><h4>Game Clock</h4></div>
+          <div class="col-xs-6 control-group">
+            <label class="control-label">Minutes</label>
+            <select name="minutes" class="form-control">
+              {{#times 60}}
+                <option value="{{this}}">{{this}}</option>
+              {{/times}}
+            </select>
+          </div>
+          <div class="col-xs-6 control-group">
+            <label class="control-label">Seconds</label>
+            <select name="seconds" class="form-control">
+              {{#times 60}}
+                <option value="{{this}}">{{this}}</option>
+              {{/times}}
+            </select>
+          </div>
+      </div>
+    </div>
+
 		<div class="form-group">			
       <div class="row">
         <div class="col-xs-12"><h4>The Teams</h4></div>

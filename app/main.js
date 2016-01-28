@@ -4,7 +4,7 @@ import Backbone from 'backbone';
 import AuthRouter from './js/routes/auth/router';
 import IndexRouter from './js/routes/index/router';
 import UsersRouter from './js/routes/users/router';
-import GamesRouter from './js/routes/games/_router';
+import GamesRouter from './js/routes/games/router';
 import ErrorRouter from './js/routes/error/router';
 import Application from './js/application/application';
 

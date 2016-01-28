@@ -109,6 +109,7 @@ export default LayoutView.extend({
     }
 
     this.beforeSave();
+
     this.el.classList.add('loading');
 
     if (this.model.errors.length) {

@@ -1,6 +1,6 @@
 import FormView from 'base/forms/form-view';
 import Backbone from 'backbone';
-import validation from './_validation';
+import validation from './validation';
 import template from './template.hbs';
 import TeamCollectionView from './teams-collection-view';
 export default FormView.extend({
@@ -35,12 +35,22 @@ export default FormView.extend({
   },
 
 
+  calculateDuration() {
+    let min = Number(this.model.get('minutes'));
+    let sec = Number(this.model.get('seconds'));
+    let seconds = sec + (min*60);
+    this.model.unset('minutes');
+    this.model.unset('seconds');
+    console.log('min ', min, '  sec ', sec, '  seconds ', seconds, '   total ', seconds*100);
+    return seconds * 1000;
+  },
+
   /**
    * Validate the collection of teams.
    * If valid, set up the score property with team names and 0 value.
    * @return {null}
    */
-  beforeSave() {
+  beforeSave() {    
     if (!this.teamsCollectionView.validate()) {
       this.model.errors.push('Please add at least 2 teams.');
     } else {
@@ -50,9 +60,9 @@ export default FormView.extend({
       });
       this.model.set('score', score);
       this.model.set('teams', this.teamsCollection.toJSON());
+      this.model.set('duration', this.calculateDuration() )
     }
   },
-
 
   /**
    * Redirect to newly created resource

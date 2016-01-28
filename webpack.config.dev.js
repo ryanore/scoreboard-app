@@ -54,7 +54,9 @@ module.exports = {
     root: path.join(__dirname, "node_modules")
   },
   externals: {},
-  
+  node: {
+    fs: "empty"
+  },
   module: {
     // preLoaders: [
     //   {

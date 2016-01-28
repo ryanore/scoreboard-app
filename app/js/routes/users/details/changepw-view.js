@@ -1,4 +1,5 @@
 import FormView from 'base/forms/form-view';
+import Session from 'entities/session';
 import template from './changepw.hbs';
 import {changePassword as validation} from './validation';
 import {apiRoot} from 'config';
@@ -15,7 +16,9 @@ export default FormView.extend({
   },
   onErr() {},
   onSuccess() {
+    console.log('LOG OUT USER ');
     Session.logOutUser();
+    console.log('this.success ', this.success);
     this.render();
   }
 });
