@@ -42,14 +42,13 @@ export default ItemView.extend({
   },
 
   onStateChange(state) {
-    console.log('onStateChange ', state);
     this.$el.attr('data-state', state);
     this.running = state === 'playing';
   },
 
   onClockUpdated(data) {
-    console.log('onClockUpdated ', data);
     let parsed = this.parseTime(data);
+    console.log('parsed ', parsed);
     this.$display.html(parsed);
   },
 
@@ -66,10 +65,9 @@ export default ItemView.extend({
     }
   },
 
+
   onClickReset() {
     io.emit('clock_reset');
-    console.log('emit reset ');
-
   },
 
 
@@ -78,8 +76,10 @@ export default ItemView.extend({
 
 
   parseTime(seconds) {
-    let min = (seconds / 60) | 0;
-    let sec = (seconds % 60) | 0;
+    let ms = parseInt((seconds % 1000) / 100);
+    let sec = parseInt((seconds / 1000) % 60);
+    let min = parseInt((seconds / (1000 * 60)) % 60);
+    let hours = parseInt((seconds / (1000 * 60 * 60)) % 24);
 
     min = min < 10 ? "0" + min : min;
     sec = sec < 10 ? "0" + sec : sec;
