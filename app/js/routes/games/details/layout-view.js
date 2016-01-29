@@ -26,14 +26,20 @@ export default LayoutView.extend({
    */
   onBeforeShow() {
     let teams = new Backbone.Collection(this.model.get('teams'));
+    
+    let allowEdit = Session.isUser(this.model.get('owner')._id);
 
-    this.clock.show(new ClockView({
-      model: this.model
+    this.clock.show(new ClockView({ 
+      model: this.model ,
+      edit: allowEdit
     }));
 
     this.scores.show(new CollectionView({
       collection: teams,
-      childView: ScoreView
+      childView: ScoreView,
+      childViewOptions: {
+        edit: allowEdit 
+      }
     }));
 
     io.emit('join_game', this.model.get('_id'));

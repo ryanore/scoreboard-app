@@ -2,21 +2,23 @@ import {ItemView} from 'backbone.marionette';
 import Session from 'entities/session';
 import io from 'base/socket';
 import template from './score.hbs';
+import click from 'utils/click';
+
 export default ItemView.extend({
   template: template,
-
-  events: {
-    'click .btn-plus,.btn-minus': 'onClickScore',
-  },
 
   /**
    * Initialize - set listeners on socket which need to be removed before destroy
    */
-  initialize() {
+  initialize(options) {
+    this.allowEdit = options.edit;    
+    console.log('options score:  ',options );
     this.score = {};
     this.teamName = this.model.get('name');
     io.on('joined_game', this.onInitGame.bind(this));
     io.on('score_updated', this.onScoreUpdated.bind(this));
+    this.$el.on(click , '.btn-plus,.btn-minus', this.onClickScore.bind(this))
+    this.$el.on('dblclick' , '.btn-plus,.btn-minus', this.onClickScore.bind(this))
   },
 
   /**
@@ -31,6 +33,7 @@ export default ItemView.extend({
    * Critical Cleanup
    */
   onBeforeDestroy() {
+    this.$el.off();
     io.off();
   },
 
@@ -58,10 +61,9 @@ export default ItemView.extend({
    * Data for template
    */
   templateHelpers() {
-    let isUser = Session.isUser(this.model.get('owner'));
     let score = this.score[this.teamName] || '0';
     return {
-      allowEdit: isUser || Session.level(1),
+      allowEdit: this.allowEdit,
       score: score
     };
   }

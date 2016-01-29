@@ -4,8 +4,15 @@
       cursor: pointer;
     }
     &.links .tbody .tr {
+      background: rgba(#111,.5);
       &:hover {
         background-color: rgba($brand-primary, .7);
+      }
+    }
+    .th{
+      border-right: 1px solid $medDkGrey;
+      &:last-child{
+        border: none;
       }
     }
     .th[data-sort]{

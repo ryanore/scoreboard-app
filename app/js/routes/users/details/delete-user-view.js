@@ -11,10 +11,6 @@ export default ItemView.extend({
     'submit': 'onFormSubmit'
   },
 
-  close() {
-    alert('close');
-  },
-
   onFormSubmit() {
     alert('you have been deleted');
   }

@@ -1,3 +1,4 @@
+import Session from 'entities/session';
 import FormView from 'base/forms/form-view';
 import Backbone from 'backbone';
 import validation from './validation';
@@ -58,6 +59,7 @@ export default FormView.extend({
       this.teamsCollection.each((team) => {
         score[team.get('name')] = 0;
       });
+      this.model.set('owner', Session.user);
       this.model.set('score', score);
       this.model.set('teams', this.teamsCollection.toJSON());
       this.model.set('duration', this.calculateDuration() )

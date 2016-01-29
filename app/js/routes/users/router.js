@@ -41,7 +41,7 @@ export default Router.extend({
         label: 'Logout',
         path: 'logout'
       }, {
-        label: 'Your Details',
+        label: Session.user.username,
         path: 'users/details/me'
       }]
     }]);

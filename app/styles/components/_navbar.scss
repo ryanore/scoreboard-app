@@ -1,8 +1,17 @@
 .application__content .view .collection-tableview .navbar{
   background-color: rgba(#000, .6);
-  
-  button, .btn, button.btn-default{
+  border-color: $medDkGrey;
+
+  input, button, .btn, button.btn-default{
     background: #333;
     color: #fff;
+    border-color: $medDkGrey ;
+  }
+
+  input[type="text"]{
+    &:focus{
+      background: $lightGrey;
+      color: $dkGrey;
+    }
   }
 }

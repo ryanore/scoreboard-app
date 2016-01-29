@@ -61,7 +61,10 @@ export default CompositeView.extend({
     let selected = this.collection.where({
       markedForDelete: true
     });
-    if (confirm('You sure you wanna delete? ' + selected.length)) {
+    if( !selected.length ){
+      return;
+    }
+    if (window.confirm('You sure you wanna delete? ' + selected.length)) {
       if (typeof this.collection.batchDelete != 'undefined') {
         this.collection.batchDelete(selected);
         this.$('[type="checkbox"]').prop('checked', false);
