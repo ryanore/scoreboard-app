@@ -14,7 +14,8 @@ export default ItemView.extend({
   ////////////  MARIONETTE METHODS  ////////////
 
 
-  initialize() {
+ initialize(options) {
+    this.allowEdit = options.edit;    
     this.running = false;
     io.on('joined_game', this.onInitGame.bind(this));
     io.on('tic', this.onClockUpdated.bind(this));
@@ -26,9 +27,8 @@ export default ItemView.extend({
   },
 
   templateHelpers() {
-    let isUser = Session.isUser(this.model.get('owner'));
     return {
-      allowEdit: isUser || Session.level(1)
+      allowEdit: this.allowEdit
     };
   },
 

@@ -63,6 +63,7 @@ button:focus,
 // Fixed Bootstrap navbar header 
 // 
 .application__header{
+
   @media (max-width: $grid-float-breakpoint -1) {
 		nav li a{
 			border-bottom: 1px solid $medGrey;
@@ -79,6 +80,9 @@ button:focus,
 	[data-nav="user"] .glyphicon{
 		@extend .glyphicon-user;
 	}
+  .navbar{
+    background-color: #000;
+  }
 	.navbar-inverse .navbar-nav > li >.active{
 		color: #fff;
 		> *{

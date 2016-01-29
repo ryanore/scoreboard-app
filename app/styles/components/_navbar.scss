@@ -1,10 +1,17 @@
-.navbar-inverse {
-    background-color: #000;
-    border-color: #222;
+.application__content .view .collection-tableview .navbar{
+  background-color: rgba(#000, .6);
+  border-color: $medDkGrey;
+
+  input, button, .btn, button.btn-default{
+    background: #333;
+    color: #fff;
+    border-color: $medDkGrey ;
+  }
+
+  input[type="text"]{
+    &:focus{
+      background: $lightGrey;
+      color: $dkGrey;
+    }
+  }
 }
-/*
-.application__content .navbar{
-	background: rgba(#151515, .5);
-	border: 1px solid #222;
-}
-*/

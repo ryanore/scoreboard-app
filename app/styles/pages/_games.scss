@@ -58,11 +58,16 @@
 				width:100%;
 				background: none;
 				border: none;	
-				&:hover,
 				&:active{
 					color: $white;
-					background: $brand-primary;
-				}				
+					background: $dkGrey;
+				}	
+        .click &{
+          &:hover{
+            color: $white;
+            background: $medGrey;
+          }
+        }			
 			}
 		}
 	} 
@@ -198,19 +203,22 @@
 }
 
 
-	%bordered-box{
-		border: 1px solid $black;
-		border-top: 1px solid rgba(#666, .7);
-		border-right: 1px solid rgba(#666, .5);		
-	}
-	%inverse-bordered-box{
-		border: 1px solid rgba(#222, .4);
-		border-bottom: 1px solid rgba(#666, .4);
-		border-left: 1px solid rgba(#666, .4);		
-	}
-	%ellipsis{
-		white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
-	}
-	
+
+//
+//  PLACEHOLDERS
+//
+%bordered-box{
+  border: 1px solid $black;
+  border-top: 1px solid rgba(#666, .7);
+  border-right: 1px solid rgba(#666, .5);   
+}
+%inverse-bordered-box{
+  border: 1px solid rgba(#222, .4);
+  border-bottom: 1px solid rgba(#666, .4);
+  border-left: 1px solid rgba(#666, .4);    
+}
+%ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

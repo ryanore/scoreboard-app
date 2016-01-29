@@ -4,6 +4,8 @@ import {Collection} from 'backbone';
 import {Application} from 'backbone.marionette';
 import LayoutView from './application-layout';
 import Session from '../entities/session';
+import click from 'utils/click';
+
 export default Application.extend({
 
   /**
@@ -16,6 +18,7 @@ export default Application.extend({
     this.addHeaders();
 
     this.startApplication();
+
   },
 
 
@@ -37,7 +40,8 @@ export default Application.extend({
    * @return {[type]} [description]
    */
   buildDom() {
-    $('body').append('<div id="app-main"></div>');
+    let main = $('body').append('<div id="app-main"></div>').addClass(click);
+
     this.layout = new LayoutView();
   },
 
